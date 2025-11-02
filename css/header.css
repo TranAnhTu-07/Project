@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;
+    z-index: 1000;
+}
+
+.header-top {
+    background: #252525;
+    padding: 12px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-search {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo-icon {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-top: 0;
+}
+
+.logo-icon i {
+    color: #ae8569;
+    font-size: 24px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo-sub {
+    font-size: 11px;
+    opacity: 0.95;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-box button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #979493;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.hotline {
+    text-align: right;
+}
+
+.hotline-label {
+    font-size: 12px;
+    opacity: 0.9;
+    text-align: left;
+}
+
+.hotline-number {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-links {
+    display: flex;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.header-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.user-icon i {
+    font-size: 20px;
+}
+
+.nav-menu {
+    background: #1e1e1e;
+    padding: 15px 40px;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sub-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sub-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sub-item i {
+    font-size: 18px;
+}
+
+@media (max-width: 968px) {
+    .header-top {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .logo-search {
+        width: 100%;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .nav-menu {
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .sub-item {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+/* menu */
+.nav-menu {
+    background-color: #1e1e1e;
+    border-bottom: 2px solid #ffffff;
+}
+
+.nav-item {
+    font-weight: bold;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.nav-menu ul li .nav-item {
+    display: block;
+    padding: 20px 40px;
+    background: rgb(255, 255, 255);
+    color: #1e1e1e;
+    text-decoration: none;
+}
+
+.nav-menu ul li .nav-item:hover {
+    background: #252525;
+    color: #ffffff;
+}
+
+.nav-menu ul li:hover ul.sub-menu {
+    display: block;
+}
+
+.sub .null .sub-menu {
+    display: none;
+    position: absolute;
+    border: 1px solid #1e1e1e;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    white-space: nowrap;
+}
+
+.sub .null .sub-menu .nav-item {
+    display: flex;
+    flex-direction: column;
+}
