@@ -1,0 +1,311 @@
+/* --- Reset mặc định --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+/* --- Bố cục tổng thể --- */
+.product {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12%;
+    width: 100%;
+    min-height: 100vh;
+    padding: 4% 8%;
+    background-color: #fff;
+}
+
+/* --- Cột ảnh bên trái --- */
+.product-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 35%;
+    gap: 1.5vw; /* khoảng cách giữa các khung */
+}
+
+/* --- Khung xám to chứa ảnh lớn --- */
+.main-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f2f2f2;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+/* --- Hàng 3 khung xám nhỏ bên dưới --- */
+.small-boxes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1vw;
+}
+
+.small-box {
+    flex: 1;
+    background-color: #f2f2f2;
+    border-radius: 0.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.small-box img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.small-box:hover {
+    transform: scale(1.05);
+    border: 2px solid #000;
+}
+
+/* --- Phần thông tin bên phải --- */
+.product-right {
+    flex: 1;
+    max-width: 40%;
+    line-height: 1.2;
+    color: #000;
+    padding-top: 3vw;
+}
+
+
+/* --- Tiêu đề sản phẩm --- */
+.product-right h1 {
+    font-size: 1.8vw;
+    font-weight: bold;
+    margin-bottom: 0.8vw;
+}
+
+/* --- Các đoạn chữ nhỏ --- */
+.product-right p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    font-size: 1vw;
+}
+.price {
+    font-weight: 900;           /* cực đậm */
+    font-size: 30px !important;
+    color: #000;                /* màu đen thuần */
+    margin: 10px 0;
+    line-height: 1;
+}
+
+/* --- Dòng thương hiệu & trạng thái --- */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vw;
+    font-size: 1vw;
+}
+
+.brand,
+.in-stock {
+    font-weight: bold;
+    color: #000;
+}
+
+/* --- Nút mua hàng --- */
+button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 1.5vw 8vw;        /* tăng kích thước nút */
+    border-radius: 0.6vw;      /* bo góc to hơn một chút */
+    font-size: 1.8vw;          /* chữ lớn hơn */
+    font-weight: bold;
+    margin-top: 2vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);     /* phóng to nhẹ khi rê chuột */
+    opacity: 0.9;
+}
+
+
+button:hover {
+    opacity: 0.8;
+}
+/* --- Ảnh lớn --- */
+.main-image {
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 1.5vw;        /* tạo khoảng cách giữa ảnh lớn và ảnh nhỏ */
+}
+
+.main-image img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+/* --- Hàng 3 ảnh nhỏ bên dưới --- */
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.thumbnail-container img {
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5vw;
+    padding: 0.4vw;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumbnail-container img:hover,
+.thumbnail-container img.active {
+    border: 2px solid #000; /* viền đen khi hover/chọn */
+    transform: scale(1.05);
+}
+
+.product-menu {
+    width: 100%;
+    margin-top: 3vw;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.product-menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 3vw;
+}
+
+.product-menu li {
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #555;
+    padding-bottom: 0.8vw;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover (chỉ đổi màu, không gạch chân) */
+.product-menu li:hover {
+    color: #000;
+}
+
+/* Tab đang được chọn */
+.product-menu li.active {
+    font-weight: 600;
+    color: #0056d2;
+}
+
+/* Gạch xanh chỉ hiện khi tab có class active */
+.product-menu li.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0056d2;
+    border-radius: 2px;
+}
+
+.product-specs {
+    width: 80%;
+    margin: 4vw auto;
+    background-color: #fff;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 1vw;
+    color: #222;
+}
+
+.product-specs table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-specs td {
+    border: 1px solid #ddd;
+    padding: 1vw 1.5vw;
+    vertical-align: top;
+}
+
+.product-specs td:first-child {
+    font-weight: bold;
+    width: 30%;
+    background-color: #fafafa;
+}
+
+.product-specs tr:hover {
+    background-color: #f6f6f6;
+    transition: 0.2s;
+}
+
+.tab {
+    display: none;
+}
+
+.active-tab {
+    display: block;
+}
+
+/* Bảng thông số (giữ nguyên phần cũ nếu đã có) */
+.product-specs {
+    width: 80%;
+    margin: 2vw auto;
+    background-color: #fff;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 1vw;
+    color: #222;
+}
+
+.product-specs td {
+    border: 1px solid #ddd;
+    padding: 1vw 1.5vw;
+}
+
+.product-specs td:first-child {
+    font-weight: bold;
+    width: 30%;
+    background-color: #fafafa;
+}
+
