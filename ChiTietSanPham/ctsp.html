@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="ctsp.css">
+    <script src="../Project/js/javascript.js"></script>
+</head>
+<body>
+<div class="product">
+    <!-- Ảnh bên trái -->
+    <div class="product-left">
+        <!-- Khung xám to chứa ảnh lớn -->
+        <div class="main-box">
+            <img id="mainImage" src="main.jpg" alt="Ảnh chính">
+        </div>
+
+        <!-- 3 khung xám nhỏ bên dưới -->
+        <div class="small-boxes">
+            <div class="small-box">
+                <img src="thumb1.jpg" alt="Ảnh nhỏ 1" onclick="changeImage(this)">
+            </div>
+            <div class="small-box">
+                <img src="thumb2.jpg" alt="Ảnh nhỏ 2" onclick="changeImage(this)">
+            </div>
+            <div class="small-box">
+                <img src="thumb3.jpg" alt="Ảnh nhỏ 3" onclick="changeImage(this)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Thông tin bên phải -->
+    <div class="product-right">
+        <h1>MÁY ẢNH CANON EOS R100 (HÃNG)</h1>
+        <p class="label">Giá chính hãng:</p>
+        <p class="price">11,500,000đ</p>
+
+        <div class="info-row">
+            <p>Thương hiệu: <span class="brand">CANON</span></p>
+            <p>Trạng thái: <span class="in-stock">Còn hàng</span></p>
+        </div>
+
+        <button>MUA HÀNG</button>
+    </div>
+</div>
+<!-- Thanh menu thông tin sản phẩm -->
+<!-- Thanh menu thông tin sản phẩm -->
+<div class="product-menu">
+    <ul>
+        <li class="active" data-target="overview">Tổng quan</li>
+        <li data-target="other">Sản phẩm khác</li>
+        <li data-target="old">Sản phẩm cũ</li>
+        <li data-target="include">Sản phẩm bao gồm</li>
+        <li data-target="specs">Thông số</li>
+    </ul>
+</div>
+
+<!-- Nội dung từng tab -->
+<div class="tab-content">
+    <div id="overview" class="tab active-tab">
+        <p>Đây là phần Tổng quan sản phẩm.</p>
+    </div>
+
+    <div id="other" class="tab">
+        <p>Đây là phần Sản phẩm khác.</p>
+    </div>
+
+    <div id="old" class="tab">
+        <p>Đây là phần Sản phẩm cũ.</p>
+    </div>
+
+    <div id="include" class="tab">
+        <p>Đây là phần Sản phẩm bao gồm.</p>
+    </div>
+
+    <div id="specs" class="tab">
+        <!-- Phần bảng thông số -->
+        <div class="product-specs">
+            <table>
+                <tr><td>ISO</td><td>100 đến 12,800</td></tr>
+                <tr><td>Tốc độ màn trập</td><td>1/4000 đến 30 giây</td></tr>
+                <tr><td>Độ phân giải</td><td>24.1MP</td></tr>
+                <tr><td>Loại cảm biến</td><td>CMOS</td></tr>
+                <tr><td>Đo sáng</td><td>Center-Weighted Average, Evaluative, Partial, Spot</td></tr>
+                <tr><td>Hẹn giờ chụp</td><td>Độ trễ 2/10 giây</td></tr>
+                <tr><td>Định dạng cảm biến</td><td>24.1MP APS-C CMOS</td></tr>
+                <tr><td>Tỉ lệ ảnh</td><td>3:2</td></tr>
+                <tr><td>Định dạng ảnh</td><td>C-RAW, JPEC, RAW</td></tr>
+                <tr><td>Mã hoá video</td><td>NTSC/PAL</td></tr>
+                <tr><td>Micro</td><td>Stereo</td></tr>
+                <tr><td>Kiểu lấy nét</td><td>Auto và Manual Focus</td></tr>
+                <tr><td>Đèn flash</td><td>Không</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
