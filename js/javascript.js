@@ -58,5 +58,23 @@ const sliderWrapper = document.getElementById('sliderWrapper');
 
         startAutoSlide();
 
+document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll(".product-menu li");
+    const contents = document.querySelectorAll(".tab");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+
+            tabs.forEach(t => t.classList.remove("active"));
+
+            tab.classList.add("active");
+
+            contents.forEach(c => c.classList.remove("active-tab"));
+
+            const target = tab.getAttribute("data-target");
+            document.getElementById(target).classList.add("active-tab");
+        });
+    });
+});
 
     
