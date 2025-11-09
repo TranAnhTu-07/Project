@@ -120,7 +120,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 1vw;
-    font-size: 1vw;
+    font-size: 5vw;
 }
 
 .brand,
@@ -129,24 +129,51 @@ body {
     color: #000;
 }
 
-/* --- Nút mua hàng --- */
-button {
+/* --- Nhóm nút thao tác --- */
+.button-group {
+    display: flex;
+    gap: 1vw;               /* khoảng cách giữa 2 nút */
+    margin-top: 2vw;
+    align-items: center;
+}
+
+/* --- Nút Mua hàng (chính, to và dài hơn) --- */
+.buy-now {
     background-color: #000;
     color: #fff;
     border: none;
-    padding: 1.5vw 8vw;        /* tăng kích thước nút */
-    border-radius: 0.6vw;      /* bo góc to hơn một chút */
-    font-size: 1.8vw;          /* chữ lớn hơn */
+    padding: 1vw 7vw;     /* to và dài hơn */
+    border-radius: 0.6vw;
+    font-size: 1.4vw;       /* chữ lớn hơn */
     font-weight: bold;
-    margin-top: 2vw;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-button:hover {
-    transform: scale(1.05);     /* phóng to nhẹ khi rê chuột */
+.buy-now:hover {
+    transform: scale(1.05);
     opacity: 0.9;
 }
+
+/* --- Nút Thêm vào giỏ hàng (phụ, nhỏ và ngắn) --- */
+.add-cart {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 1vw 3vw;   /* ngắn và nhỏ hơn */
+    border-radius: 0.6vw;
+    font-size: 1.4vw;       /* chữ nhỏ hơn */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-cart:hover {
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
 
 
 button:hover {
@@ -246,7 +273,7 @@ button:hover {
     background-color: #0056d2;
     border-radius: 2px;
 }
-
+/* --- Bảng thông số kỹ thuật --- */
 .product-specs {
     width: 80%;
     margin: 4vw auto;
@@ -278,7 +305,7 @@ button:hover {
     background-color: #f6f6f6;
     transition: 0.2s;
 }
-
+/* Ẩn tất cả nội dung tab trừ phần đang chọn */
 .tab {
     display: none;
 }
@@ -309,3 +336,210 @@ button:hover {
     background-color: #fafafa;
 }
 
+.footer {
+    background: #1a1a1a;
+    color: #9ca3af;
+    padding: 60px 20px 20px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.5fr;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: #ff6b35;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    padding-top: 0;
+}
+
+.logo-text h2 {
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.logo-text p {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.description {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+.payment-methods {
+    margin-top: 25px;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.payment-icon {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.policy-links, .contact-info {
+    list-style: none;
+}
+
+.policy-links li, .contact-info li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.policy-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.policy-links a:hover {
+    color: #fff;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact-info .icon {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.location-item {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.location-item::before {
+    content: '□';
+    position: absolute;
+    left: 0;
+    color: #9ca3af;
+}
+
+/* .footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer-bottom p {
+    margin-bottom: 5px;
+} */
+
+.footer-nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
