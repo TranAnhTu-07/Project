@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>May Anh</title>
+    <link rel="stylesheet" href="dssp.css">
+</head>
+<body>
+
+<main id="main-page-content">
+    <div class="container">
+        <div class="brand-container">
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/canon.svg" alt="Canon">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/nikon.svg" alt="Nikon">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sony.svg" alt="Sony">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/fujifilm.svg" alt="Fujifilm">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/olympus.svg" alt="Lumix">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/leica.svg" alt="Leica">
+            </div>
+            <div class="brand-item">
+                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="cover-product-item" id="canonDSLR-product-list">
+        <template id="canonDSLR-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+
+    <div class="cover-product-item" id="canonCompact-product-list">
+        <template id="canonCompact-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+
+    <div class="cover-product-item" id="canonMirrorless-product-list">
+        <template id="canonMirrorless-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+
+         <div class="cover-product-item" id="ongkinhcanon-product-list">
+            <template id="ongkinhcanon-product-template">
+                <div class="product-card-item">
+                    <img src="" alt="" class="product-img">
+                    <h3 class="product-name"></h3>
+                    <p class="product-price"></p>
+                </div>
+            </template>
+        </div>
+    <div class="cover-product-item" id="sonyCompact-product-list">
+        <template id="sonyCompact-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+    <div class="cover-product-item" id="sonyMirrorless-product-list">
+        <template id="sonyMirrorless-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+    <div class="cover-product-item" id="ongkinhsony-product-list">
+        <template id="ongkinhsony-product-template">
+            <div class="product-card-item">
+                <img src="" alt="" class="product-img">
+                <h3 class="product-name"></h3>
+                <p class="product-price"></p>
+            </div>
+        </template>
+    </div>
+
+</main>
+
+<script>
+
+        const canonDSLRProducts = [
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383",
+                name: "Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II",
+                price: "10.300.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383",
+                name: "Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II",
+                price: "10.300.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383",
+                name: "Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II",
+                price: "10.300.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383",
+                name: "Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II",
+                price: "10.300.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383",
+                name: "Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II",
+                price: "10.300.000₫"
+            },
+            ]
+
+       const canonCompactProducts = [
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon Compact 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+
+        ]
+        const canonMirrorlessProducts = [
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon Mirrorless 185",
+                price: "7.500.000₫"
+
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+
+        ]
+        const ongkinhcanonProducts =[
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Ong kinh Canon",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+        ]
+        const sonyCompactProducts = [
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Sony Compact 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+        ]
+        const sonyMirrorlessProducts = [
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Sony Mirrorles 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+        ]
+        const ongkinhsonyProducts =[
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Ong kinh sony 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+            {
+                img: "https://bizweb.dktcdn.net/100/107/650/products/714qo-zn9al.jpg?v=1758518567350",
+                name: "Canon IXUS 185",
+                price: "7.500.000₫"
+            },
+        ]
+        // Lấy container và template
+        function renderProducts(containerId, templateId, productArray) {
+            const container = document.getElementById(containerId);
+            const template = document.getElementById(templateId);
+
+            if (!container || !template) {
+                console.error("Không tìm thấy container hoặc template ID:", containerId, templateId);
+                return;
+            }
+            container.innerHTML = "";
+            productArray.forEach(p => {
+                const clone = template.content.cloneNode(true);
+                clone.querySelector(".product-img").src = p.img;
+                clone.querySelector(".product-name").textContent = p.name;
+                clone.querySelector(".product-price").textContent = p.price;
+                const priceOriginEl = clone.querySelector(".price-origin");
+                if (priceOriginEl) {
+                    if (p.price-origin) priceOriginEl.textContent = p.price-origin;
+                    else priceOriginEl.style.display = "none";
+                }
+                container.appendChild(clone);
+            });
+        }
+        renderProducts("canonDSLR-product-list", "canonDSLR-product-template", canonDSLRProducts);
+        renderProducts("canonCompact-product-list", "canonCompact-product-template", canonCompactProducts);
+        renderProducts("canonMirrorless-product-list", "canonMirrorless-product-template", canonMirrorlessProducts);
+        renderProducts("ongkinhcanon-product-list", "ongkinhcanon-product-template", ongkinhcanonProducts);
+        renderProducts("sonyCompact-product-list", "sonyCompact-product-template", sonyCompactProducts);
+        renderProducts("sonyMirrorless-product-list", "sonyMirrorless-product-template", sonyMirrorlessProducts);
+        renderProducts("ongkinhsony-product-list", "ongkinhsony-product-template", ongkinhsonyProducts);
+
+</script>
+
+</body>
+</html>
