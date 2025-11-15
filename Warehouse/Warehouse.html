@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tồn Kho - Admin</title>
+    <link rel="stylesheet" href="../css/Warehouse.css">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1><span>Admin Panel</span></h1>
+    </div>
+    <div class="menu">
+        <div class="menu-item">
+            <span>Dashboard</span>
+        </div>
+        <div class="menu-item">
+            <span>Quản lý User</span>
+        </div>
+        <div class="menu-item">
+            <span>Thống kê</span>
+        </div>
+        <div class="menu-item active">
+            <span>Quản Lý Kho</span>
+        </div>
+        <div class="menu-item">
+            <span>Đăng xuất</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="stats-container">
+        <div class="stat-card success">
+            <h3>Tổng Sản Phẩm</h3>
+            <div class="number">156</div>
+        </div>
+        <div class="stat-card">
+            <h3>Tổng Giá Trị Kho</h3>
+            <div class="number">1.2 tỷ</div>
+        </div>
+        <div class="stat-card warning">
+            <h3>Sắp Hết Hàng</h3>
+            <div class="number">23</div>
+        </div>
+        <div class="stat-card danger">
+            <h3>Hết Hàng</h3>
+            <div class="number">8</div>
+        </div>
+    </div>
+
+    <div class="filters">
+        <h2>🔍 Bộ Lọc</h2>
+        <form class="filter-group" method="GET" action="">
+            <div class="filter-item">
+                <label for="category">Danh Mục</label>
+                <select id="category" name="category">
+                    <option value="">Tất cả danh mục</option>
+                    <option value="electronics">Điện tử</option>
+                    <option value="fashion">Thời trang</option>
+                    <option value="food">Thực phẩm</option>
+                    <option value="books">Sách</option>
+                    <option value="toys">Đồ chơi</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="status">Trạng Thái Kho</label>
+                <select id="status" name="status">
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="high">Còn nhiều (>100)</option>
+                    <option value="medium">Trung bình (50-100)</option>
+                    <option value="low">Sắp hết (<50)</option>
+                    <option value="out">Hết hàng</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="search">Tìm Kiếm</label>
+                <input type="text" id="search" name="search" placeholder="Tên sản phẩm, mã SP...">
+            </div>
+            <div class="filter-item">
+                <label for="sort">Sắp Xếp</label>
+                <select id="sort" name="sort">
+                    <option value="name">Tên A-Z</option>
+                    <option value="stock_asc">Tồn kho tăng dần</option>
+                    <option value="stock_desc">Tồn kho giảm dần</option>
+                    <option value="price">Giá cao đến thấp</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Hình Ảnh</th>
+                <th>Mã SP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Danh Mục</th>
+                <th>Số Lượng</th>
+                <th>Trạng Thái</th>
+                <th>Giá Bán</th>
+                <th>Giá Trị Tồn</th>
+                <th>Thao Tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img
+                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/may-anh-canon-eos-r50_4_.png"
+                        alt="Sản phẩm" class="product-image"></td>
+                <td><strong>SP001</strong></td>
+                <td>Máy ảnh CANON</td>
+                <td><span class="category-tag">Điện tử</span></td>
+                <td><strong>45</strong></td>
+                <td><span class="stock-badge stock-low">Sắp hết</span></td>
+                <td>25.000.000đ</td>
+                <td>1.125.000.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://giangduydat.vn/product/fujifilm-x-e5.jpg" alt="Sản phẩm" class="product-image">
+                </td>
+                <td><strong>SP002</strong></td>
+                <td>Máy ảnh FUJIFILM</td>
+                <td><span class="category-tag">Điện tử</span></td>
+                <td><strong>120</strong></td>
+                <td><span class="stock-badge stock-high">Còn nhiều</span></td>
+                <td>32.000.000đ</td>
+                <td>3.840.000.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img
+                        src="https://d1ncau8tqf99kp.cloudfront.net/converted/92650_original_local_1200x1050_v3_converted.webp"
+                        alt="Sản phẩm" class="product-image"></td>
+                <td><strong>SP003</strong></td>
+                <td>Máy ảnh SONY</td>
+                <td><span class="category-tag">Điện tử</span></td>
+                <td><strong>0</strong></td>
+                <td><span class="stock-badge stock-out">Hết hàng</span></td>
+                <td>250.000đ</td>
+                <td>0đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-danger">Nhập gấp</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://giangduydat.vn/product/nikon-zr-6k-cinema-camera.jpg" alt="Sản phẩm"
+                         class="product-image"></td>
+                <td><strong>SP004</strong></td>
+                <td>Máy ảnh NIKON</td>
+                <td><span class="category-tag">Điện tử</span></td>
+                <td><strong>78</strong></td>
+                <td><span class="stock-badge stock-medium">Trung bình</span></td>
+                <td>20.500.000đ</td>
+                <td>1.599.000.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://giangduydat.vn/product/thumb120/panasonic-lumix-gh5-ii.jpg" alt="Sản phẩm"
+                         class="product-image"></td>
+                <td><strong>SP005</strong></td>
+                <td>MÁY ẢNH LUMIX</td>
+                <td><span class="category-tag">Điện tử</span></td>
+                <td><strong>32</strong></td>
+                <td><span class="stock-badge stock-low">Sắp hết</span></td>
+                <td>8.500.000đ</td>
+                <td>272.000.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-canon-ef28mm-f28(1).jpg"
+                         alt="Sản phẩm" class="product-image"></td>
+                <td><strong>SP006</strong></td>
+                <td>ỐNG KÍNH CANON</td>
+                <td><span class="category-tag">Phụ kiện</span></td>
+                <td><strong>156</strong></td>
+                <td><span class="stock-badge stock-high">Còn nhiều</span></td>
+                <td>850.000đ</td>
+                <td>132.600.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-canon-ef28mm-f28(1).jpg"
+                         alt="Sản phẩm" class="product-image"></td>
+                <td><strong>SP007</strong></td>
+                <td>ỐNG KÍNH SONY</td>
+                <td><span class="category-tag">Phụ kiện</span></td>
+                <td><strong>15</strong></td>
+                <td><span class="stock-badge stock-low">Sắp hết</span></td>
+                <td>1.200.000đ</td>
+                <td>18.000.000đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-warning">Nhập</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-fujifilm-xf50f1-0mm.jpg"
+                         alt="Sản phẩm" class="product-image"></td>
+                <td><strong>SP008</strong></td>
+                <td>ỐNG KÍNH FUJIFILM</td>
+                <td><span class="category-tag">Phụ kiện</span></td>
+                <td><strong>0</strong></td>
+                <td><span class="stock-badge stock-out">Hết hàng</span></td>
+                <td>2.800.000đ</td>
+                <td>0đ</td>
+                <td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-primary">Xem</a>
+                        <a href="#" class="btn btn-danger">Nhập gấp</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="export-section">
+        <a href="#" class="btn btn-primary">📥 Xuất Excel</a>
+        <a href="#" class="btn btn-primary">📄 Xuất PDF</a>
+        <a href="#" class="btn btn-warning">📊 Báo Cáo Tồn Kho</a>
+    </div>
+</div>
+</body>
+</html>
