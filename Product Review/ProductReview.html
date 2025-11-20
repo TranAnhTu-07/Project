@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="../css/ctsp.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đánh giá sản phẩm</title>
+    <link rel="stylesheet" href="../css/ProductReview.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Header</title>
-<link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-
 <body>
 <!--header-->
 <header class="header">
@@ -176,95 +171,111 @@
         </li>
     </ul>
 </nav>
-<div class="product">
-    <!-- Ảnh bên trái -->
-    <div class="product-left">
-        <!-- Khung xám to chứa ảnh lớn -->
-        <div class="main-box">
-            <img id="mainImage" src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/avatar/638692503741569353_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh chính">
+<!--body-->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h2>Đánh Giá Máy Ảnh</h2>
+        <p>Khám phá những đánh giá chi tiết và chân thực về các dòng máy ảnh phổ biến trên thị trường</p>
+        <a href="#products" class="btn">Xem Sản Phẩm</a>
+    </div>
+</section>
+
+<div class="container">
+    <section id="submit-review">
+        <h2 class="section-title">Gửi Đánh Giá Của Bạn</h2>
+        <div class="review-form">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="product">Chọn sản phẩm:</label>
+                    <select id="product" name="product" required>
+                        <option value="">-- Chọn máy ảnh --</option>
+                        <option value="canon-eos-r5">Canon EOS R5</option>
+                        <option value="sony-a7-iv">Sony A7 IV</option>
+                        <option value="nikon-z9">Nikon Z9</option>
+                        <option value="fujifilm-x-t4">Fujifilm X-T4</option>
+                        <option value="panasonic-lumix-s5">Panasonic Lumix S5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Tên của bạn:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Đánh giá:</label>
+                    <div class="rating-input">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5">★</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">★</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">★</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">★</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="review">Nội dung đánh giá:</label>
+                    <textarea id="review" name="review" placeholder="Chia sẻ trải nghiệm của bạn với sản phẩm này..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Gửi Đánh Giá</button>
+            </form>
         </div>
-        <!-- 3 khung xám nhỏ bên dưới -->
-        <div class="small-boxes">
-            <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692504038427653_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 1" onclick="changeImage(this)">
+    </section>
+    <section id="reviews" class="reviews">
+        <h2 class="section-title">Đánh Giá Gần Đây</h2>
+
+        <div class="review-card">
+            <div class="review-header">
+                <div>
+                    <span class="reviewer-name">Nguyễn Văn A</span>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <span class="review-date">15/10/2023</span>
             </div>
-            <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692503962650689_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 2" onclick="changeImage(this)">
-            </div>
-            <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692503899216627_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 3" onclick="changeImage(this)">
+            <div class="review-content">
+                <p>Máy ảnh Canon EOS R5 thực sự xuất sắc. Chất lượng hình ảnh cực kỳ sắc nét, autofocus nhanh và chính xác. Tính năng quay video 8K rất ấn tượng. Đây là khoản đầu tư xứng đáng cho nhiếp ảnh gia chuyên nghiệp.</p>
             </div>
         </div>
-    </div>
 
-    <!-- Thông tin bên phải -->
-    <div class="product-right">
-        <h1>MÁY ẢNH CANON EOS R100 (HÃNG)</h1>
-        <p class="label">Giá chính hãng:</p>
-        <p class="price">11,500,000đ</p>
-
-        <div class="info-row">
-            <p>Thương hiệu: <span class="brand">CANON</span></p>
-            <p>Số Lượng: <span class="in-stock">100</span></p>
+        <div class="review-card">
+            <div class="review-header">
+                <div>
+                    <span class="reviewer-name">Trần Thị B</span>
+                    <div class="review-rating">★★★★☆</div>
+                </div>
+                <span class="review-date">10/10/2023</span>
+            </div>
+            <div class="review-content">
+                <p>Sony A7 IV là một máy ảnh tuyệt vời với mức giá hợp lý. Màu sắc chân thực, cảm biến 33MP cho chất lượng hình ảnh xuất sắc. Tuy nhiên, pin hơi nhanh hết khi quay video nhiều.</p>
+            </div>
         </div>
 
-        <div class="button-group">
-            <button class="buy-now">MUA HÀNG</button>
-            <button class="add-cart">THÊM VÀO GIỎ</button>
+        <div class="review-card">
+            <div class="review-header">
+                <div>
+                    <span class="reviewer-name">Lê Văn C</span>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <span class="review-date">05/10/2023</span>
+            </div>
+            <div class="review-content">
+                <p>Nikon Z9 thực sự là một cỗ máy đáng kinh ngạc. Tốc độ chụp liên tục 20fps, autofocus thông minh và không có màn trập cơ học giúp loại bỏ hoàn toàn rung máy. Chất lượng video 8K cực kỳ ấn tượng.</p>
+            </div>
         </div>
-    </div>
-</div>
-<!-- Thanh menu thông tin sản phẩm -->
-<!-- Thanh menu thông tin sản phẩm -->
-<div class="product-menu">
-    <ul>
-        <li class="active" data-target="overview">Tổng quan</li>
-        <li data-target="other">Sản phẩm khác</li>
-        <li data-target="old">Sản phẩm cũ</li>
-        <li data-target="include">Sản phẩm bao gồm</li>
-        <li data-target="specs">Thông số</li>
-    </ul>
+    </section>
 </div>
 
-<!-- Nội dung từng tab -->
-<div class="tab-content">
-    <div id="overview" class="tab active-tab">
-        <p>Đây là phần Tổng quan sản phẩm.</p>
-    </div>
-
-    <div id="other" class="tab">
-        <p>Đây là phần Sản phẩm khác.</p>
-    </div>
-
-    <div id="old" class="tab">
-        <p>Đây là phần Sản phẩm cũ.</p>
-    </div>
-
-    <div id="include" class="tab">
-        <p>Đây là phần Sản phẩm bao gồm.</p>
-    </div>
-
-    <div id="specs" class="tab">
-        <!-- Phần bảng thông số -->
-        <div class="product-specs">
-            <table>
-                <tr><td>ISO</td><td>100 đến 12,800</td></tr>
-                <tr><td>Tốc độ màn trập</td><td>1/4000 đến 30 giây</td></tr>
-                <tr><td>Độ phân giải</td><td>24.1MP</td></tr>
-                <tr><td>Loại cảm biến</td><td>CMOS</td></tr>
-                <tr><td>Đo sáng</td><td>Center-Weighted Average, Evaluative, Partial, Spot</td></tr>
-                <tr><td>Hẹn giờ chụp</td><td>Độ trễ 2/10 giây</td></tr>
-                <tr><td>Định dạng cảm biến</td><td>24.1MP APS-C CMOS</td></tr>
-                <tr><td>Tỉ lệ ảnh</td><td>3:2</td></tr>
-                <tr><td>Định dạng ảnh</td><td>C-RAW, JPEC, RAW</td></tr>
-                <tr><td>Mã hoá video</td><td>NTSC/PAL</td></tr>
-                <tr><td>Micro</td><td>Stereo</td></tr>
-                <tr><td>Kiểu lấy nét</td><td>Auto và Manual Focus</td></tr>
-                <tr><td>Đèn flash</td><td>Không</td></tr>
-            </table>
-        </div>
-    </div>
-</div>
 <!--footer-->
 <footer class="footer">
     <div class="footer-content">
@@ -341,4 +352,3 @@
     </div>
 </footer>
 </body>
-</html>
