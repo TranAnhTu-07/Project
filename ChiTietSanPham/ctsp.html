@@ -6,14 +6,10 @@
     <title>Chi tiết sản phẩm</title>
     <script src="index.js"></script>
     <link rel="stylesheet" href="../css/ctsp.css">
-</head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Header</title>
-<link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
 </head>
 
 <body>
@@ -51,8 +47,6 @@
             </a>
         </div>
     </div>
-
-
 </header>
 <nav class="nav-menu">
     <ul>
@@ -176,32 +170,29 @@
         </li>
     </ul>
 </nav>
+<!--body-->
 <div class="product">
-    <!-- Ảnh bên trái -->
     <div class="product-left">
-        <!-- Khung xám to chứa ảnh lớn -->
         <div class="main-box">
-            <img id="mainImage" src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/avatar/638692503741569353_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh chính">
+            <img id="mainImage" src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" alt="Ảnh chính">
         </div>
-        <!-- 3 khung xám nhỏ bên dưới -->
         <div class="small-boxes">
             <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692504038427653_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 1" onclick="changeImage(this)">
+                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-02-500x500.jpg?v=1746594828863" alt="Ảnh nhỏ 1" onclick="changeImage(this)">
             </div>
             <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692503962650689_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 2" onclick="changeImage(this)">
+                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-03-500x500.jpg?v=1746594829347" alt="Ảnh nhỏ 2" onclick="changeImage(this)">
             </div>
             <div class="small-box">
-                <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/hinh-500-500/638692503899216627_may-anh-canon-eos-r100-hang.jpg" alt="Ảnh nhỏ 3" onclick="changeImage(this)">
+                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-04-500x500.jpg?v=1746594830023" alt="Ảnh nhỏ 3" onclick="changeImage(this)">
             </div>
         </div>
     </div>
 
-    <!-- Thông tin bên phải -->
     <div class="product-right">
-        <h1>MÁY ẢNH CANON EOS R100 (HÃNG)</h1>
+        <h1>MÁY ẢNH CANON EOS 1500D + LENS EF-S 18-55MM f/3.5-5.6 II</h1>
         <p class="label">Giá chính hãng:</p>
-        <p class="price">11,500,000đ</p>
+        <p class="price">10,300,000đ</p>
 
         <div class="info-row">
             <p>Thương hiệu: <span class="brand">CANON</span></p>
@@ -211,11 +202,13 @@
         <div class="button-group">
             <button class="buy-now">MUA HÀNG</button>
             <button class="add-cart">THÊM VÀO GIỎ</button>
+            <!-- NÚT ĐÁNH GIÁ -->
+            <button class="review-button" onclick="openReview()">
+                <i class="fas fa-star"></i> Đánh giá
+            </button>
         </div>
     </div>
 </div>
-<!-- Thanh menu thông tin sản phẩm -->
-<!-- Thanh menu thông tin sản phẩm -->
 <div class="product-menu">
     <ul>
         <li class="active" data-target="overview">Tổng quan</li>
@@ -226,26 +219,20 @@
     </ul>
 </div>
 
-<!-- Nội dung từng tab -->
 <div class="tab-content">
     <div id="overview" class="tab active-tab">
         <p>Đây là phần Tổng quan sản phẩm.</p>
     </div>
-
     <div id="other" class="tab">
         <p>Đây là phần Sản phẩm khác.</p>
     </div>
-
     <div id="old" class="tab">
         <p>Đây là phần Sản phẩm cũ.</p>
     </div>
-
     <div id="include" class="tab">
         <p>Đây là phần Sản phẩm bao gồm.</p>
     </div>
-
     <div id="specs" class="tab">
-        <!-- Phần bảng thông số -->
         <div class="product-specs">
             <table>
                 <tr><td>ISO</td><td>100 đến 12,800</td></tr>
@@ -265,7 +252,6 @@
         </div>
     </div>
 </div>
-<!--footer-->
 <footer class="footer">
     <div class="footer-content">
         <!-- Logo Section -->
@@ -301,7 +287,6 @@
             </div>
         </div>
 
-        <!-- Policies Section -->
         <div class="footer-section">
             <h3>Chính sách</h3>
             <ul class="policy-links">
@@ -325,11 +310,10 @@
             </ul>
         </div>
 
-        <!-- Store Locations Section -->
         <div class="footer-section">
             <h3>Thành viên Group 11</h3>
             <div class="location-item">
-                <strong>Trần Anh Tú - 23130364</strong>
+                <strong>Trần Anh Tú - 23130364 </strong>
             </div>
             <div class="location-item">
                 <strong>Trần Công Vinh - 23130384</strong>

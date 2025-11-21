@@ -4,8 +4,6 @@ body {
     margin: 0;
     color: #333;
 }
-
-/* HEADER */
 .checkout-header {
     background: linear-gradient(135deg,rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
     color: #fff;
@@ -18,7 +16,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* BỐ CỤC CHÍNH */
 .checkout-container {
     justify-content: space-between;
     align-items: flex-start;
@@ -30,7 +27,6 @@ body {
 .checkout{
     display: flex;
 }
-/* TRÁI */
 .checkout-left {
     flex: 1 1 40%;
     background: #fff;
@@ -72,7 +68,6 @@ body {
     box-shadow: 0 0 5px rgba(174,133,105,0.3);
 }
 
-/* PHẢI */
 .checkout-right {
     flex: 1 1 35%;
     position: sticky;
@@ -159,7 +154,6 @@ body {
     background: #946d53;
 }
 
-/* FOOTER */
 .checkout-footer {
     background: #1e1e1e;
     color: #fff;
@@ -168,13 +162,5 @@ body {
     margin-top: 50px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .checkout-container {
-        flex-direction: column;
-    }
-    .checkout-right {
-        position: static;
-    }
-}
+
 
