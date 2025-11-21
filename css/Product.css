@@ -70,7 +70,7 @@
     height: 42px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Hiện 2 dòng rồi thêm ... */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 .product-price {
@@ -84,4 +84,7 @@
     font-weight: bold;
     margin: 25px 25px 0 25px;
     border-bottom: 2px solid #e74c3c;
+}
+a {
+    text-decoration : none ;
 }
