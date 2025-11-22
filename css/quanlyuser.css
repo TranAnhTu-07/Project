@@ -43,11 +43,9 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     border-left: 4px solid transparent;
-}
-.menu-item a{
     text-decoration: none;
-    color: rgb(248 249 254);
 }
+
 .menu-item:hover {
     background: rgba(255,255,255,0.1);
     color: white;

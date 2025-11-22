@@ -44,6 +44,7 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     border-left: 4px solid transparent;
+    text-decoration: none;
 }
 .menu-item a{
     text-decoration: none;
