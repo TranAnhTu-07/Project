@@ -28,5 +28,3 @@ btnMinus.addEventListener('click', () => {
 
 // Cập nhật khi nhập trực tiếp
 quantityInput.addEventListener('input', updateTotal);
-
-
