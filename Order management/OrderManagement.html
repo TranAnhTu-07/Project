@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="../css/OrderManagement.css">
+
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1><span>Admin Panel</span></h1>
+    </div>
+    <div class="menu">
+
+        <a href="/Project/Quan%20Ly%20User/quanlyuser.html" class="menu-item">
+            <span>Quản Lý User</span>
+        </a>
+        <a href="/Project/ThongKeDoanhThu/doanhthu.html" class="menu-item">
+            <span>Thống kê</span>
+        </a>
+        <a href="/Project/Warehouse/Warehouse.html" class="menu-item">
+            <span>Quản Lý Kho</span>
+        </a>
+        <a href="/Project/productmanagement/productManagement.html" class="menu-item">
+            <span>Quản Lý Sản Phẩm</span>
+        </a>
+        <a href="/Project/Order%20management/OrderManagement.html" class="menu-item active">
+            <span>Quản Lý Đơn Hàng</span>
+        </a>
+        <a href="/Project/index.html" class="menu-item">
+            <span>Đăng Xuất</span>
+        </a>
+    </div>
+</div>
+<!--Main content-->
+<div class="container">
+    <div class="main-content">
+        <!-- Orders Section -->
+        <section class="orders-section">
+            <div class="section-header">
+                <h2>Danh Sách Đơn Hàng</h2>
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm đơn hàng...">
+                    <button class="btn btn-primary">Tìm kiếm</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="orders-table">
+                    <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Khách hàng</th>
+                        <th>Ngày đặt</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="order-id">#ORD-001</td>
+                        <td>
+                            <div class="customer-info">
+                                <span class="customer-name">Nguyễn Văn A</span>
+                                <span class="customer-email">nguyenvana@example.com</span>
+                            </div>
+                        </td>
+                        <td>15/03/2023</td>
+                        <td>12.450.000₫</td>
+                        <td><span class="status status-pending">Chờ xử lý</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="#" class="btn btn-success btn-sm">Xử lý</a>
+                                <a href="#" class="btn btn-danger btn-sm">Hủy</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#ORD-002</td>
+                        <td>
+                            <div class="customer-info">
+                                <span class="customer-name">Trần Thị B</span>
+                                <span class="customer-email">tranthib@example.com</span>
+                            </div>
+                        </td>
+                        <td>14/03/2023</td>
+                        <td>8.750.000₫</td>
+                        <td><span class="status status-processing">Đang xử lý</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="#" class="btn btn-success btn-sm">Xác nhận</a>
+                                <a href="#" class="btn btn-warning btn-sm">Chi tiết</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#ORD-003</td>
+                        <td>
+                            <div class="customer-info">
+                                <span class="customer-name">Lê Văn C</span>
+                                <span class="customer-email">levanc@example.com</span>
+                            </div>
+                        </td>
+                        <td>13/03/2023</td>
+                        <td>25.300.000₫</td>
+                        <td><span class="status status-shipped">Đang giao hàng</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="#" class="btn btn-success btn-sm">Hoàn tất</a>
+                                <a href="#" class="btn btn-warning btn-sm">Chi tiết</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#ORD-004</td>
+                        <td>
+                            <div class="customer-info">
+                                <span class="customer-name">Phạm Thị D</span>
+                                <span class="customer-email">phamthid@example.com</span>
+                            </div>
+                        </td>
+                        <td>12/03/2023</td>
+                        <td>5.600.000₫</td>
+                        <td><span class="status status-delivered">Đã giao</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="#" class="btn btn-warning btn-sm">Chi tiết</a>
+                                <a href="#" class="btn btn-danger btn-sm">In hóa đơn</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="order-id">#ORD-005</td>
+                        <td>
+                            <div class="customer-info">
+                                <span class="customer-name">Hoàng Văn E</span>
+                                <span class="customer-email">hoangvane@example.com</span>
+                            </div>
+                        </td>
+                        <td>11/03/2023</td>
+                        <td>15.800.000₫</td>
+                        <td><span class="status status-cancelled">Đã hủy</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="#" class="btn btn-warning btn-sm">Chi tiết</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <div class="pagination-links">
+                    <a href="#" class="pagination-link active">1</a>
+                    <a href="#" class="pagination-link">2</a>
+                    <a href="#" class="pagination-link">3</a>
+                    <a href="#" class="pagination-link">4</a>
+                    <a href="#" class="pagination-link">5</a>
+                </div>
+            </div>
+        </section>
+        <!-- Sidebar Filters -->
+        <aside class="sidebar_body">
+            <h2>Bộ Lọc Đơn Hàng</h2>
+            <h3>Trạng thái đơn hàng</h3>
+            <div class="filter-group">
+
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="status-pending" checked>
+                        <label for="status-pending">Chờ xử lý</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="status-processing" checked>
+                        <label for="status-processing">Đang xử lý</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="status-shipped">
+                        <label for="status-shipped">Đang giao hàng</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="status-delivered">
+                        <label for="status-delivered">Đã giao</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="status-cancelled">
+                        <label for="status-cancelled">Đã hủy</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Khoảng thời gian</h3>
+                <div class="date-inputs">
+                    <div class="date-input">
+                        <label for="start-date">Từ ngày</label>
+                        <input type="date" id="start-date">
+                    </div>
+                    <div class="date-input">
+                        <label for="end-date">Đến ngày</label>
+                        <input type="date" id="end-date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Khoảng giá</h3>
+                <div class="date-inputs">
+                    <div class="date-input">
+                        <label for="min-price">Giá tối thiểu</label>
+                        <input type="number" id="min-price" placeholder="0">
+                    </div>
+                    <div class="date-input">
+                        <label for="max-price">Giá tối đa</label>
+                        <input type="number" id="max-price" placeholder="10000000">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block">Áp dụng bộ lọc</button>
+            <button class="btn btn-secondary btn-block" style="margin-top: 10px;">Đặt lại bộ lọc</button>
+        </aside>
+    </div>
+</div>
+</div>
+</body>
+</html>
