@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/cart.css">
+
+
 
 </head>
 
@@ -208,13 +211,45 @@
         </div>
 
         <div class="button-group">
-            <button class="buy-now">MUA HÀNG</button>
-            <button class="add-cart">THÊM VÀO GIỎ</button>
+
+            <a href="/Project/ThanhToan&DatHang/ttdh.html" class="buy-now">MUA HÀNG</a>
+
+            <a href="/Project/GioHang/cart.html"  class="add-cart">THÊM VÀO GIỎ</a>
             <!-- NÚT ĐÁNH GIÁ -->
-            <button class="review-button" onclick="openReview()">
+            <a href="/Project/Product%20Review/ProductReview.html" class="review-button">
                 <i class="fas fa-star"></i> Đánh giá
-            </button>
+            </a>
         </div>
+        <!-- POPUP THÊM VÀO GIỎ -->
+        <div id="popupCart" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <!-- Khối bạn gửi -->
+                <div class="cart-container">
+                    <div class="product-image">
+                        <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/avatar/638692503741569353_may-anh-canon-eos-r100-hang.jpg" alt="Máy ảnh Canon EOS R100">
+                    </div>
+
+                    <div class="product-info">
+                        <h2>Máy ảnh Canon EOS R100 (Hàng chính hãng)</h2>
+                        <p class="price">Giá: 11.500.000 đ</p>
+
+                        <div class="quantity">
+                            <label>Số lượng:</label>
+                            <button class="btn-minus">-</button>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="btn-plus">+</button>
+                        </div>
+
+                        <p class="total">Tổng tiền: <span id="totalPrice">11.500.000 đ</span></p>
+
+                        <button class="add-to-cart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <div class="product-menu">
@@ -332,5 +367,7 @@
         </div>
     </div>
 </footer>
+<script src="../js/modal-cart.js"></script>
+<script src="../js/cart.js"></script>
 </body>
 </html>
