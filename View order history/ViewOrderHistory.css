@@ -37,6 +37,13 @@ body {
     border-bottom: 2px solid #f0f2f5;
     padding-bottom: 10px;
 }
+.card-icon{
+    display: flex;
+    gap: 30px;
+}
+.card-icon a{
+    text-decoration: none;
+}
 
 .card-title i {
     color: #6a11cb;
