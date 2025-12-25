@@ -83,7 +83,7 @@
                 <ul class="sub-menu">
                     <li><a href="CanonDSLR" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
                     <li><a href="CanonCompact" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
-                    <li><a href="/Project/Product/canon-mirrorless.html" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
+                    <li><a href="CanonMirrorless" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
                     <li><a href="/Project/Product/canon-ongkinh.html" class="nav-item" >ỐNG KÍNH CANON</a></li>
                 </ul>
             </div>
@@ -98,7 +98,7 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="/Project/Product/sony-compact.html" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
+                    <li><a href="SonyCompact" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
                     <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
                     <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
                 </ul>
