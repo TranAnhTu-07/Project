@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CANON-COMPACT</title>
+    <title>SONY-COMPACT</title>
     <link rel="stylesheet" href="css/Product.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -206,11 +206,11 @@
         <div class="cover-product-item">
             <c:forEach var="p" items="${list}">
                 <%--                load toi ctsp : nam trong href--%>
-            <a href="">
-                <img src="${p.img}" class="product-img">
-                <h3 class="product-name">${p.name}</h3>
-                <p class="product-price">${p.price}₫</p>
-            </a>
+                <a href="">
+                    <img src="${p.img}" class="product-img">
+                    <h3 class="product-name">${p.name}</h3>
+                    <p class="product-price">${p.price}₫</p>
+                </a>
             </c:forEach>
 
         </div>

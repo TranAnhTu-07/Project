@@ -78,7 +78,7 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="/Project/Product/sony-compact.html" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
+                    <li><a href="SonyCompact" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
                     <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
                     <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
                 </ul>
@@ -218,62 +218,6 @@
                     <p class="product-price">${p.price}₫</p>
                 </a>
             </c:forEach>
-<%--            <div class="product-card-item">--%>
-<%--                <a href="/Project/ChiTietSanPham/ctsp.html">--%>
-<%--                    <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                    <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                    <p class="product-price">10.300.000₫</p>--%>
-<%--                </a>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <a href="/Project/ChiTietSanPham/ctsp.html">--%>
-<%--                    <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                    <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                    <p class="product-price">10.300.000₫</p>--%>
-<%--                </a>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <a href="/Project/ChiTietSanPham/ctsp.html">--%>
-<%--                    <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                    <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                    <p class="product-price">10.300.000₫</p>--%>
-<%--                </a>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
-<%--            <div class="product-card-item">--%>
-<%--                <img src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" class="product-img">--%>
-<%--                <h3 class="product-name">Máy ảnh Canon EOS 1500D + Lens EF-S 18-55mm f/3.5-5.6 II</h3>--%>
-<%--                <p class="product-price">10.300.000₫</p>--%>
-<%--            </div>--%>
         </div>
     </div>
 </main>
