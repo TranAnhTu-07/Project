@@ -131,8 +131,8 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
+                    <li><a href="Fujifilm?cid=16" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
+                    <li><a href="Fujifilm?cid=17" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
                     <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
                 </ul>
             </div>
