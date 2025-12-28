@@ -173,7 +173,7 @@
                     <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
                     <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
                     <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN MÁY ẢNH</a></li>
+                    <li><a href="#" class="nav-item">TỦ CHỐNG ẨM</a></li>
                     <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
