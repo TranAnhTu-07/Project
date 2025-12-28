@@ -115,8 +115,8 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="/Project/Product/nikon-compact.html" class="nav-item">MÁY ẢNH NIKON COMPACT</a></li>
-                    <li><a href="/Project/Product/nikon-mirrorless.html" class="nav-item">MÁY ẢNH NIKON MIRRORLESS</a></li>
+                    <li><a href="Nikon?cid=14" class="nav-item">MÁY ẢNH NIKON COMPACT</a></li>
+                    <li><a href="Nikon?cid=15" class="nav-item">MÁY ẢNH NIKON MIRRORLESS</a></li>
                     <li><a href="/Project/Product/nikon-ongkinh.html" class="nav-item">ỐNG KÍNH NIKON</a></li>
                 </ul>
             </div>
