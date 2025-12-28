@@ -163,13 +163,13 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">ỐNG KÍNH CANON</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH SONY</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH NIKON</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH LUMIX</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH LEICA</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH DIGMA</a></li>
+                    <li><a href="OngKinh?cid=21" class="nav-item">ỐNG KÍNH CANON</a></li>
+                    <li><a href="OnhKinh?cid=22" class="nav-item">ỐNG KÍNH SONY</a></li>
+                    <li><a href="OnhKinh?cid=23" class="nav-item">ỐNG KÍNH NIKON</a></li>
+                    <li><a href="OnhKinh?cid=24" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
+                    <li><a href="OnhKinh?cid=25" class="nav-item">ỐNG KÍNH LUMIX</a></li>
+                    <li><a href="OnhKinh?cid=26" class="nav-item">ỐNG KÍNH LEICA</a></li>
+                    <li><a href="OnhKinh?cid=27" class="nav-item">ỐNG KÍNH SIGMA</a></li>
 
                 </ul>
             </div>
