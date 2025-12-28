@@ -11,4 +11,10 @@ public class ProductService {
     public List<Product> getListProduct() {
         return pdao.getListProduct();
     }
+    public List<Product> getByCategory(int id) {
+        return pdao.getByCategory(id);
+    }
+    public List<Product> getRandomProducts() {
+        return pdao.getRandomProducts();
+    }
 }

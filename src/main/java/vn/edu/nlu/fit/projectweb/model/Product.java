@@ -1,53 +1,47 @@
 package vn.edu.nlu.fit.projectweb.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int id;
-    private String name;
+    private int productID;
+    private String productName;
     private String img;
     private int price;
+    private String brand;
+    private int newPrice;
+    private int categoryID;
 
-    public Product(int id, String name, String img, int price) {
-        this.id = id;
-        this.name = name;
+    public Product(int productID, String productName, String img, int price, String brand, int newPrice, int categoryID) {
+        this.productID = productID;
+        this.productName = productName;
         this.img = img;
         this.price = price;
+        this.brand = brand;
+        this.newPrice = newPrice;
+        this.categoryID = categoryID;
     }
 
     public Product() {
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getProductID() { return productID; }
+    public void setProductID(int productID) { this.productID = productID; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
 
-    public String getName() {
-        return name;
-    }
+    public String getImg() { return img; }
+    public void setImg(String img) { this.img = img; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getPrice() { return price; }
+    public void setPrice(int price) { this.price = price; }
 
-    public String getImg() {
-        return img;
-    }
+    public String getBrand() { return brand; }
+    public void setBrand(String brand) { this.brand = brand; }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+    public int getNewPrice() { return newPrice; }
+    public void setNewPrice(int newPrice) { this.newPrice = newPrice; }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    public int getCategoryID() { return categoryID; }
+    public void setCategoryID(int categoryID) { this.categoryID = categoryID; }
 }

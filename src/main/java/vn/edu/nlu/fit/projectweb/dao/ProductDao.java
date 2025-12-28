@@ -30,23 +30,41 @@ public class ProductDao extends BaseDao{
         return   get().withHandle(h-> h.createQuery("select * from products").mapToBean(Product.class).list());
     }
     public Product getProduct(int id) {
-        return   get().withHandle(h-> h.createQuery("select * from products where id = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
+        return   get().withHandle(h-> h.createQuery("select * from products where ProductID = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
     }
-    public void insert(List<Product> products) {
-        Jdbi jdbi = get();
-        jdbi.useHandle(h->{
-            PreparedBatch batch = h.prepareBatch("insert into products values(:id, :name,:img,:price)");
-            products.forEach(product -> {
-                batch.bindBean(product).add();
-            });
-            batch.execute();
-        });
-
+//    public void insert(List<Product> products) {
+//        Jdbi jdbi = get();
+//        jdbi.useHandle(h->{
+//            PreparedBatch batch = h.prepareBatch("insert into products values(:id, :name,:img,:price)");
+//            products.forEach(product -> {
+//                batch.bindBean(product).add();
+//            });
+//            batch.execute();
+//        });
+//
+//    }
+public List<Product> getByCategory(int categoryID) {
+    return get().withHandle(h ->
+            h.createQuery("SELECT * FROM products WHERE categoryID = :cid")
+                    .bind("cid", categoryID)
+                    .mapToBean(Product.class)
+                    .list()
+    );
+}
+    public List<Product> getRandomProducts() {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products ORDER BY RAND() LIMIT 30")
+                        .mapToBean(Product.class)
+                        .list()
+        );
     }
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        List<Product> products = dao.getListProduct();
-        dao.insert(products);
+        // Test thử lấy danh mục 28 (Bao đựng)
+        List<Product> list = dao.getByCategory(28);
+        for (Product p : list) {
+            System.out.println(p.getProductName());
+        }
     }
 }

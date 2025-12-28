@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%--<%--%>
 <%--    if (request.getAttribute("list") == null) {--%>
 <%--        response.sendRedirect("ListProduct");--%>
@@ -183,12 +184,12 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
         </li>
@@ -320,21 +321,21 @@
         <div class="cover-product-item">
             <c:if test="${empty list}">
                 <div style="text-align: center; width: 100%;">
-                    <h3 style="color: red;">Không tìm thấy sản phẩm nào!</h3>
-                    <p>(Kiểm tra lại ProductService xem đã return dao.getListProduct() chưa?)</p>
+                    <h3 style="color: red;">Không có sản phẩm nào!</h3>
                 </div>
             </c:if>
 
             <c:forEach var="p" items="${list}">
                 <div class="product-card-item">
 
-                    <a href="detail?id=${p.id}" style="text-decoration: none; color: inherit;">
+                    <a href="detail?id=${p.productID}" style="text-decoration: none; color: inherit;">
 
-                        <img src="${p.img}" class="product-img" alt="${p.name}">
+                        <img src="${p.img}" class="product-img" alt="${p.productName}">
+                        <h3 class="product-name">${p.productName}</h3>
 
-                        <h3 class="product-name">${p.name}</h3>
-
-                        <p class="product-price">${p.price}₫</p>
+                        <p class="product-price">
+                            <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/>₫
+                        </p>
                     </a>
                 </div>
             </c:forEach>
