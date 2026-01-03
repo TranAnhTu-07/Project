@@ -1,9 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: tu098
+  Date: 12/28/2025
+  Time: 21:48
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>SONY-COMPACT</title>
+    <title>Fujifilm</title>
     <link rel="stylesheet" href="css/Product.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -55,9 +63,9 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="CanonDSLR" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
-                    <li><a href="CanonCompact" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
-                    <li><a href="CanonMirrorless" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
+                    <li><a href="/Project/Product/canon-dslr.html" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
+                    <li><a href="/Project/Product/canon-compact.html" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
+                    <li><a href="/Project/Product/canon-mirrorless.html" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
                     <li><a href="/Project/Product/canon-ongkinh.html" class="nav-item" >ỐNG KÍNH CANON</a></li>
                 </ul>
             </div>
@@ -72,8 +80,8 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="SonyCompact" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
-                    <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
+                    <li><a href="Sony?cid=11" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
+                    <li><a href="Sony?cid=12" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
                     <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
                 </ul>
             </div>
@@ -104,9 +112,9 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
+                    <li><a href="Fujifilm?cid=16" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
+                    <li><a href="Fujifilm?cid=17" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
+                    <li><a href="/Project/Product/fujifilm-ongkinh.html" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
                 </ul>
             </div>
         </li>
@@ -157,22 +165,14 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">TỦ CHỐNG ẨM</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
-        </li>
-    </ul>
-    <ul>
-        <li class="sub">
-            <a href="/Project/Quan%20Ly%20User/quanlyuser.html" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>QUẢN LÝ USER</span>
-            </a>
         </li>
     </ul>
 </nav>
@@ -202,22 +202,24 @@
                 <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
             </div>
         </div>
-        <div class="product-title">MÁY ẢNH CANON COMPACT</div>
+        <div class="product-title" style="text-transform: uppercase;">
+            ${catName}
+        </div>
         <div class="cover-product-item">
-            <c:forEach var="p" items="${list}">
-                <%--                load toi ctsp : nam trong href--%>
-                <a href="">
-                    <img src="${p.img}" class="product-img">
-                    <h3 class="product-name">${p.name}</h3>
-                    <p class="product-price">${p.price}₫</p>
-                </a>
-            </c:forEach>
+            <c:forEach items="${listFujifilm}" var="p">
+                <div class="product-card-item">
+                    <img src="${p.img}" class="product-img" alt="${p.productName}">
 
+                    <h3 class="product-name">${p.productName}</h3>
+
+                    <p class="product-price">
+                        <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/>₫
+                    </p>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </main>
-
-<%--footer--%>
 <footer class="footer">
     <div class="footer-content">
         <!-- Logo Section -->
