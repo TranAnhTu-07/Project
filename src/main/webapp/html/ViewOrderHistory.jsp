@@ -195,23 +195,30 @@
             <h2 class="card-title"><i class="fas fa-user-circle"></i> Thông Tin Tài Khoản</h2>
             <div class="info-item">
                 <div class="info-label">Họ và tên:</div>
-                <div class="info-value">Trần Công Vinh</div>
+                <div class="info-value">${sessionScope.auth.name}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Email:</div>
-                <div class="info-value">23130384@st.hcmuaf.edu.vn</div>
+                <div class="info-value">${sessionScope.auth.mail}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Số điện thoại:</div>
-                <div class="info-value">0987 654 321</div>
+                <div class="info-value">${sessionScope.auth.phone}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Địa chỉ:</div>
-                <div class="info-value">Trường Đại học Nông Lâm TP.HCM, Thủ Đức, TP.HCM</div>
+                <div class="info-value">${sessionScope.auth.address}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Ngày tham gia:</div>
-                <div class="info-value">15/03/2022</div>
+                <div class="info-value">${sessionScope.auth.registrationDate}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Giới tính:</div>
+                <div class="info-value">${sessionScope.auth.sex}</div>
+            </div>
+            <div class="btn-save">
+                <button>Lưu</button>
             </div>
             <div class="actions">
                 <a href="#" class="btn"><i class="fas fa-edit"></i> Chỉnh Sửa</a>

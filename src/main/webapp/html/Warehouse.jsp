@@ -95,8 +95,9 @@
             </div>
         </form>
     </div>
+<%--///////--%>
+    <div class="content">
 
-    <div class="table-container">
         <table>
             <thead>
             <tr>
@@ -111,6 +112,7 @@
                 <th>Thao Tác</th>
             </tr>
             </thead>
+
             <tbody>
             <tr>
                 <td><img
