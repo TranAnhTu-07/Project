@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ProductDao extends BaseDao{
     static Map<Integer, Product> data = new HashMap<>();
-//    static {
+    //    static {
 //        data.put(1,new Product(1,"Máy Ảnh Sony RX1R III | Chính Hãng","https://bizweb.dktcdn.net/100/107/650/products/8783339-sony-rx1riii-16.jpg?v=1752639489140",125500000));
 //        data.put(2,new Product(1,"Máy Ảnh Sony RX1R III | Chính Hãng","https://bizweb.dktcdn.net/100/107/650/products/8783339-sony-rx1riii-16.jpg?v=1752639489140",125500000));
 //        data.put(3,new Product(1,"Máy Ảnh Sony RX1R III | Chính Hãng","https://bizweb.dktcdn.net/100/107/650/products/8783339-sony-rx1riii-16.jpg?v=1752639489140",125500000));
@@ -32,7 +32,7 @@ public class ProductDao extends BaseDao{
     public Product getProduct(int id) {
         return   get().withHandle(h-> h.createQuery("select * from products where ProductID = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
     }
-//    public void insert(List<Product> products) {
+    //    public void insert(List<Product> products) {
 //        Jdbi jdbi = get();
 //        jdbi.useHandle(h->{
 //            PreparedBatch batch = h.prepareBatch("insert into products values(:id, :name,:img,:price)");
@@ -43,14 +43,14 @@ public class ProductDao extends BaseDao{
 //        });
 //
 //    }
-public List<Product> getByCategory(int categoryID) {
-    return get().withHandle(h ->
-            h.createQuery("SELECT * FROM products WHERE categoryID = :cid")
-                    .bind("cid", categoryID)
-                    .mapToBean(Product.class)
-                    .list()
-    );
-}
+    public List<Product> getByCategory(int categoryID) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE categoryID = :cid")
+                        .bind("cid", categoryID)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
     public List<Product> getRandomProducts() {
         return get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ORDER BY RAND() LIMIT 30")
@@ -66,5 +66,26 @@ public List<Product> getByCategory(int categoryID) {
         for (Product p : list) {
             System.out.println(p.getProductName());
         }
+    }
+
+    // Phương thức lấy chi tiết sản phẩm theo ID - THÊM VÀO
+    public Product getProductById(int productId) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE ProductID = :id")
+                        .bind("id", productId)
+                        .mapToBean(Product.class)
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
+
+    public List<Product> getRelatedProducts(int currentProductId, int categoryId) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE CategoryID = :catId AND ProductID != :currentId LIMIT 4")
+                        .bind("catId", categoryId)
+                        .bind("currentId", currentProductId)
+                        .mapToBean(Product.class)
+                        .list()
+        );
     }
 }
