@@ -20,7 +20,6 @@ public class ViewOrderHistoryController extends HttpServlet {
         HttpSession session = request.getSession(false);
         CategoryDao cd = new CategoryDao();
         List<Category> parents = cd.getCategoryParent();
-
         Map<Integer, List<Category>> childrenMap = new HashMap<>();
         for (Category p : parents) {
             childrenMap.put(p.getId(),

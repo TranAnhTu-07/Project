@@ -2,6 +2,7 @@ package vn.edu.nlu.fit.projectweb.dao;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
+import vn.edu.nlu.fit.projectweb.model.Product;
 
 import java.sql.SQLException;
 
@@ -28,5 +29,6 @@ public abstract class BaseDao {
         }
         jdbi = jdbi.create(src);
     }
+
 
 }

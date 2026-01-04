@@ -1,19 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="../css/ctsp.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/Product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/spnoibat.css">
+    <link rel="stylesheet" href="../css/ctsp.css">
 
 </head>
-
 <body>
 <!--header-->
 <header class="header">
@@ -194,94 +196,71 @@
 <div class="product">
     <div class="product-left">
         <div class="main-box">
-            <img id="mainImage" src="https://bizweb.dktcdn.net/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-01-500x500.jpg?v=1746594828383" alt="Ảnh chính">
+            <!-- Hiển thị ảnh chính của sản phẩm -->
+            <img id="mainImage" src="${product.img}" alt="${product.productName}">
         </div>
         <div class="small-boxes">
+            <!-- Có thể thêm các ảnh phụ -->
             <div class="small-box">
-                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-02-500x500.jpg?v=1746594828863" alt="Ảnh nhỏ 1" onclick="changeImage(this)">
-            </div>
-            <div class="small-box">
-                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-03-500x500.jpg?v=1746594829347" alt="Ảnh nhỏ 2" onclick="changeImage(this)">
-            </div>
-            <div class="small-box">
-                <img src="https://bizweb.dktcdn.net/thumb/large/100/107/650/products/may-anh-canon-eos-1500d-lens-ef-s-18-55mm-f35-56-04-500x500.jpg?v=1746594830023" alt="Ảnh nhỏ 3" onclick="changeImage(this)">
+                <img src="${product.img}" alt="Ảnh 1" onclick="changeImage(this)">
             </div>
         </div>
     </div>
 
     <div class="product-right">
-        <h1>MÁY ẢNH CANON EOS 1500D + LENS EF-S 18-55MM f/3.5-5.6 II</h1>
-        <p class="label">Giá chính hãng:</p>
-        <p class="price">10,300,000đ</p>
+        <!-- Hiển thị tên sản phẩm -->
+        <h1>${product.productName}</h1>
 
+        <!-- Hiển thị giá -->
+        <p class="label">Giá chính hãng:</p>
+        <p class="price">
+            <c:choose>
+                <c:when test="${product.newPrice > 0 && product.newPrice < product.price}">
+                    <span style="text-decoration: line-through; color: #777; margin-right: 10px;">
+                        <fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>₫
+                    </span>
+                    <span style="color: #ff0000;">
+                        <fmt:formatNumber value="${product.newPrice}" type="number" groupingUsed="true"/>₫
+                    </span>
+                </c:when>
+                <c:otherwise>
+                    <fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>₫
+                </c:otherwise>
+            </c:choose>
+        </p>
+
+        <!-- Hiển thị thông tin sản phẩm -->
         <div class="info-row">
-            <p>Thương hiệu: <span class="brand">CANON</span></p>
-            <p>Số Lượng: <span class="in-stock">100</span></p>
+            <p>Thương hiệu: <span class="brand">${product.brand}</span></p>
+            <p>Mã sản phẩm: <span class="code">${product.productID}</span></p>
         </div>
 
         <div class="button-group">
+            <!-- Link MUA HÀNG với ID sản phẩm -->
+            <a href="/Project/ThanhToan&DatHang/ttdh.html?id=${product.productID}" class="buy-now">MUA HÀNG</a>
 
-            <a href="/Project/ThanhToan&DatHang/ttdh.html" class="buy-now">MUA HÀNG</a>
+            <!-- Nút thêm vào giỏ hàng -->
+            <button class="add-cart" onclick="addToCart(${product.productID})">THÊM VÀO GIỎ</button>
 
-            <a href="/Project/GioHang/cart.html"  class="add-cart">THÊM VÀO GIỎ</a>
-            <!-- NÚT ĐÁNH GIÁ -->
-            <a href="/Project/Product%20Review/ProductReview.html" class="review-button">
+            <!-- Nút đánh giá -->
+            <a href="/Project/Product%20Review/ProductReview.html?id=${product.productID}" class="review-button">
                 <i class="fas fa-star"></i> Đánh giá
             </a>
         </div>
-        <!-- POPUP THÊM VÀO GIỎ -->
-        <div id="popupCart" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
 
-                <!-- Khối bạn gửi -->
-                <div class="cart-container">
-                    <div class="product-image">
-                        <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/avatar/638692503741569353_may-anh-canon-eos-r100-hang.jpg" alt="Máy ảnh Canon EOS R100">
-                    </div>
-
-                    <div class="product-info">
-                        <h2>Máy ảnh Canon EOS R100 (Hàng chính hãng)</h2>
-                        <p class="price">Giá: 11.500.000 đ</p>
-
-                        <div class="quantity">
-                            <label>Số lượng:</label>
-                            <button class="btn-minus">-</button>
-                            <input type="number" id="quantity" value="1" min="1">
-                            <button class="btn-plus">+</button>
-                        </div>
-
-                        <p class="total">Tổng tiền: <span id="totalPrice">11.500.000 đ</span></p>
-
-                        <button class="add-to-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-    <h2>Thông số</h2>
-
-    <div id="specs" class="tab">
+        <!-- Thông số kỹ thuật -->
+        <h2 style="margin-top: 30px;">Thông số kỹ thuật</h2>
         <div class="product-specs">
             <table>
-                <tr><td>ISO</td><td>100 đến 12,800</td></tr>
-                <tr><td>Tốc độ màn trập</td><td>1/4000 đến 30 giây</td></tr>
-                <tr><td>Độ phân giải</td><td>24.1MP</td></tr>
-                <tr><td>Loại cảm biến</td><td>CMOS</td></tr>
-                <tr><td>Đo sáng</td><td>Center-Weighted Average, Evaluative, Partial, Spot</td></tr>
-                <tr><td>Hẹn giờ chụp</td><td>Độ trễ 2/10 giây</td></tr>
-                <tr><td>Định dạng cảm biến</td><td>24.1MP APS-C CMOS</td></tr>
-                <tr><td>Tỉ lệ ảnh</td><td>3:2</td></tr>
-                <tr><td>Định dạng ảnh</td><td>C-RAW, JPEC, RAW</td></tr>
-                <tr><td>Mã hoá video</td><td>NTSC/PAL</td></tr>
-                <tr><td>Micro</td><td>Stereo</td></tr>
-                <tr><td>Kiểu lấy nét</td><td>Auto và Manual Focus</td></tr>
-                <tr><td>Đèn flash</td><td>Không</td></tr>
+                <tr><td>Mã sản phẩm</td><td>${product.productID}</td></tr>
+                <tr><td>Tên sản phẩm</td><td>${product.productName}</td></tr>
+                <tr><td>Thương hiệu</td><td>${product.brand}</td></tr>
+                <tr><td>Giá</td><td><fmt:formatNumber value="${product.price}" type="number" groupingUsed="true"/>₫</td></tr>
+                <tr><td>Loại</td><td>Máy ảnh</td></tr>
             </table>
         </div>
     </div>
+</div>
 <!--</div>-->
 <footer class="footer">
     <div class="footer-content">
@@ -355,7 +334,5 @@
         </div>
     </div>
 </footer>
-<script src="../js/modal-cart.js"></script>
-<script src="../js/cart.js"></script>
 </body>
 </html>

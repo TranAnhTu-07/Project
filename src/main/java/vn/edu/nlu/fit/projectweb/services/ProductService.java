@@ -17,4 +17,12 @@ public class ProductService {
     public List<Product> getRandomProducts() {
         return pdao.getRandomProducts();
     }
+
+    public Product getProductDetail(int productId) {
+        return pdao.getProductById(productId);
+    }
+    // Phương thức lấy sản phẩm liên quan
+    public List<Product> getRelatedProducts(int productId, int categoryId) {
+        return pdao.getRelatedProducts(productId, categoryId);
+    }
 }
