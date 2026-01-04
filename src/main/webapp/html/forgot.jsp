@@ -166,12 +166,12 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">TỦ CHỐNG ẨM</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
         </li>
@@ -185,22 +185,32 @@
         </li>
     </ul>
 </nav>
-<div class="login-box">
-    <div class="form-login">
-        <h2>Quên mật khẩu</h2>
-        <form>
-            <div class="input-group">
-                <input type="email" placeholder="Nhập Email để khôi phục" required>
+<main class="login-page">
+    <nav class="breadcrumb-nav">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/ListProduct">Trang chủ</a></li>
+            <li class="breadcrumb-item active"><a href="#">Quên mật khẩu</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-box">
+        <div class="form-login">
+            <h2>Khôi phục mật khẩu</h2>
+
+            <form action="${pageContext.request.contextPath}/ForgotPassword" method="POST">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Nhập Email đã đăng ký" required>
+                </div>
+
+                <button type="submit" class="btn-login">Gửi mã xác nhận</button>
+            </form>
+
+            <div class="register-link">
+                <p><a href="${pageContext.request.contextPath}/html/login.jsp">Quay lại đăng nhập</a></p>
             </div>
-
-            <button type="submit" class="btn-login">Khôi phục mật khẩu</button>
-        </form>
-
-        <div class="register-link">
-            <p><a href="../login/login.html">Quay lại đăng nhập</a></p>
         </div>
     </div>
-</div>
+</main>
 
 <footer class="footer">
     <div class="footer-content">

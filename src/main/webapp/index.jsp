@@ -50,7 +50,7 @@
                     <a href="#">BẢO HÀNH</a>
                 </div>
             </div>
-            <a href="/project_web_war_exploded/html/login.jsp">
+            <a href="${pageContext.request.contextPath}/html/login.jsp">
                 <div class="user-icon">
                     <i class="fas fa-key"></i>
                 </div>

@@ -173,12 +173,12 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">TỦ CHỐNG ẨM</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
         </li>
@@ -195,56 +195,45 @@
 
 <main class="login-page">
     <nav class="breadcrumb-nav">
-        <div class="breadcrumb-container">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="/project_web_war_exploded/index.jsp">Trang chủ</a>
-                </li>
-                <li class="breadcrumb-item active">
-                    <a href="#">Đăng Nhập</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/ListProduct">Trang chủ</a></li>
+            <li class="breadcrumb-item active"><a href="#">Đăng Nhập</a></li>
+        </ul>
     </nav>
+
     <div class="login-box">
         <div class="form-login">
             <h2>Đăng nhập</h2>
-            <%
-                String error = (String) request.getAttribute("error");
-                String reEmail = request.getParameter("email");
-                String rePass = request.getParameter("password");
-                if (error == null) error = "";
-                if (reEmail == null) reEmail = "";
-            %>
+
+            <div style="text-align: center; margin-bottom: 15px;">
+                <span style="color: #ff0000; font-weight: bold;">${error}</span>
+            </div>
+
             <form action="${pageContext.request.contextPath}/Login" method="POST">
-                <div style="height: 25px; margin-bottom: 10px; text-align: center;">
-                    <span style="color: #ff0000; font-weight: bold;">${error}</span>
-                </div>
                 <div class="input-group">
-                    <label for="email"></label>
-                    <input type="email" id="email" name="email" placeholder="Nhập Email" required value="<%=reEmail%>">
+                    <input type="text" name="account" placeholder="Email hoặc Số điện thoại" required value="${email}">
                 </div>
 
                 <div class="input-group">
-                    <label for="password"></label>
-                    <input type="password" id="password" name="password" placeholder="Nhập Mật Khẩu" required>
+                    <input type="password" name="password" placeholder="Nhập Mật Khẩu" required>
                 </div>
 
                 <div class="form-options">
-                    <a href="../Login/forgot.html" class="forgot-password">Quên mật khẩu?</a>
+                    <a href="${pageContext.request.contextPath}/html/forgot.jsp" class="forgot-password">Quên mật khẩu?</a>
                 </div>
 
                 <button type="submit" class="btn-login">Đăng Nhập</button>
             </form>
-            <div class="divider">
-                <span>Hoặc</span>
-            </div>
+
+            <div class="divider"><span>Hoặc</span></div>
+
             <div class="social-icons">
-                <a href="#" class="icons"><i class="fa-brands fa-google"></i>Đăng nhập với Google</a>
-                <a href="#" class="icons"><i class="fa-brands fa-facebook"></i>Đăng nhập với Facebook</a>
+                <a href="#" class="icons"><i class="fa-brands fa-google"></i>Google</a>
+                <a href="#" class="icons"><i class="fa-brands fa-facebook"></i>Facebook</a>
             </div>
+
             <div class="register-link">
-                <p>Chưa có tài khoản? <a href="../Login/register.html">Đăng ký ngay</a></p>
+                <p>Chưa có tài khoản? <a href="${pageContext.request.contextPath}/html/register.jsp">Đăng ký ngay</a></p>
             </div>
         </div>
     </div>
