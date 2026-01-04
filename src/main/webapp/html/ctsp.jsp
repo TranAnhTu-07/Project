@@ -7,13 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/Product.css">
+    <!-- THÊM DÒNG NÀY ĐỂ LẤY CONTEXT PATH -->
+    <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
+    <!-- SỬA TẤT CẢ ĐƯỜNG DẪN CSS -->
+    <link rel="stylesheet" href="${contextPath}/css/header.css">
+    <link rel="stylesheet" href="${contextPath}/css/footer.css">
+    <link rel="stylesheet" href="${contextPath}/css/Product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/spnoibat.css">
-    <link rel="stylesheet" href="../css/ctsp.css">
+    <link rel="stylesheet" href="${contextPath}/css/index.css">
+    <link rel="stylesheet" href="${contextPath}/css/spnoibat.css">
+    <link rel="stylesheet" href="${contextPath}/css/ctsp.css">
 
 </head>
 <body>
