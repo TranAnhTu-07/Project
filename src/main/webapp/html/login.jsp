@@ -205,9 +205,8 @@
         <div class="form-login">
             <h2>Đăng nhập</h2>
 
-            <div style="text-align: center; margin-bottom: 15px;">
-                <span style="color: #ff0000; font-weight: bold;">${error}</span>
-            </div>
+            <p style="color: green; text-align: center;">${message}</p>
+            <p style="color: red; text-align: center;">${error}</p>
 
             <form action="${pageContext.request.contextPath}/Login" method="POST">
                 <div class="input-group">
