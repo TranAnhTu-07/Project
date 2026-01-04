@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng Ký</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
 
@@ -208,10 +208,10 @@
                     <input type="hidden" name="action" value="register_email">
 
                     <div class="input-group">
-                        <input type="text" name="fullname" placeholder="Họ và Tên" required>
+                        <input type="text" name="fullname" value="${fullname}" placeholder="Họ và Tên" required>
                     </div>
                     <div class="input-group">
-                        <input type="email" name="email" placeholder="Nhập Email" required>
+                        <input type="email" name="email" value="${email}" placeholder="Nhập Email" required>
                     </div>
                     <div class="input-group" style="position: relative;">
                         <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
