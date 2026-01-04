@@ -166,12 +166,12 @@
             </a>
             <div class="null">
                 <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="#" class="nav-item">TỦ CHỐNG ẨM</a></li>
-                    <li><a href="#" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
                 </ul>
             </div>
         </li>
@@ -186,30 +186,84 @@
     </ul>
 </nav>
 
-<div class="login-box">
-    <div class="form-login">
-        <h2>Đăng ký</h2>
-        <form>
-            <div class="input-group">
-                <input type="text" placeholder="Họ và Tên" required>
+<main class="login-page">
+    <nav class="breadcrumb-nav">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/ListProduct">Trang chủ</a></li>
+            <li class="breadcrumb-item active"><a href="#">Đăng Ký</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-box">
+        <div class="form-login">
+            <h2>Đăng ký</h2>
+
+            <div class="tabs">
+                <button type="button" class="tab-btn active" onclick="openTab(event, 'tab-email')">Email</button>
+                <button type="button" class="tab-btn" onclick="openTab(event, 'tab-phone')">Số điện thoại</button>
             </div>
 
-            <div class="input-group">
-                <input type="email" placeholder="Email" required>
+            <div id="tab-email" class="tab-content active">
+                <form action="${pageContext.request.contextPath}/Register" method="POST">
+                    <input type="hidden" name="action" value="register_email">
+
+                    <div class="input-group">
+                        <input type="text" name="fullname" placeholder="Họ và Tên" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Nhập Email" required>
+                    </div>
+                    <div class="input-group" style="position: relative;">
+                        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+
+                        <span onclick="togglePassword()" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
+                        <i id="eye-icon" class="fa-solid fa-eye-slash"></i>
+                        </span>
+                    </div>
+
+                    <button type="submit" class="btn-login">Đăng Ký</button>
+                </form>
             </div>
 
-            <div class="input-group">
-                <input type="password" placeholder="Mật khẩu" required>
+            <div id="tab-phone" class="tab-content">
+                <form action="${pageContext.request.contextPath}/Register" method="POST" id="phoneForm">
+                    <input type="hidden" name="action" value="register_phone">
+
+                    <div class="input-group">
+                        <input type="text" name="fullname" placeholder="Họ và Tên" required>
+                    </div>
+
+                    <div class="input-group input-row">
+                        <input type="text" id="phoneNumber" name="phone" placeholder="Số điện thoại" required>
+                        <button type="button" class="btn-otp" onclick="alert('Gắn hàm sendOTP Firebase vào đây')">Lấy mã</button>
+
+                    </div>
+
+                    <div class="input-group input-row" id="otp-group" style="display:none;">
+                        <input type="text" id="otpInput" placeholder="Nhập mã xác thực">
+                        <button type="button" class="btn-otp" onclick="alert('Gắn hàm verifyOTP vào đây')">Xác nhận</button>
+                    </div>
+
+                    <div id="recaptcha-container" style="margin-bottom: 15px;"></div>
+
+                    <div class="input-group" style="position: relative;">
+                        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+
+                        <span onclick="togglePassword()" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
+                            <i id="eye-icon" class="fa-solid fa-eye-slash"></i>
+                        </span>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="btnPhoneRegister">Đăng Ký</button>
+                </form>
             </div>
 
-            <button type="submit" class="btn-login">Đăng Ký</button>
-        </form>
-
-        <div class="register-link">
-            <p>Đã có tài khoản? <a href="../login/login.html">Đăng nhập ngay</a></p>
+            <div class="register-link">
+                <p>Đã có tài khoản? <a href="${pageContext.request.contextPath}/html/login.jsp">Đăng nhập ngay</a></p>
+            </div>
         </div>
     </div>
-</div>
+</main>
 
 <footer class="footer">
     <div class="footer-content">
@@ -285,5 +339,36 @@
         </div>
     </div>
 </footer>
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+    function togglePassword() {
+        var passInput = document.getElementById("password");
+        var eyeIcon = document.getElementById("eye-icon");
+
+        if (passInput.type === "password") {
+            passInput.type = "text"; // Hiện pass
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        } else {
+            passInput.type = "password"; // Ẩn pass
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+</script>
 </body>
 </html>
