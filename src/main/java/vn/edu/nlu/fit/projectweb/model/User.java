@@ -7,6 +7,8 @@ public class User implements Serializable {
     private String fullName;
     private String email;
     private String password;
+    private String phone;
+    private String sex;
     private int roleId;
     private int status; // 0: Chưa active, 1: Active
     private String token;
@@ -44,6 +46,14 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPhone(){return phone; }
+
+    public void setPhone(String phone){this.phone = phone; }
+
+    public String getSex(){return sex;}
+
+    public void setSex(String sex) {this.sex = sex;}
 
     public int getRoleId() {
         return roleId;
