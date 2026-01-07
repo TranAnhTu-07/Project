@@ -3,11 +3,12 @@ package vn.edu.nlu.fit.projectweb.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import vn.edu.nlu.fit.up.dao.AccountDao;
-import vn.edu.nlu.fit.up.dao.CategoryDao;
-import vn.edu.nlu.fit.up.model.Account;
-import vn.edu.nlu.fit.up.model.Category;
-import vn.edu.nlu.fit.up.model.User;
+//import vn.edu.nlu.fit.projectweb.dao.AccountDao;
+import vn.edu.nlu.fit.projectweb.dao.AccountDao;
+import vn.edu.nlu.fit.projectweb.dao.CategoryDao;
+import vn.edu.nlu.fit.projectweb.model.Account;
+import vn.edu.nlu.fit.projectweb.model.Category;
+import vn.edu.nlu.fit.projectweb.model.User;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,8 +40,8 @@ public class ViewOrderHistoryController extends HttpServlet {
             return;
         }
         User user = (User) session.getAttribute("auth");
-        int userid = user.getId();
-        user.setName(request.getParameter("name"));
+        int userid = user.getUserId();
+        user.setFullName(request.getParameter("name"));
         user.setEmail(request.getParameter("email"));
         user.setPhone(request.getParameter("phone"));
         user.setSex(request.getParameter("sex"));
