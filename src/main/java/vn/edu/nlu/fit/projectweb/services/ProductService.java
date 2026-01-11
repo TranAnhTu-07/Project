@@ -25,4 +25,11 @@ public class ProductService {
     public List<Product> getRelatedProducts(int productId, int categoryId) {
         return pdao.getRelatedProducts(productId, categoryId);
     }
+    public void add(Product p) {
+        pdao.add(p);
+    }
+    public void delete(int id) {
+        pdao.delete(id);
+    }
+
 }
