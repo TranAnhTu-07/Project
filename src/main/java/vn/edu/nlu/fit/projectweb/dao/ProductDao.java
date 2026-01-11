@@ -88,4 +88,34 @@ public class ProductDao extends BaseDao{
                         .list()
         );
     }
+    //    them sua xoa kho
+    public void add(Product p) {
+        get().withHandle(h -> h.createUpdate("""
+        insert into products
+        (ProductName, img, categoryId, size, price_sale, price_origin, status)
+        values (:ProductName, :img, :categoryId,, :Brand, :price, :NewPrice, 0)
+    """)
+                .bind("name", p.getProductName())
+                .bind("img", p.getImg())
+                .bind("category_id", p.getCategoryID())
+                .bind("Brand", p.getBrand())
+                .bind("price", p.getPrice())
+                .bind("New price", p.getNewPrice())
+                .execute());
+    }
+    public void delete(int id) {
+        get().withHandle(h -> h.createUpdate("delete from products where id = :id").bind("id", id).execute()
+        );
+    }
+    public void publish(int id) {
+        get().withHandle(h -> h.createUpdate("update products set status = 1 where id = :id").bind("id", id).execute());
+    }
+    public void unpublish(int id) {
+        get().withHandle(h -> h.createUpdate("update products set status = 0 where id = :id").bind("id", id).execute());
+    }
+    public void update(int id, String name, double price) {
+        get().withHandle(h -> h.createUpdate("update products set name = :name, price_sale = :price where id = :id")
+                .bind("id", id).bind("price", price).bind("name", name).execute());
+    }
+
 }
