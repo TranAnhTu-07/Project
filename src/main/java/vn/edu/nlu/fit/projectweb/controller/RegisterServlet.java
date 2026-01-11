@@ -7,6 +7,8 @@ import vn.edu.nlu.fit.projectweb.dao.UserDao;
 import vn.edu.nlu.fit.projectweb.model.User;
 import vn.edu.nlu.fit.projectweb.utils.EmailUtils;
 import vn.edu.nlu.fit.projectweb.utils.MD5Utils;
+import vn.edu.nlu.fit.projectweb.utils.Validator;
+
 import java.io.IOException;
 import java.util.UUID;
 
@@ -26,54 +28,64 @@ public class RegisterServlet extends HttpServlet {
             String email = request.getParameter("email");
             String pass = request.getParameter("password");
 
-            // 1. Validate Mật khẩu (Regex)
-            // Yêu cầu: 8 ký tự, có Hoa, Thường, Số, Ký tự đặc biệt
-            String passRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$";
-            if (!pass.matches(passRegex)) {
-                request.setAttribute("error", "Mật khẩu yếu! Cần ít nhất 8 ký tự, bao gồm Hoa, Thường, Số và Ký tự đặc biệt.");
-                // Giữ lại thông tin đã nhập để user đỡ phải gõ lại
+            // --- Validate Mật khẩu ---
+            if (!Validator.checkPassword(pass)) {
+                request.setAttribute("error", "Mật khẩu yếu! Cần 8 ký tự, Hoa, Thường, Số, Ký tự đặt biệt.");
                 request.setAttribute("fullname", fullname);
                 request.setAttribute("email", email);
                 request.getRequestDispatcher("html/register.jsp").forward(request, response);
                 return;
             }
 
-            // 2. Kiểm tra Email đã tồn tại chưa
+            // --- Check trùng Email ---
             if (dao.checkEmailExist(email)) {
-                request.setAttribute("error", "Email này đã được sử dụng!");
+                request.setAttribute("error", "Email đã tồn tại!");
                 request.setAttribute("fullname", fullname);
                 request.getRequestDispatcher("html/register.jsp").forward(request, response);
                 return;
             }
 
-            // 3. Tạo User và Lưu vào DB
+            // --- Tạo User mới ---
             String hashPass = MD5Utils.hash(pass);
-            String token = UUID.randomUUID().toString(); // Token kích hoạt
+            String token = UUID.randomUUID().toString(); // Token xác thực
 
             User u = new User();
             u.setFullName(fullname);
             u.setEmail(email);
             u.setPassword(hashPass);
             u.setToken(token);
-            u.setStatus(0); // Chưa kích hoạt
-            u.setRoleId(2); // Role User thường
-
-            // Lưu ý: Cột phone để null
-            u.setPhone(null);
+            u.setStatus(0); // QUAN TRỌNG: Status = 0 (Chưa kích hoạt)
+            u.setRoleId(2);
+            u.setPhone(null); // Đăng ký email thì không có sđt
 
             try {
                 dao.registerUser(u);
 
-                // 4. Gửi Mail (DEMO: ĐÃ TẠM TẮT ĐỂ NỘP BÀI CHO NHANH)
-                // String link = "http://localhost:8080/project_web_war/Verify?token=" + token;
-                // String content = "<p>Chào " + fullname + ", vui lòng click vào đây để kích hoạt tài khoản: <a href='" + link + "'>KÍCH HOẠT NGAY</a></p>";
-                // new Thread(() -> EmailUtils.send(email, "Xác thực tài khoản", content)).start();
+                // --- GỬI MAIL KÍCH HOẠT (ĐÃ BẬT LẠI) ---
+                // Lưu ý: Thay 'project_web_war' bằng tên đúng project của mày trên URL
+                // Ví dụ: http://localhost:8080/Ten_Project_Cua_May/Verify...
+                String link = "http://localhost:8080/project_web_war/Verify?token=" + token;
 
-                // Chuyển sang trang Login và báo thành công
+                String content = "<div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>" +
+                        "<div style='max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);'>" +
+                        "<h2 style='color: #333;'>Xác thực tài khoản</h2>" +
+                        "<p>Chào <strong>" + fullname + "</strong>,</p>" +
+                        "<p>Cảm ơn bạn đã đăng ký. Vui lòng nhấn vào nút bên dưới để kích hoạt tài khoản:</p>" +
+                        "<div style='text-align: center; margin: 20px 0;'>" +
+                        "<a href='" + link + "' style='background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;'>KÍCH HOẠT NGAY</a>" +
+                        "</div>" +
+                        "<p>Hoặc copy link này: " + link + "</p>" +
+                        "</div></div>";
+
+                // Gửi mail trong luồng riêng (Thread) để web không bị đơ
+                new Thread(() -> EmailUtils.send(email, "Kích hoạt tài khoản - Web Camera", content)).start();
+
+                // Chuyển sang trang Login và báo check mail
                 response.sendRedirect("html/login.jsp?msg=success");
+
             } catch (Exception e) {
                 e.printStackTrace();
-                request.setAttribute("error", "Lỗi hệ thống khi đăng ký!");
+                request.setAttribute("error", "Lỗi hệ thống! Không gửi được mail.");
                 request.getRequestDispatcher("html/register.jsp").forward(request, response);
             }
         }
@@ -83,6 +95,15 @@ public class RegisterServlet extends HttpServlet {
             String fullname = request.getParameter("fullname");
             String phone = request.getParameter("phone");
             String pass = request.getParameter("password");
+
+            //0.CHECK
+            if (!Validator.checkPassword(pass)) {
+                request.setAttribute("error", "Mật khẩu yếu! Cần 8 ký tự, Hoa, Thường, Số, Ký tự đặt biệt.");
+                request.setAttribute("fullname", fullname);
+                request.setAttribute("phone", phone);
+                request.getRequestDispatcher("html/register.jsp").forward(request, response);
+                return;
+            }
 
             // 1. Hash mật khẩu
             String hashPass = MD5Utils.hash(pass);

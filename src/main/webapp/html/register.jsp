@@ -238,11 +238,11 @@
                     <input type="hidden" name="action" value="register_phone">
 
                     <div class="input-group">
-                        <input type="text" name="fullname" placeholder="Họ và Tên" required>
+                        <input type="text" name="fullname" value="${fullname}" placeholder="Họ và Tên" required>
                     </div>
 
                     <div class="input-group input-row">
-                        <input type="text" id="phoneNumber" name="phone" placeholder="Số điện thoại" required>
+                        <input type="text" id="phoneNumber" name="phone" value ="${phone}" placeholder="Số điện thoại" required>
                         <button type="button" class="btn-otp" onclick="sendOTP()">Lấy mã</button>
                     </div>
 
@@ -346,7 +346,7 @@
     </div>
 </footer>
 <script>
-    // --- 1. HÀM CHUYỂN TAB (Giữ nguyên logic của mày) ---
+    // --- 1. HÀM CHUYỂN TAB  ---
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
@@ -368,20 +368,20 @@
     // iconSpan: Chính là cái thẻ span m vừa bấm vào (biến this)
     function togglePassword(fieldId, iconSpan) {
         var passInput = document.getElementById(fieldId);
-        var eyeIcon = iconSpan.querySelector("i"); // Tìm thẻ <i> bên trong cái span đó
+        var eyeIcon = iconSpan.querySelector("i");
 
         if (passInput.type === "password") {
-            passInput.type = "text"; // Hiện pass
+            passInput.type = "text";
             eyeIcon.classList.remove("fa-eye-slash");
             eyeIcon.classList.add("fa-eye");
         } else {
-            passInput.type = "password"; // Ẩn pass
+            passInput.type = "password";
             eyeIcon.classList.remove("fa-eye");
             eyeIcon.classList.add("fa-eye-slash");
         }
     }
 
-    // --- 3. HÀM FAKE FIREBASE OTP (Demo nộp bài) ---
+    // --- 3. HÀM FAKE FIREBASE OTP  ---
     function sendOTP() {
         const phone = document.getElementById("phoneNumber").value;
         const btnOtp = document.querySelector(".btn-otp");
