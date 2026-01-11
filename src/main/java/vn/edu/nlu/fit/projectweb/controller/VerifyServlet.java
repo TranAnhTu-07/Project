@@ -18,11 +18,11 @@ public class VerifyServlet extends HttpServlet {
         User u = dao.getUserByToken(token);
         if(u!= null) {
             dao.activateUser(token);
-            request.setAttribute("message", "Kích hoạt thành công!");
+            //thành công -> bắt tín hiệu activated về jsp
+            response.sendRedirect("html/login.jsp?msg=activated");
         }else{
-            request.setAttribute("error", "Link lỗi!");
+            response.sendRedirect("html/login.jsp?msg=error");
         }
-        request.getRequestDispatcher("html/login.jsp").forward(request, response);
     }
 
     @Override

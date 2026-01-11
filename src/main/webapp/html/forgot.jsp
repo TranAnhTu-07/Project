@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,9 +198,16 @@
         <div class="form-login">
             <h2>Khôi phục mật khẩu</h2>
 
+            <c:if test="${not empty error}">
+                <p style="color: red; text-align: center; font-weight: bold;">${error}</p>
+            </c:if>
+            <c:if test="${not empty message}">
+                <p style="color: green; text-align: center; font-weight: bold;">${message}</p>
+            </c:if>
+
             <form action="${pageContext.request.contextPath}/ForgotPassword" method="POST">
                 <div class="input-group">
-                    <input type="email" name="email" placeholder="Nhập Email đã đăng ký" required>
+                    <input type="email" name="email" value="${email}" placeholder="Nhập Email đã đăng ký" required>
                 </div>
 
                 <button type="submit" class="btn-login">Gửi mã xác nhận</button>
