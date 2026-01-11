@@ -32,4 +32,19 @@ public class ProductService {
         pdao.delete(id);
     }
 
+    public List<Product> searchProducts(String keyword) {
+        return pdao.searchProducts(keyword);
+    }
+
+    public List<Product> searchProducts(String keyword, int categoryId) {
+        return pdao.searchProducts(keyword, categoryId);
+    }
+
+    public List<Product> searchProducts(String keyword, String brand) {
+        return pdao.searchProducts(keyword, brand);
+    }
+
+    public List<Product> getSearchSuggestions(String keyword) {
+        return pdao.getSearchSuggestions(keyword, 10);
+    }
 }
