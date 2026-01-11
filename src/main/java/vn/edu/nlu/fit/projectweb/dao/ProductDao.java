@@ -118,4 +118,46 @@ public class ProductDao extends BaseDao{
                 .bind("id", id).bind("price", price).bind("name", name).execute());
     }
 
+    //tim kiem tren header
+
+
+    public List<Product> searchProducts(String keyword) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE productName LIKE :keyword ORDER BY productName LIMIT 50")
+                        .bind("keyword", "%" + keyword + "%")
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public List<Product> searchProducts(String keyword, int categoryId) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE productName LIKE :keyword AND categoryID = :categoryId ORDER BY productName")
+                        .bind("keyword", "%" + keyword + "%")
+                        .bind("categoryId", categoryId)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public List<Product> searchProducts(String keyword, String brand) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE productName LIKE :keyword AND brand = :brand ORDER BY productName")
+                        .bind("keyword", "%" + keyword + "%")
+                        .bind("brand", brand)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public List<Product> getSearchSuggestions(String keyword, int limit) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT * FROM products WHERE productName LIKE :keyword ORDER BY productName LIMIT :limit")
+                        .bind("keyword", "%" + keyword + "%")
+                        .bind("limit", limit)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
 }
