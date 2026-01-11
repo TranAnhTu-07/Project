@@ -23,22 +23,23 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("account");
+        String username = request.getParameter("email");
         String pass = request.getParameter("password");
 
+        String hashPas = MD5Utils.hash(pass);
         UserDao dao = new UserDao();
-        User user = dao.login(email, MD5Utils.hash(pass));
+        User user = dao.login(username, MD5Utils.hash(pass));
 
         if (user == null) {
             // SAI MẬT KHẨU HOẶC EMAIL
             request.setAttribute("error", "Sai email hoặc mật khẩu!");
-            request.setAttribute("email", email); // <-- QUAN TRỌNG: Gửi lại email về JSP để điền lại
-            request.getRequestDispatcher("Login/login.jsp").forward(request, response);
+            request.setAttribute("email", username); //gửi lại cái vừa nhập để khỏi gõ lại
+            request.getRequestDispatcher("html/login.jsp").forward(request, response);
         } else {
             if (user.getStatus() == 0) {
                 // ĐÚNG PASS NHƯNG CHƯA KÍCH HOẠT
-                request.setAttribute("error", "Tài khoản chưa kích hoạt!");
-                request.setAttribute("email", email); // <-- Giữ lại email luôn
+                request.setAttribute("error", "Tài khoản chưa kích hoạt! Vui lòng kiểm tra email");
+                request.setAttribute("email", username); // <-- Giữ lại email luôn
                 request.getRequestDispatcher("html/login.jsp").forward(request, response);
             } else {
                 // THÀNH CÔNG

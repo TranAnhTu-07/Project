@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin!
@@ -21,7 +22,7 @@
 <header class="header">
     <div class="header-top">
         <div class="logo-search">
-            <a href="/project_web_war_exploded/index.jsp" class="logo">
+            <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
                 <div class="logo-icon">📷</div>
                 <div class="logo-text">
                     <div class="logo-main">GROUP11</div>
@@ -205,12 +206,25 @@
         <div class="form-login">
             <h2>Đăng nhập</h2>
 
-            <p style="color: green; text-align: center;">${message}</p>
-            <p style="color: red; text-align: center;">${error}</p>
+            <c:if test="${not empty param.msg}">
+                <p style="color: ${param.msg == 'success' || param.msg == 'activated' ? 'green' : 'red'}; text-align: center; font-weight: bold;">
+                    <c:if test="${param.msg == 'success'}">Đăng ký thành công! (check mail or vào db sửa status=1)</c:if>
+                    <c:if test="${param.msg == 'activated'}">Kích hoạt thành công! Đăng nhập ngay.</c:if>
+                    <c:if test="${param.msg == 'error'}">Link kích hoạt bị lỗi hoặc hết hạn!</c:if>
+                    </p>
+            </c:if>
+
+            <c:if test="${not empty error}">
+                <p style="color: red; text-align: center; font-weight: bold;">${error}</p>
+            </c:if>
+
+            <c:if test="not empty message">
+                <p style="color: green; text-align: center; font-weight: bold;">${message}</p>
+            </c:if>
 
             <form action="${pageContext.request.contextPath}/Login" method="POST">
                 <div class="input-group">
-                    <input type="text" name="account" placeholder="Email hoặc Số điện thoại" required value="${email}">
+                    <input type="text" name="email" placeholder="Email hoặc Số điện thoại" required value="${email}">
                 </div>
 
                 <div class="input-group">

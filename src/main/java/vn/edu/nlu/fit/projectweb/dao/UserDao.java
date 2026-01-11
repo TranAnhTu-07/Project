@@ -3,7 +3,7 @@ package vn.edu.nlu.fit.projectweb.dao;
 import vn.edu.nlu.fit.projectweb.model.User;
 
 public class UserDao extends BaseDao{
-    // 1. Kiểm tra Email tồn tại (Trả về true nếu có)
+    // 1. Kiểm tra Email tồn tại
     public boolean checkEmailExist(String email) {
         return get().withHandle(h ->
                 h.createQuery("SELECT COUNT(*) FROM Users WHERE email = :email")
@@ -16,8 +16,8 @@ public class UserDao extends BaseDao{
     // 2. Đăng ký User mới
     public void registerUser(User u) {
         get().useHandle(h ->
-                h.createUpdate("INSERT INTO Users (full_name, email, password, role_id, status, token) " +
-                                "VALUES (:fullName, :email, :password, :roleId, :status, :token)")
+                h.createUpdate("INSERT INTO Users (full_name, email, password, role_id, status, token, phone) " +
+                                "VALUES (:fullName, :email, :password, :roleId, :status, :token, :phone)")
                         .bindBean(u) // Tự động lấy các thuộc tính của User (fullName, email...) điền vào SQL
                         .execute()
         );
@@ -26,8 +26,8 @@ public class UserDao extends BaseDao{
     // 3. Login (Tìm user bằng email và pass đã mã hóa)
     public User login(String email, String password) {
         return get().withHandle(h ->
-                h.createQuery("SELECT * FROM Users WHERE email = :email AND password = :password")
-                        .bind("email", email)
+                h.createQuery("SELECT * FROM Users WHERE (email = :username OR phone = :username) AND password = :password")
+                        .bind("username", email)
                         .bind("password", password)
                         .mapToBean(User.class) // Tự map cột SQL vào class User
                         .findFirst()

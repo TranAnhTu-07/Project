@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,6 +199,13 @@
         <div class="form-login">
             <h2>Đăng ký</h2>
 
+            <c:if test="${not empty error}">
+                <p style="color: red; text-align: center; font-weight: bold; margin-bottom: 10px;">${error}</p>
+            </c:if>
+            <c:if test="${not empty message}">
+                <p style="color: green; text-align: center; font-weight: bold; margin-bottom: 10px;">${message}</p>
+            </c:if>
+
             <div class="tabs">
                 <button type="button" class="tab-btn active" onclick="openTab(event, 'tab-email')">Email</button>
                 <button type="button" class="tab-btn" onclick="openTab(event, 'tab-phone')">Số điện thoại</button>
@@ -213,11 +221,11 @@
                     <div class="input-group">
                         <input type="email" name="email" value="${email}" placeholder="Nhập Email" required>
                     </div>
-                    <div class="input-group" style="position: relative;">
-                        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
 
-                        <span onclick="togglePassword()" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
-                        <i id="eye-icon" class="fa-solid fa-eye-slash"></i>
+                    <div class="input-group" style="position: relative;">
+                        <input type="password" id="password-email" name="password" placeholder="Mật khẩu (Có Hoa, Thường, Số, Ký tự ĐB)" required>
+                        <span onclick="togglePassword('password-email', this)" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
+                            <i class="fa-solid fa-eye-slash"></i>
                         </span>
                     </div>
 
@@ -235,22 +243,20 @@
 
                     <div class="input-group input-row">
                         <input type="text" id="phoneNumber" name="phone" placeholder="Số điện thoại" required>
-                        <button type="button" class="btn-otp" onclick="alert('Gắn hàm sendOTP Firebase vào đây')">Lấy mã</button>
-
+                        <button type="button" class="btn-otp" onclick="sendOTP()">Lấy mã</button>
                     </div>
 
                     <div class="input-group input-row" id="otp-group" style="display:none;">
                         <input type="text" id="otpInput" placeholder="Nhập mã xác thực">
-                        <button type="button" class="btn-otp" onclick="alert('Gắn hàm verifyOTP vào đây')">Xác nhận</button>
+                        <button type="button" class="btn-otp" onclick="sendOTP()">Xác nhận</button>
                     </div>
 
                     <div id="recaptcha-container" style="margin-bottom: 15px;"></div>
 
                     <div class="input-group" style="position: relative;">
-                        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
-
-                        <span onclick="togglePassword()" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
-                            <i id="eye-icon" class="fa-solid fa-eye-slash"></i>
+                        <input type="password" id="password-phone" name="password" placeholder="Mật khẩu" required>
+                        <span onclick="togglePassword('password-phone', this)" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
+                            <i class="fa-solid fa-eye-slash"></i>
                         </span>
                     </div>
 
@@ -340,6 +346,7 @@
     </div>
 </footer>
 <script>
+    // --- 1. HÀM CHUYỂN TAB (Giữ nguyên logic của mày) ---
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
@@ -355,9 +362,13 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.className += " active";
     }
-    function togglePassword() {
-        var passInput = document.getElementById("password");
-        var eyeIcon = document.getElementById("eye-icon");
+
+    // --- 2. HÀM ẨN/HIỆN PASS (Đã nâng cấp để dùng cho nhiều ô input) ---
+    // fieldId: ID của ô input password
+    // iconSpan: Chính là cái thẻ span m vừa bấm vào (biến this)
+    function togglePassword(fieldId, iconSpan) {
+        var passInput = document.getElementById(fieldId);
+        var eyeIcon = iconSpan.querySelector("i"); // Tìm thẻ <i> bên trong cái span đó
 
         if (passInput.type === "password") {
             passInput.type = "text"; // Hiện pass
@@ -367,6 +378,50 @@
             passInput.type = "password"; // Ẩn pass
             eyeIcon.classList.remove("fa-eye");
             eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+
+    // --- 3. HÀM FAKE FIREBASE OTP (Demo nộp bài) ---
+    function sendOTP() {
+        const phone = document.getElementById("phoneNumber").value;
+        const btnOtp = document.querySelector(".btn-otp");
+
+        if (!phone || phone.length < 9) {
+            alert("Vui lòng nhập số điện thoại hợp lệ!");
+            return;
+        }
+
+        // Fake hiệu ứng đang gửi
+        btnOtp.innerText = "Đang gửi...";
+        btnOtp.disabled = true;
+
+        setTimeout(() => {
+            alert("Mã xác thực (Demo): 123456"); // Hiện code luôn cho thầy thấy
+            document.getElementById("otp-group").style.display = "flex"; // Hiện ô nhập OTP
+            btnOtp.innerText = "Gửi lại";
+            btnOtp.disabled = false;
+            document.getElementById("otpInput").focus();
+        }, 1500); // Đợi 1.5s cho giống thật
+    }
+
+    function verifyOTP() {
+        const code = document.getElementById("otpInput").value;
+        if (code === "123456") {
+            alert("Xác thực thành công!");
+
+            // Ẩn các nút OTP, Hiện nút Đăng ký thật
+            document.getElementById("otp-group").style.display = "none";
+            document.querySelector(".btn-otp").style.display = "none";
+
+            // Cho phép bấm Đăng ký (Lúc đầu nên set style="display:none" cho nút này)
+            var btnRegister = document.getElementById("btnPhoneRegister");
+            btnRegister.style.display = "block";
+            btnRegister.disabled = false;
+
+            // Khóa ô nhập sđt lại
+            document.getElementById("phoneNumber").readOnly = true;
+        } else {
+            alert("Mã OTP sai! Vui lòng nhập 123456");
         }
     }
 </script>
