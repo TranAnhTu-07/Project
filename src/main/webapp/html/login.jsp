@@ -227,8 +227,11 @@
                     <input type="text" name="email" placeholder="Email hoặc Số điện thoại" required value="${email}">
                 </div>
 
-                <div class="input-group">
-                    <input type="password" name="password" placeholder="Nhập Mật Khẩu" required>
+                <div class="input-group password-wrapper" style="position: relative;">
+                    <input type="password" name="password" id="login-pass" placeholder="Nhập mật khẩu" required>
+                    <span class="toggle-btn" onclick="togglePassword('login-pass', this)" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </span>
                 </div>
 
                 <div class="form-options">
@@ -326,5 +329,21 @@
         </div>
     </div>
 </footer>
+<script>
+    function togglePassword(fieldId, iconSpan) {
+        var passInput = document.getElementById(fieldId);
+        var eyeIcon = iconSpan.querySelector("i");
+
+        if (passInput.type === "password") {
+            passInput.type = "text";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        } else {
+            passInput.type = "password";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+</script>
 </body>
 </html>

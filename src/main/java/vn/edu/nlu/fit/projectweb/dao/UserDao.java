@@ -54,4 +54,44 @@ public class UserDao extends BaseDao{
                         .execute()
         );
     }
+
+    // 6. Kiểm tra SĐT có tồn tại không
+    public boolean checkPhoneExist(String phone) {
+        return get().withHandle(h ->
+                h.createQuery("SELECT COUNT(*) FROM Users WHERE phone = :phone")
+                        .bind("phone", phone)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+
+    // 7. Đổi mật khẩu dựa trên SĐT (Dùng cho luồng Fake OTP)
+    public void changePasswordByPhone(String phone, String newHashPassword) {
+        get().useHandle(h ->
+                h.createUpdate("UPDATE Users SET password = :password WHERE phone = :phone")
+                        .bind("password", newHashPassword)
+                        .bind("phone", phone)
+                        .execute()
+        );
+    }
+
+    // 8. Đổi mật khẩu Email (Dùng cho luồng Email Link) - Nếu chưa có thì thêm vào
+    public void changePassword(String email, String newHashPassword) {
+        get().useHandle(h ->
+                h.createUpdate("UPDATE Users SET password = :password, token = NULL WHERE email = :email")
+                        .bind("password", newHashPassword)
+                        .bind("email", email)
+                        .execute()
+        );
+    }
+
+    // 9. Update Token (Dùng lúc gửi mail) - Nếu chưa có thì thêm vào
+    public void updateToken(String email, String token) {
+        get().useHandle(h ->
+                h.createUpdate("UPDATE Users SET token = :token WHERE email = :email")
+                        .bind("token", token)
+                        .bind("email", email)
+                        .execute()
+        );
+    }
 }
