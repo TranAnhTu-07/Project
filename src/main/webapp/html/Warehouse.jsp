@@ -114,144 +114,57 @@
             </thead>
 
             <tbody>
-            <tr>
-                <td><img
-                        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/may-anh-canon-eos-r50_4_.png"
-                        alt="Sản phẩm" class="product-image"></td>
-                <td><strong>SP001</strong></td>
-                <td>Máy ảnh CANON</td>
-                <td><span class="category-tag">Điện tử</span></td>
-                <td><strong>45</strong></td>
-                <td><span class="stock-badge stock-low">Sắp hết</span></td>
-                <td>25.000.000đ</td>
-                <td>1.125.000.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://giangduydat.vn/product/fujifilm-x-e5.jpg" alt="Sản phẩm" class="product-image">
-                </td>
-                <td><strong>SP002</strong></td>
-                <td>Máy ảnh FUJIFILM</td>
-                <td><span class="category-tag">Điện tử</span></td>
-                <td><strong>120</strong></td>
-                <td><span class="stock-badge stock-high">Còn nhiều</span></td>
-                <td>32.000.000đ</td>
-                <td>3.840.000.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img
-                        src="https://d1ncau8tqf99kp.cloudfront.net/converted/92650_original_local_1200x1050_v3_converted.webp"
-                        alt="Sản phẩm" class="product-image"></td>
-                <td><strong>SP003</strong></td>
-                <td>Máy ảnh SONY</td>
-                <td><span class="category-tag">Điện tử</span></td>
-                <td><strong>0</strong></td>
-                <td><span class="stock-badge stock-out">Hết hàng</span></td>
-                <td>250.000đ</td>
-                <td>0đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-danger">Nhập gấp</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://giangduydat.vn/product/nikon-zr-6k-cinema-camera.jpg" alt="Sản phẩm"
-                         class="product-image"></td>
-                <td><strong>SP004</strong></td>
-                <td>Máy ảnh NIKON</td>
-                <td><span class="category-tag">Điện tử</span></td>
-                <td><strong>78</strong></td>
-                <td><span class="stock-badge stock-medium">Trung bình</span></td>
-                <td>20.500.000đ</td>
-                <td>1.599.000.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://giangduydat.vn/product/thumb120/panasonic-lumix-gh5-ii.jpg" alt="Sản phẩm"
-                         class="product-image"></td>
-                <td><strong>SP005</strong></td>
-                <td>MÁY ẢNH LUMIX</td>
-                <td><span class="category-tag">Điện tử</span></td>
-                <td><strong>32</strong></td>
-                <td><span class="stock-badge stock-low">Sắp hết</span></td>
-                <td>8.500.000đ</td>
-                <td>272.000.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-canon-ef28mm-f28(1).jpg"
-                         alt="Sản phẩm" class="product-image"></td>
-                <td><strong>SP006</strong></td>
-                <td>ỐNG KÍNH CANON</td>
-                <td><span class="category-tag">Phụ kiện</span></td>
-                <td><strong>156</strong></td>
-                <td><span class="stock-badge stock-high">Còn nhiều</span></td>
-                <td>850.000đ</td>
-                <td>132.600.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-canon-ef28mm-f28(1).jpg"
-                         alt="Sản phẩm" class="product-image"></td>
-                <td><strong>SP007</strong></td>
-                <td>ỐNG KÍNH SONY</td>
-                <td><span class="category-tag">Phụ kiện</span></td>
-                <td><strong>15</strong></td>
-                <td><span class="stock-badge stock-low">Sắp hết</span></td>
-                <td>1.200.000đ</td>
-                <td>18.000.000đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-warning">Nhập</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="https://binhminhdigital.com/thumb/images/product/ong-kinh-fujifilm-xf50f1-0mm.jpg"
-                         alt="Sản phẩm" class="product-image"></td>
-                <td><strong>SP008</strong></td>
-                <td>ỐNG KÍNH FUJIFILM</td>
-                <td><span class="category-tag">Phụ kiện</span></td>
-                <td><strong>0</strong></td>
-                <td><span class="stock-badge stock-out">Hết hàng</span></td>
-                <td>2.800.000đ</td>
-                <td>0đ</td>
-                <td>
-                    <div class="actions">
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-danger">Nhập gấp</a>
-                    </div>
-                </td>
-            </tr>
+            <c:forEach var="p" items="${onSale}">
+                <tr data-id="${p.id}">
+                    <form action="${pageContext.request.contextPath}/kho" method="post">
+                        <input type="hidden" name="action" value="update">
+                        <input type="hidden" name="id" value="${p.id}">
+                        <td class="product">
+                            <img src="${p.img}">
+                            <span class="view">${p.name}</span>
+                            <input class="edit" type="text" name="name" value="${p.name}" style="display:none; width:160px;">
+                        </td>
+                        <td>
+                            <span class="view"><fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/> đ</span>
+                            <input class="edit" type="number" name="price" value="${p.price_sale}" style="display:none; width:100px;">
+                        </td>
+                        <td>100</td>
+                        <td>0</td>
+                        <td class="status selling">Đang bán</td>
+                        <td class="profit">
+                            <fmt:formatNumber value="${p.price_sale * 0.05}" groupingUsed="true"/> đ
+                        </td>
+                        <td>
+                            <div class="action-btn">
+                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                    <input type="hidden" name="action" value="update">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <button type="button" class="btn edit-btn" onclick="edit(this)">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button type="submit" class="btn save" style="display:none;">
+                                        <i class="fas fa-save"></i>
+                                    </button>
+                                </form>
+                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                    <input type="hidden" name="action" value="unpublish">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <button type="submit" class="btn remove" onclick="return confirm('Xác nhận đưa sản phẩm xuống kệ?')">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </button>
+                                </form>
+                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="${p.id}">
+                                    <button type="submit" class="btn delete" onclick="return confirm('Xóa sản phẩm này?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </form>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
