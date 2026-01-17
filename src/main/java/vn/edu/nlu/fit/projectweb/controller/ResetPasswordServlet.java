@@ -23,10 +23,6 @@ public class ResetPasswordServlet extends HttpServlet {
             // Token sai hoặc hết hạn -> Về Login báo lỗi
             response.sendRedirect("html/login.jsp?error=Token không hợp lệ!");
         } else {
-            // Token đúng -> Chuyển sang trang reset.jsp (Trang nhập pass mới cho Email)
-            // Lưu ý: Nếu mày muốn dùng chung forgot.jsp cho việc nhập pass mới của email thì phải xử lý thêm logic hiện form.
-            // Nhưng để đơn giản, tao khuyên nên tạo 1 file reset.jsp riêng cho trường hợp bấm link mail.
-            // Hoặc chuyển hướng về forgot.jsp kèm attribute để hiện form đổi pass.
 
             request.setAttribute("email", u.getEmail());
             request.setAttribute("showResetForm", true); // Cờ để hiện form (nếu dùng chung JSP)

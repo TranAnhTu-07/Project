@@ -8,6 +8,16 @@ import java.util.List;
 public class ProductService {
     ProductDao pdao = new ProductDao();
 
+    public void publish(int id) {
+        pdao.publish(id);
+    }
+    public void unpublish(int id) {
+        pdao.unpublish(id);
+    }
+    public void update(int id, String name, double price_sale) {
+        pdao.update(id, name, price_sale);
+    }
+
     public List<Product> getListProduct() {
         return pdao.getListProduct();
     }
