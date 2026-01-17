@@ -5,14 +5,17 @@ import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.Batch;
 import org.jdbi.v3.core.statement.PreparedBatch;
 import vn.edu.nlu.fit.projectweb.model.Product;
+import vn.edu.nlu.fit.projectweb.model.Reviews;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProductDao extends BaseDao{
+public class ProductDao extends BaseDao {
     static Map<Integer, Product> data = new HashMap<>();
+
     //    static {
 //        data.put(1,new Product(1,"Máy Ảnh Sony RX1R III | Chính Hãng","https://bizweb.dktcdn.net/100/107/650/products/8783339-sony-rx1riii-16.jpg?v=1752639489140",125500000));
 //        data.put(2,new Product(1,"Máy Ảnh Sony RX1R III | Chính Hãng","https://bizweb.dktcdn.net/100/107/650/products/8783339-sony-rx1riii-16.jpg?v=1752639489140",125500000));
@@ -27,11 +30,13 @@ public class ProductDao extends BaseDao{
 //
 //    }
     public List<Product> getListProduct() {
-        return   get().withHandle(h-> h.createQuery("select * from products").mapToBean(Product.class).list());
+        return get().withHandle(h -> h.createQuery("select * from products").mapToBean(Product.class).list());
     }
+
     public Product getProduct(int id) {
-        return   get().withHandle(h-> h.createQuery("select * from products where ProductID = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
+        return get().withHandle(h -> h.createQuery("select * from products where ProductID = :id").bind("id", id).mapToBean(Product.class).stream().findFirst().orElse(null));
     }
+
     //    public void insert(List<Product> products) {
 //        Jdbi jdbi = get();
 //        jdbi.useHandle(h->{
@@ -51,6 +56,7 @@ public class ProductDao extends BaseDao{
                         .list()
         );
     }
+
     public List<Product> getRandomProducts() {
         return get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ORDER BY RAND() LIMIT 30")
@@ -88,13 +94,14 @@ public class ProductDao extends BaseDao{
                         .list()
         );
     }
+
     //    them sua xoa kho
     public void add(Product p) {
         get().withHandle(h -> h.createUpdate("""
-        insert into products
-        (ProductName, img, categoryId, size, price_sale, price_origin, status)
-        values (:ProductName, :img, :categoryId,, :Brand, :price, :NewPrice, 0)
-    """)
+                            insert into products
+                            (ProductName, img, categoryId, size, price_sale, price_origin, status)
+                            values (:ProductName, :img, :categoryId,, :Brand, :price, :NewPrice, 0)
+                        """)
                 .bind("name", p.getProductName())
                 .bind("img", p.getImg())
                 .bind("category_id", p.getCategoryID())
@@ -103,16 +110,20 @@ public class ProductDao extends BaseDao{
                 .bind("New price", p.getNewPrice())
                 .execute());
     }
+
     public void delete(int id) {
         get().withHandle(h -> h.createUpdate("delete from products where id = :id").bind("id", id).execute()
         );
     }
+
     public void publish(int id) {
         get().withHandle(h -> h.createUpdate("update products set status = 1 where id = :id").bind("id", id).execute());
     }
+
     public void unpublish(int id) {
         get().withHandle(h -> h.createUpdate("update products set status = 0 where id = :id").bind("id", id).execute());
     }
+
     public void update(int id, String name, double price) {
         get().withHandle(h -> h.createUpdate("update products set name = :name, price_sale = :price where id = :id")
                 .bind("id", id).bind("price", price).bind("name", name).execute());
@@ -160,4 +171,34 @@ public class ProductDao extends BaseDao{
         );
     }
 
+    public List<Reviews> getReviewByID(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where product_id=:product_id")
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list());
+    }
+
+    public int totalReview(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where product_id=:product_id")
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list()
+                .size());
+    }
+
+    public int totalReviewByStar(int stars, int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT r.*, u.name, u.img FROM reviews r join users u on u.id = r.user_id where stars=:stars and product_id=:product_id")
+                .bind("stars", stars)
+                .bind("product_id", product_id)
+                .mapToBean(Reviews.class)
+                .list()
+                .size());
+    }
+    public int totalProductSold(int product_id) {
+        return get().withHandle(h -> h.createQuery("SELECT SUM(quantity) AS da_ban FROM order_details WHERE product_id =:product_id")
+                .bind("product_id", product_id)
+                .mapTo(Integer.class)
+                .findOne()
+                .orElse(0));
+    }
 }

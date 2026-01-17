@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/spnoibat.css">
+    <script src="js/search.js"></script>
 
 </head>
 <body>
@@ -36,8 +37,14 @@
             </a>
 
             <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                <button><i class="fas fa-search"></i></button>
+                <form action="search" method="get" id="searchForm">
+                    <input type="text" name="keyword" id="searchInput"
+                           placeholder="Tìm kiếm sản phẩm..."
+                           value="${searchKeyword}"
+                           autocomplete="off">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
+                </form>
             </div>
         </div>
 

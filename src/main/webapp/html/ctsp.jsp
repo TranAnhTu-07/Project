@@ -265,6 +265,46 @@
         </div>
     </div>
 </div>
+<section class="cover-all-feedback">
+    <div class="container-sp">
+        <div class="title-feedback">
+            <p class="title">Đánh giá sản phẩm</p>
+            <p>Xem tất cả ></p>
+        </div>
+        <div class="cover-feedback">
+            <div class="left-feedback">
+                <fmt:formatNumber value="${((star5 * 5) + (star4 * 4) + (star3 * 3) + (star2 * 2) + (star1)) * 1.0 / totalReview }" pattern="#.#"/>
+                <p class="stars">★★★★★</p>
+            </div>
+            <div class="right-feedback">
+                <div class="cover-line">5 <div class="line-feedback star5"></div></div>
+                <div class="cover-line">4 <div class="line-feedback star4"></div></div>
+                <div class="cover-line">3 <div class="line-feedback star3"></div></div>
+                <div class="cover-line">2 <div class="line-feedback star2"></div></div>
+                <div class="cover-line">1 <div class="line-feedback star1"></div></div>
+            </div>
+        </div>
+        <div class="cover-comment">
+            <c:forEach var="h" items="${rw}">
+                <div class="cmt">
+                    <div class="cover-user">
+                        <img src="https://www.svgrepo.com/show/452030/avatar-default.svg" alt="">
+                        <div class="feedback-user">
+                            <span>${h.name}</span>
+                            <div class="cover-feedback-date">
+                                <p class="stars-comment">
+                                    <c:forEach begin="1" end="${h.stars}">★</c:forEach><c:forEach begin="1" end="${5 - h.stars}">☆</c:forEach>
+                                </p>
+                                <span class="date">${h.created_at}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmt-user">${h.content}</div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
 <!--</div>-->
 <footer class="footer">
     <div class="footer-content">

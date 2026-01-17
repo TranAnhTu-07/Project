@@ -2,22 +2,16 @@ package vn.edu.nlu.fit.projectweb.services;
 
 import vn.edu.nlu.fit.projectweb.dao.ProductDao;
 import vn.edu.nlu.fit.projectweb.model.Product;
+import vn.edu.nlu.fit.projectweb.model.Reviews;
 
 import java.util.List;
 
 public class ProductService {
     ProductDao pdao = new ProductDao();
 
-    public void publish(int id) {
-        pdao.publish(id);
+    public Product getProduct(int id) {
+        return pdao.getProduct(id);
     }
-    public void unpublish(int id) {
-        pdao.unpublish(id);
-    }
-    public void update(int id, String name, double price_sale) {
-        pdao.update(id, name, price_sale);
-    }
-
     public List<Product> getListProduct() {
         return pdao.getListProduct();
     }
@@ -38,6 +32,7 @@ public class ProductService {
     public void add(Product p) {
         pdao.add(p);
     }
+
     public void delete(int id) {
         pdao.delete(id);
     }
@@ -56,5 +51,21 @@ public class ProductService {
 
     public List<Product> getSearchSuggestions(String keyword) {
         return pdao.getSearchSuggestions(keyword, 10);
+    }
+
+    public List<Reviews> getReviewByID(int product_id) {
+        return pdao.getReviewByID(product_id);
+    }
+
+    public int totalProductSold(int id) {
+        return pdao.totalProductSold(id);
+    }
+
+
+    public int totalReview(int id) {
+        return pdao.totalReview(id);
+    }
+    public int totalReviewByStar(int stars, int product_id) {
+        return pdao.totalReviewByStar(stars, product_id);
     }
 }

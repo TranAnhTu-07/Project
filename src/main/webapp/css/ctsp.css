@@ -352,6 +352,130 @@ body {
     position: relative;
 }
 
+.cover-feedback-date{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container-sp {
+    max-width: 1200px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.title-feedback {
+    margin:20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-feedback p {
+    font-size: 16px;
+    margin: 0
+}
+.title-feedback .title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cover-feedback {
+    display: flex;
+    margin: 30px 50px;
+}
+.left-feedback {
+    width: 30%;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+}
+.left-feedback p {
+    margin: 0;
+}
+
+.right-feedback {
+    width: 70%;
+}
+
+line-feedback::before {
+    content: "";
+    display: block;
+    height: 6px;
+    background: #219bed;
+    position: absolute;
+    z-index: 1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.line-feedback {
+    height: 6px;
+    width: 100%;
+    background: #ccc;
+    position: relative;
+    border-radius: 5px;
+}
+.cover-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 20px;
+    height: 15px;
+    margin-bottom: 15px;
+}
+
+.feedback-user {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 8px;
+}
+.cover-comment {
+    margin: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.cmt {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding-left: 50px;
+}
+.cmt-user {
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.cover-feedback-date{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.stars-comment {
+    color: #FFD700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.date {
+    color: gray;
+    font-size: 14px;
+}
+
+.cmt-user {
+    margin-top: 8px;
+    font-size: 15px;
+}
+
 .close {
     position: absolute;
     top: 10px;
