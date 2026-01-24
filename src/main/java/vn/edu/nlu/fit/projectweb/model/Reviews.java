@@ -7,6 +7,7 @@ public class Reviews {
     private int userId;
     private int productId;
     private int stars;
+    private String email;
     private String content;
     private LocalDate created_at;
     private String name;
@@ -16,6 +17,7 @@ public class Reviews {
         this.content = content;
         this.id = id;
         this.userId = userId;
+        this.email = email;
         this.stars = stars;
         this.productId = productId;
         this.created_at = created_at;
@@ -56,6 +58,14 @@ public class Reviews {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String setEmail(String email) {
+        return email;
+    }
+
+    public void getEmail(String email) {
+        this.email = email;
     }
 
     public int getStars() {

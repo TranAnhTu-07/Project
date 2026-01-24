@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("auth", user);
                 if (user.getRoleId() == 1) {
-                    response.sendRedirect("html/quanlyuser.jsp");
+                    response.sendRedirect("admin/users");
                 } else {
                     response.sendRedirect("ListProduct");
                 }

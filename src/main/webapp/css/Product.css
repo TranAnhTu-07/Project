@@ -24,6 +24,11 @@
     align-items: center;
     transition: 0.3s ease;
 }
+.brand-item a {
+    display: block; /* Để thẻ a phủ kín cái div cha */
+    width: 100%;
+    height: 100%;
+}
 .brand-item:hover {
     box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
     transform: scale(1.08);

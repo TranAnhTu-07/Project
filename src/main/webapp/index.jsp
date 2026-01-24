@@ -303,27 +303,47 @@
 <main id="main-page-content">
     <div class="container">
         <div class="brand-container">
-            <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/canon.svg" alt="Canon">
+
+            <div class="brand-item"> <a href="ListProduct?brand=Canon"> <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/canon.svg" alt="Canon">
+            </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sony.svg" alt="Sony">
+                <a href="ListProduct?brand=Sony">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sony.svg" alt="Sony">
+                </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/nikon.svg" alt="Nikon">
+                <a href="ListProduct?brand=Nikon">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/nikon.svg" alt="Nikon">
+                </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/fujifilm.svg" alt="Fujifilm">
+                <a href="ListProduct?brand=Fujifilm">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/fujifilm.svg" alt="Fujifilm">
+                </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/olympus.svg" alt="Lumix">
+                <a href="ListProduct?brand=Lumix">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/olympus.svg" alt="Lumix">
+                </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/leica.svg" alt="Leica">
+                <a href="ListProduct?brand=Leica">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/leica.svg" alt="Leica">
+                </a>
             </div>
+
             <div class="brand-item">
-                <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
+                <a href="ListProduct?brand=Sigma">
+                    <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
+                </a>
             </div>
+
         </div>
         <div class="cover-product-item">
             <c:if test="${empty list}">

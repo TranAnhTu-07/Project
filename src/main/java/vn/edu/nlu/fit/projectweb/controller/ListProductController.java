@@ -14,10 +14,17 @@ public class ListProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    ProductService ps = new ProductService();
-    List<Product> list = ps.getRandomProducts();
-    request.setAttribute("list",list);
-    request.getRequestDispatcher("index.jsp").forward(request, response);
+        String brand = request.getParameter("brand");
+        ProductService ps = new ProductService();
+        List<Product> list;
+        if (brand != null && !brand.isEmpty()) {
+            list = ps.getProductsByBrand(brand);
+            request.setAttribute("currentBrand", brand);
+        } else {
+            list = ps.getRandomProducts();
+        }
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     @Override
