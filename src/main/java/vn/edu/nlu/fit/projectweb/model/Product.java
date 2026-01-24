@@ -11,6 +11,7 @@ public class Product implements Serializable {
     private int newPrice;
     private int categoryID;
     private int status;
+    private int stock;
 
     public Product(int productID, String productName, String img, int price, String brand, int newPrice, int categoryID, int status) {
         this.productID = productID;
@@ -53,5 +54,8 @@ public class Product implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
 
 }
