@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -201,16 +200,15 @@
     <section id="submit-review">
         <h2 class="section-title">Gửi Đánh Giá Của Bạn</h2>
         <div class="review-form">
-            <form action="#" method="post">
+            <form action="reviews" method="post">
+
                 <div class="form-group">
-                    <label for="product">Chọn sản phẩm:</label>
-                    <select id="product" name="product" required>
+                    <label for="productId">Chọn sản phẩm:</label>
+                    <select id="productId" name="productId" required>
                         <option value="">-- Chọn máy ảnh --</option>
-                        <option value="canon-eos-r5">Canon EOS R5</option>
-                        <option value="sony-a7-iv">Sony A7 IV</option>
-                        <option value="nikon-z9">Nikon Z9</option>
-                        <option value="fujifilm-x-t4">Fujifilm X-T4</option>
-                        <option value="panasonic-lumix-s5">Panasonic Lumix S5</option>
+                        <c:forEach var="p" items="${products}">
+                            <option value="${p.id}">${p.name}</option>
+                        </c:forEach>
                     </select>
                 </div>
 
@@ -227,7 +225,7 @@
                 <div class="form-group">
                     <label>Đánh giá:</label>
                     <div class="rating-input">
-                        <input type="radio" id="star5" name="rating" value="5">
+                        <input type="radio" id="star5" name="rating" value="5" required>
                         <label for="star5">★</label>
                         <input type="radio" id="star4" name="rating" value="4">
                         <label for="star4">★</label>
@@ -241,55 +239,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="review">Nội dung đánh giá:</label>
-                    <textarea id="review" name="review" placeholder="Chia sẻ trải nghiệm của bạn với sản phẩm này..." required></textarea>
+                    <label for="content">Nội dung đánh giá:</label>
+                    <textarea id="content" name="content"
+                              placeholder="Chia sẻ trải nghiệm của bạn với sản phẩm này..."
+                              required></textarea>
                 </div>
 
                 <button type="submit" class="btn">Gửi Đánh Giá</button>
             </form>
         </div>
     </section>
+
     <section id="reviews" class="reviews">
         <h2 class="section-title">Đánh Giá Gần Đây</h2>
 
-        <div class="review-card">
-            <div class="review-header">
-                <div>
-                    <span class="reviewer-name">Nguyễn Văn A</span>
-                    <div class="review-rating">★★★★★</div>
+        <c:forEach var="r" items="${reviews}">
+            <div class="review-card">
+                <div class="review-header">
+                    <div>
+                        <span class="reviewer-name">${r.name}</span>
+                        <div class="review-rating">
+                            <c:forEach begin="1" end="${r.rating}">★</c:forEach>
+                        </div>
+                    </div>
+                    <span class="review-date">${r.createdAt}</span>
                 </div>
-                <span class="review-date">15/10/2023</span>
-            </div>
-            <div class="review-content">
-                <p>Máy ảnh Canon EOS R5 thực sự xuất sắc. Chất lượng hình ảnh cực kỳ sắc nét, autofocus nhanh và chính xác. Tính năng quay video 8K rất ấn tượng. Đây là khoản đầu tư xứng đáng cho nhiếp ảnh gia chuyên nghiệp.</p>
-            </div>
-        </div>
-
-        <div class="review-card">
-            <div class="review-header">
-                <div>
-                    <span class="reviewer-name">Trần Thị B</span>
-                    <div class="review-rating">★★★★☆</div>
+                <div class="review-content">
+                    <p>${r.content}</p>
                 </div>
-                <span class="review-date">10/10/2023</span>
             </div>
-            <div class="review-content">
-                <p>Sony A7 IV là một máy ảnh tuyệt vời với mức giá hợp lý. Màu sắc chân thực, cảm biến 33MP cho chất lượng hình ảnh xuất sắc. Tuy nhiên, pin hơi nhanh hết khi quay video nhiều.</p>
-            </div>
-        </div>
-
-        <div class="review-card">
-            <div class="review-header">
-                <div>
-                    <span class="reviewer-name">Lê Văn C</span>
-                    <div class="review-rating">★★★★★</div>
-                </div>
-                <span class="review-date">05/10/2023</span>
-            </div>
-            <div class="review-content">
-                <p>Nikon Z9 thực sự là một cỗ máy đáng kinh ngạc. Tốc độ chụp liên tục 20fps, autofocus thông minh và không có màn trập cơ học giúp loại bỏ hoàn toàn rung máy. Chất lượng video 8K cực kỳ ấn tượng.</p>
-            </div>
-        </div>
+        </c:forEach>
     </section>
 </div>
 
