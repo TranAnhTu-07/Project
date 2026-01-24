@@ -74,6 +74,18 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
+    // Hàm lấy sản phẩm theo thương hiệu
+    public List<Product> getProductsByBrand(String brandName) {
+        return get().withHandle(handle -> {
+            // Cột Brand của m viết hoa chữ B, nhớ chú ý
+            String sql = "SELECT * FROM products WHERE Brand = :brandName";
+
+            return handle.createQuery(sql)
+                    .bind("brandName", brandName)
+                    .mapToBean(Product.class)
+                    .list();
+        });
+    }
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();

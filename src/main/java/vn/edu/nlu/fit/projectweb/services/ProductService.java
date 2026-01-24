@@ -68,4 +68,10 @@ public class ProductService {
     public int totalReviewByStar(int stars, int product_id) {
         return pdao.totalReviewByStar(stars, product_id);
     }
+
+    // Hàm gọi DAO để lấy danh sách theo hãng
+    public List<Product> getProductsByBrand(String brandName) {
+        // Nhớ là bên ProductDao m phải có hàm này rồi nha
+        return pdao.getProductsByBrand(brandName);
+    }
 }
