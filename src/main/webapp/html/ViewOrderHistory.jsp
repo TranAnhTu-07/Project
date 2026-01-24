@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -229,112 +230,36 @@
 
     <div class="content">
         <div class="card">
-            <div class="card-icon">
-                <h2 class="card-title"><i class="fas fa-history"></i> Lịch Sử Đặt Hàng</h2>
-                <a href="/Project/Order%20status/OrderStatus.html">
-                    <h2 class="card-title"><i class="fas fa-car"></i>Theo Dõi Đơn Hàng</h2>
-                </a>
-            </div>
-            <div class="order-item">
-                <div class="order-header">
-                    <div class="order-id">Đơn hàng #DH20230515001</div>
-                    <div class="order-date">15/05/2023</div>
-                    <div class="order-status status-delivered">Đã giao hàng</div>
-                </div>
-                <div class="order-details">
-                    <div class="order-products">
-                        <div class="product-item">
-                            <div class="product-img">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">Máy ảnh NIKON</div>
-                                <div class="product-price">15.990.000 ₫</div>
-                            </div>
-                            <div class="product-quantity">x1</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-img">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">Máy ảnh FUJIFLIM</div>
-                                <div class="product-price">5.290.000 ₫</div>
-                            </div>
-                            <div class="product-quantity">x1</div>
-                        </div>
-                    </div>
-                    <div class="order-total">Tổng cộng: 21.280.000 ₫</div>
-                </div>
-                <div class="actions">
-                    <a href="#" class="btn"><i class="fas fa-redo"></i> Đặt Lại</a>
-                    <a href="#" class="btn btn-outline"><i class="fas fa-info-circle"></i> Chi Tiết</a>
-                </div>
-            </div>
+            <h2><i class="fas fa-history"></i> Lịch Sử Đặt Hàng</h2>
 
-            <div class="order-item">
-                <div class="order-header">
-                    <div class="order-id">Đơn hàng #DH20230428002</div>
-                    <div class="order-date">28/04/2023</div>
-                    <div class="order-status status-delivered">Đã giao hàng</div>
-                </div>
-                <div class="order-details">
-                    <div class="order-products">
-                        <div class="product-item">
-                            <div class="product-img">
-                                <i class="fas fa-headphones"></i>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">Ống kính SONY</div>
-                                <div class="product-price">250.000 ₫</div>
-                            </div>
-                            <div class="product-quantity">x2</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-img">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">Máy ảnh CANON</div>
-                                <div class="product-price">2.850.000 ₫</div>
-                            </div>
-                            <div class="product-quantity">x1</div>
-                        </div>
-                    </div>
-                    <div class="order-total">Tổng cộng: 3.350.000 ₫</div>
-                </div>
-                <div class="actions">
-                    <a href="#" class="btn"><i class="fas fa-redo"></i> Đặt Lại</a>
-                    <a href="#" class="btn btn-outline"><i class="fas fa-info-circle"></i> Chi Tiết</a>
-                </div>
-            </div>
+            <c:forEach var="o" items="${orders}">
+                <div class="order-item">
 
-            <div class="order-item">
-                <div class="order-header">
-                    <div class="order-id">Đơn hàng #DH20230310003</div>
-                    <div class="order-date">10/03/2023</div>
-                    <div class="order-status status-cancelled">Đã hủy</div>
-                </div>
-                <div class="order-details">
-                    <div class="order-products">
-                        <div class="product-item">
-                            <div class="product-img">
-                                <i class="fas fa-camera"></i>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-name">Máy ảnh SONY</div>
-                                <div class="product-price">32.990.000 ₫</div>
-                            </div>
-                            <div class="product-quantity">x1</div>
+                    <div class="order-header">
+                        <div class="order-id">Đơn hàng #${o.orderCode}</div>
+                        <div class="order-date">${o.orderDate}</div>
+                        <div class="order-status ${o.status == 'Delivered' ? 'status-delivered' : 'status-cancelled'}">
+                                ${o.status}
                         </div>
                     </div>
-                    <div class="order-total">Tổng cộng: 32.990.000 ₫</div>
+
+                    <div class="order-details">
+                        <c:forEach var="d" items="${o.orderDetails}">
+                            <div class="product-item">
+                                <div class="product-name">${d.productName}</div>
+                                <div class="product-price">${d.price} ₫</div>
+                                <div class="product-quantity">x${d.quantity}</div>
+                            </div>
+                        </c:forEach>
+
+                        <div class="order-total">
+                            Tổng cộng: ${o.totalAmount} ₫
+                        </div>
+                    </div>
+
                 </div>
-                <div class="actions">
-                    <a href="#" class="btn"><i class="fas fa-redo"></i> Đặt Lại</a>
-                    <a href="#" class="btn btn-outline"><i class="fas fa-info-circle"></i> Chi Tiết</a>
-                </div>
-            </div>
+            </c:forEach>
+
         </div>
     </div>
 </div>
