@@ -2,7 +2,7 @@ package vn.edu.nlu.fit.projectweb.dao;
 
 import vn.edu.nlu.fit.projectweb.model.User;
 
-public class UserDao extends BaseDao{
+public class UserDao extends BaseDao {
     // 1. Kiểm tra Email tồn tại
     public boolean checkEmailExist(String email) {
         return get().withHandle(h ->
@@ -94,4 +94,55 @@ public class UserDao extends BaseDao{
                         .execute()
         );
     }
+
+    // 10. Lấy danh sách tất cả User (Dành cho trang Admin Quản lý User)
+    public java.util.List<User> getAllUsers() {
+        return get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM users")
+                    .map((rs, ctx) -> {
+                        // Map thủ công cho chắc ăn, khớp 100% với cái hình DB m gửi
+                        User u = new User();
+                        u.setUserId(rs.getInt("user_id"));           // Cột DB là user_id
+                        u.setFullName(rs.getString("full_name")); // Cột DB là full_name
+                        u.setEmail(rs.getString("email"));
+                        u.setPhone(rs.getString("phone"));
+                        u.setRoleId(rs.getInt("role_id"));       // Cột DB là role_id
+                        u.setStatus(rs.getInt("status"));
+                        // M có thể map thêm password hoặc created_at nếu cần, nhưng hiển thị thì k cần pass
+
+                        return u;
+                    }).list();
+        });
+    }
+
+    //11
+    public void updateStatus(int userId, int status) {
+        get().useHandle(handle ->
+                handle.createUpdate("UPDATE users SET status = :status WHERE user_id = :id")
+                        .bind("status", status)
+                        .bind("id", userId)
+                        .execute()
+        );
+    }
+
+    //12
+    public java.util.List<User> searchUsers(String keyword) {
+        return get().withHandle(handle -> {
+            String sql = "SELECT * FROM users WHERE full_name LIKE :key OR email LIKE :key OR phone LIKE :key";
+
+            return handle.createQuery(sql)
+                    .bind("key", "%" + keyword + "%")
+                    .map((rs, ctx) -> {
+                        vn.edu.nlu.fit.projectweb.model.User u = new vn.edu.nlu.fit.projectweb.model.User();
+                        u.setUserId(rs.getInt("user_id"));
+                        u.setFullName(rs.getString("full_name"));
+                        u.setEmail(rs.getString("email"));
+                        u.setPhone(rs.getString("phone"));
+                        u.setRoleId(rs.getInt("role_id"));
+                        u.setStatus(rs.getInt("status"));
+                        return u;
+                    }).list();
+        });
+    }
 }
+

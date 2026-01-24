@@ -1,5 +1,7 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +18,7 @@
     </div>
     <div class="menu">
 
-        <a href="/Project/Quan%20Ly%20User/quanlyuser.html" class="menu-item active">
+        <a href="${pageContext.request.contextPath}/admin/users" class="menu-item active">
             <span>Quản Lý User</span>
         </a>
         <a href="/Project/ThongKeDoanhThu/doanhthu.html" class="menu-item">
@@ -31,7 +33,7 @@
         <a href="/Project/Order%20management/OrderManagement.html" class="menu-item">
             <span>Quản Lý Đơn Hàng</span>
         </a>
-        <a href="/Project/index.html" class="menu-item">
+        <a href="${pageContext.request.contextPath}/ListProduct" class="menu-item">
             <span>Đăng Xuất</span>
         </a>
     </div>
@@ -41,26 +43,44 @@
 <div class="main-content">
     <div class="stats">
         <div class="stat-card">
-            <h3>1,254</h3>
+            <h3>${totalUsers}</h3>
             <p>Tổng số người dùng</p>
         </div>
         <div class="stat-card">
-            <h3>1,120</h3>
+            <h3>${activeUsers}</h3>
             <p>Đang hoạt động</p>
         </div>
         <div class="stat-card">
-            <h3>134</h3>
+            <h3>${lockedUsers}</h3>
             <p>Bị khóa</p>
         </div>
     </div>
 
     <div class="controls">
         <div class="search-filter-group">
-            <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm người dùng theo tên / email / id">
-            </div>
-            <button class="filter-btn">Bộ lọc</button>
+            <form action="users" method="get" style="display: flex; align-items: center; gap: 10px;">
+
+                <div class="search-box" style="position: relative; display: flex; align-items: center;">
+                    <input type="text" name="search" value="${param.search}"
+                           placeholder="Tìm theo tên, email..."
+                           style="padding-right: 30px; width: 300px;">
+
+                    <c:if test="${not empty param.search}">
+                        <a href="users"
+                           title="Xóa tìm kiếm"
+                           style="position: absolute; right: 10px; color: #888; text-decoration: none; font-weight: bold; cursor: pointer;">
+                            ✕
+                        </a>
+                    </c:if>
+                </div>
+
+                <button type="submit" class="filter-btn">
+                    Tìm kiếm
+                </button>
+
+            </form>
         </div>
+
         <button class="btn-add">Thêm người dùng</button>
     </div>
 
@@ -80,109 +100,49 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
+            <c:forEach items="${listUsers}" var="u">
+                <tr> <td>
                     <div class="user-cell">
-                        <span class="user-name">Lê Văn A</span>
-                        <span class="user-id">ID: #001</span>
+                        <span class="user-name">${u.fullName}</span>
+                        <span class="user-id">ID: #${u.userId}</span>
                     </div>
                 </td>
-                <td>levan@example.com</td>
-                <td><span class="badge badge-admin">Admin</span></td>
-                <td class="status-active">Hoạt động</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link edit">Xem</a>
-                        <a href="#" class="action-link edit">Sửa</a>
-                        <a href="#" class="action-link lock">Khóa</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <span class="user-name">Huỳnh Văn B</span>
-                        <span class="user-id">ID: #002</span>
-                    </div>
-                </td>
-                <td>vanb@mail.com</td>
-                <td><span class="badge badge-customer">Khách hàng</span></td>
-                <td class="status-active">Hoạt động</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link edit">Xem</a>
-                        <a href="#" class="action-link edit">Sửa</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <span class="user-name">Phạm Văn C</span>
-                        <span class="user-id">ID: #003</span>
-                    </div>
-                </td>
-                <td>phamc@gmail.com</td>
-                <td><span class="badge badge-customer">Khách hàng</span></td>
-                <td class="status-locked">Bị khóa</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link unlock">Mở khóa</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <span class="user-name">Nguyễn Anh D</span>
-                        <span class="user-id">ID: #004</span>
-                    </div>
-                </td>
-                <td>anhd@mail.com</td>
-                <td><span class="badge badge-customer">Khách hàng</span></td>
-                <td class="status-active">Hoạt động</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link edit">Xem</a>
-                        <a href="#" class="action-link edit">Sửa</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <span class="user-name">Trần Thị E</span>
-                        <span class="user-id">ID: #005</span>
-                    </div>
-                </td>
-                <td>tran.thie@email.com</td>
-                <td><span class="badge badge-customer">Khách hàng</span></td>
-                <td class="status-active">Hoạt động</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link edit">Xem</a>
-                        <a href="#" class="action-link edit">Sửa</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <span class="user-name">Hoàng Văn F</span>
-                        <span class="user-id">ID: #006</span>
-                    </div>
-                </td>
-                <td>hoang.vanf@mail.com</td>
-                <td><span class="badge badge-admin">Admin</span></td>
-                <td class="status-active">Hoạt động</td>
-                <td>
-                    <div class="table-actions">
-                        <a href="#" class="action-link edit">Xem</a>
-                        <a href="#" class="action-link edit">Sửa</a>
-                        <a href="#" class="action-link lock">Khóa</a>
-                    </div>
-                </td>
-            </tr>
+
+                    <td>${u.email}</td>
+
+                    <td>
+                        <c:if test="${u.roleId == 1}"><span class="badge badge-admin">Admin</span></c:if>
+                        <c:if test="${u.roleId != 1}"><span class="badge badge-customer">Khách hàng</span></c:if>
+                    </td>
+
+                    <td>
+                        <c:if test="${u.status == 1}"><span style="color: green; font-weight: bold;">Hoạt động</span></c:if>
+                        <c:if test="${u.status == 0}"><span style="color: red; font-weight: bold;">Bị khóa</span></c:if>
+                    </td>
+
+                    <td>
+                        <div class="table-actions">
+                            <c:if test="${u.status == 1}">
+                                <a href="users-status?id=${u.userId}&status=0"
+                                   class="action-link lock"
+                                   style="color: red; font-weight: bold;"
+                                   onclick="return confirm('Bạn có chắc muốn khóa tài khoản này không?')">
+                                    Khóa
+                                </a>
+                            </c:if>
+
+                            <c:if test="${u.status == 0}">
+                                <a href="users-status?id=${u.userId}&status=1"
+                                   class="action-link unlock"
+                                   style="color: green; font-weight: bold;"
+                                   onclick="return confirm('Mở khóa cho tài khoản này nhé?')">
+                                    Mở khóa
+                                </a>
+                            </c:if>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
