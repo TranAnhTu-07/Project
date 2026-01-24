@@ -71,5 +71,7 @@ public class Cart implements Serializable {
     public boolean isValidQuantity(Product product, int quantity) {
         return quantity <= product.getStock(); // ví dụ
     }
+
+
 }
 
