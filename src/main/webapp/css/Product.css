@@ -93,3 +93,46 @@
 a {
     text-decoration : none ;
 }
+/* ================= CART BUTTON IN PRODUCT CARD ================= */
+
+
+/* ================= CART BUTTON IN PRODUCT CARD ================= */
+
+.product-card-item {
+    position: relative;
+}
+
+/* Wrapper nút */
+.cart-mini-wrapper {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+}
+
+/* Nút giỏ hàng nhỏ */
+.cart-mini-wrapper .btn-cart-mini {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    background: #ff5722;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover */
+.cart-mini-wrapper .btn-cart-mini:hover {
+    background: #e64a19;
+    transform: scale(1.1);
+}
+

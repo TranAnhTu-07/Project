@@ -9,173 +9,207 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html>
-<head>
   <meta charset="UTF-8">
   <title>Nikon</title>
-  <link rel="stylesheet" href="css/Product.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/Product.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-<body>
-<header class="header">
-  <div class="header-top">
-    <div class="logo-search">
-      <a href="ListProduct" class="logo">
-        <div class="logo-icon">📷</div>
-        <div class="logo-text">
-          <div class="logo-main">GROUP11</div>
-          <div class="logo-sub">Shop máy ảnh uy tín nhất Việt Nam</div>
-        </div>
-      </a>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/spnoibat.css">
+  <script src="js/search.js"></script>
+  <!--headaer-->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo-search">
+        <a href="ListProduct" class="logo">
+          <div class="logo-icon">📷</div>
+          <div class="logo-text">
+            <div class="logo-main">GROUP11</div>
+            <div class="logo-sub">Shop máy ảnh uy tín nhất Việt Nam</div>
+          </div>
+        </a>
 
-      <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm sản phẩm...">
-        <button><i class="fas fa-search"></i></button>
+        <div class="search-box">
+          <form action="search" method="get" id="searchForm">
+            <input type="text" name="keyword" id="searchInput"
+                   placeholder="Tìm kiếm sản phẩm..."
+                   value="${searchKeyword}"
+                   autocomplete="off">
+            <button type="submit"><i class="fas fa-search"></i></button>
+            <div id="searchSuggestions" class="search-suggestions"></div>
+          </form>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="hotline">
+          <div class="hotline-label">HOTLINE: 0903.148-222</div>
+          <div class="header-links">
+            <a href="#">MUA HÀNG</a> -
+            <a href="#">TRẢ GÓP</a> -
+            <a href="#">BẢO HÀNH</a>
+          </div>
+        </div>
+        <a href="${pageContext.request.contextPath}/html/login.jsp">
+          <div class="user-icon">
+            <i class="fas fa-key"></i>
+          </div>
+        </a>
+        <a href="/Project/View%20order%20history/ViewOrderHistory.html">
+          <div class="user-icon">
+            <i class="fas fa-key"></i>
+          </div>
+        </a>
+        <a href="/Project/View%20order%20history/ViewOrderHistory.jsp">
+          <div class="user-icon">
+            <i class="fas fa-user"></i>
+          </div>
+        </a>
+        <a href="${pageContext.request.contextPath}/ShoppingCart" class="cart-header">
+          <div class="logo-icon">
+            🛒
+            <span class="cart-count">
+              ${sessionScope.cart == null ? 0 : sessionScope.cart.totalQuantity}
+            </span>
+          </div>
+        </a>
+
       </div>
     </div>
 
-    <div class="header-right">
-      <div class="hotline">
-        <div class="hotline-label">HOTLINE: 0903.148-222</div>
-        <div class="header-links">
-          <a href="#">MUA HÀNG</a> -
-          <a href="#">TRẢ GÓP</a> -
-          <a href="#">BẢO HÀNH</a>
+
+  </header>
+  <nav class="nav-menu">
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>MÁY ẢNH CANON</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="CanonDSLR" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
+            <li><a href="CanonCompact" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
+            <li><a href="CanonMirrorless" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
+            <li><a href="/Project/Product/canon-ongkinh.html" class="nav-item" >ỐNG KÍNH CANON</a></li>
+          </ul>
         </div>
-      </div>
-      <a href="/Project/Login/login.html">
-        <div class="user-icon">
-          <i class="fas fa-user"></i>
+      </li>
+    </ul>
+
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>MÁY ẢNH SONY</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="SonyCompact" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
+            <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
+            <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
+          </ul>
         </div>
-      </a>
-    </div>
-  </div>
+      </li>
+    </ul>
 
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>MÁY ẢNH NIKON</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="Nikon?cid=14" class="nav-item">MÁY ẢNH NIKON COMPACT</a></li>
+            <li><a href="Nikon?cid=15" class="nav-item">MÁY ẢNH NIKON MIRRORLESS</a></li>
+            <li><a href="/Project/Product/nikon-ongkinh.html" class="nav-item">ỐNG KÍNH NIKON</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
 
-</header>
-<nav class="nav-menu">
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-camera"></i>
-        <span>MÁY ẢNH CANON</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="/Project/Product/canon-dslr.html" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
-          <li><a href="/Project/Product/canon-compact.html" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
-          <li><a href="/Project/Product/canon-mirrorless.html" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
-          <li><a href="/Project/Product/canon-ongkinh.html" class="nav-item" >ỐNG KÍNH CANON</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>MÁY ẢNH FUJIFILM</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="Fujifilm?cid=16" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
+            <li><a href="Fujifilm?cid=17" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
+            <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
 
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-camera"></i>
-        <span>MÁY ẢNH SONY</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="/Project/Product/sony-compact.html" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
-          <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
-          <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>MÁY ẢNH HÃNG KHÁC</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="#" class="nav-item">MÁY ẢNH LUMIX</a></li>
+            <li><a href="#" class="nav-item">MÁY ẢNH LEICA</a></li>
+            <li><a href="#" class="nav-item">MÁY ẢNH SIGMA</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
 
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-camera"></i>
-        <span>MÁY ẢNH NIKON</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="/Project/Product/nikon-compact.html" class="nav-item">MÁY ẢNH NIKON COMPACT</a></li>
-          <li><a href="/Project/Product/nikon-mirrorless.html" class="nav-item">MÁY ẢNH NIKON MIRRORLESS</a></li>
-          <li><a href="/Project/Product/nikon-ongkinh.html" class="nav-item">ỐNG KÍNH NIKON</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-glasses"></i>
+          <span>ỐNG KÍNH</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="OngKinh?cid=21" class="nav-item">ỐNG KÍNH CANON</a></li>
+            <li><a href="OnhKinh?cid=22" class="nav-item">ỐNG KÍNH SONY</a></li>
+            <li><a href="OnhKinh?cid=23" class="nav-item">ỐNG KÍNH NIKON</a></li>
+            <li><a href="OnhKinh?cid=24" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
+            <li><a href="OnhKinh?cid=25" class="nav-item">ỐNG KÍNH LUMIX</a></li>
+            <li><a href="OnhKinh?cid=26" class="nav-item">ỐNG KÍNH LEICA</a></li>
+            <li><a href="OnhKinh?cid=27" class="nav-item">ỐNG KÍNH SIGMA</a></li>
 
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-camera"></i>
-        <span>MÁY ẢNH FUJIFILM</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
-          <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+          </ul>
+        </div>
+      </li>
+    </ul>
 
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-camera"></i>
-        <span>MÁY ẢNH HÃNG KHÁC</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="#" class="nav-item">MÁY ẢNH LUMIX</a></li>
-          <li><a href="#" class="nav-item">MÁY ẢNH LEICA</a></li>
-          <li><a href="#" class="nav-item">MÁY ẢNH SIGMA</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-glasses"></i>
-        <span>ỐNG KÍNH</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="#" class="nav-item">ỐNG KÍNH CANON</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH SONY</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH NIKON</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH LUMIX</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH LEICA</a></li>
-          <li><a href="#" class="nav-item">ỐNG KÍNH DIGMA</a></li>
-
-        </ul>
-      </div>
-    </li>
-  </ul>
-
-  <ul>
-    <li class="sub">
-      <a href="#" class="sub-item">
-        <i class="fas fa-headphones"></i>
-        <span>PHỤ KIỆN MÁY ẢNH</span>
-      </a>
-      <div class="null">
-        <ul class="sub-menu">
-          <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-          <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
-          <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-          <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
-          <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
-          <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</nav>
+    <ul>
+      <li class="sub">
+        <a href="#" class="sub-item">
+          <i class="fas fa-headphones"></i>
+          <span>PHỤ KIỆN MÁY ẢNH</span>
+        </a>
+        <div class="null">
+          <ul class="sub-menu">
+            <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
+            <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
+            <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
+            <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
+            <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
+            <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <ul>
+      <li class="sub">
+        <a href="/Project/Quan%20Ly%20User/quanlyuser.html" class="sub-item">
+          <i class="fas fa-camera"></i>
+          <span>QUẢN LÝ USER</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 <main id="main-page-content">
   <div class="container">
     <div class="brand-container">
@@ -208,6 +242,7 @@
     <div class="cover-product-item">
       <c:forEach items="${listNikon}" var="p">
         <div class="product-card-item">
+
           <img src="${p.img}" class="product-img" alt="${p.productName}">
 
           <h3 class="product-name">${p.productName}</h3>
@@ -215,8 +250,22 @@
           <p class="product-price">
             <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/>₫
           </p>
+
+          <!-- GIỎ HÀNG -->
+          <div class="cart-mini-wrapper">
+            <a
+                    href="${pageContext.request.contextPath}/add-to-cart?productId=${p.productID}&quantity=1"
+                    class="btn-cart-mini"
+                    title="Thêm vào giỏ"
+            >
+              <i class="fas fa-cart-plus"></i>
+            </a>
+          </div>
+
+
         </div>
       </c:forEach>
+
     </div>
   </div>
 </main>
