@@ -63,4 +63,24 @@ public class OrderDao {
         }
         return details;
     }
+
+    public Order getOrderById(int orderId) throws Exception {
+        String sql = "SELECT * FROM orders WHERE id = ?";
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, orderId);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            Order o = new Order();
+            o.setOrderId(rs.getInt("id"));
+            o.setOrderCode(rs.getString("order_code"));
+            o.setOrderDate(rs.getDate("order_date"));
+            o.setStatus(rs.getString("status"));
+            o.setExpectedDelivery(rs.getDate("expected_delivery"));
+            return o;
+        }
+        return null;
+    }
+
 }

@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -195,123 +198,124 @@
         <p>Cập nhật trạng thái đơn hàng của bạn</p>
     </div>
 
+<%--    Thông tin đơn hàng--%>
+
     <div class="order">
         <div class="content">
             <div class="order-info">
                 <div class="order-info-grid">
                     <div class="info-item">
                         <div class="info-label">Mã Đơn Hàng</div>
-                        <div class="info-value">#DH123456789</div>
+                        <div class="info-value">#${order.orderCode}</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Ngày Đặt Hàng</div>
-                        <div class="info-value">10/11/2025</div>
+                        <div class="info-value">${order.orderDate}</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Trạng Thái</div>
                         <div class="info-value">
-                            <span class="badge badge-info">Đang Giao Hàng</span>
+                            <span class="badge badge-info">${order.status}</span>
+<%--                            <span class="badge ${order.status == 'Đang Giao Hàng' ? 'badge-warning' : 'badge-success'}">--%>
+<%--                                ${order.status}--%>
+<%--                            </span>--%>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Dự Kiến Giao</div>
-                        <div class="info-value">13/11/2025</div>
+                        <div class="info-value">${order.expectedDelivery}</div>
                     </div>
                 </div>
             </div>
+
+<%--            Danh sách sản phẩm--%>
+
             <div class="products">
                 <h3 class="products-title">Sản Phẩm Trong Đơn Hàng</h3>
 
-                <div class="product-item">
-                    <div class="product-info">
-                        <div class="product-name">Fujifilm X-E5</div>
-                        <div class="product-details">Màu: Trắng | Số lượng: 2</div>
-                    </div>
-                    <div class="product-price">58.190.000đ</div>
-                </div>
+<%--                tính tổng tiền--%>
+                <c:set var="total" value="0" />
+                <c:forEach var="item" items="${items}">
+                    <c:set var="total" value="${total + item.price * item.quantity}" />
+                </c:forEach>
 
-                <div class="product-item">
-                    <div class="product-info">
-                        <div class="product-name">Nikon ZR 6K Cinema Camera</div>
-                        <div class="product-details">Màu: Xanh đen | Số lượng: 1</div>
+<%--                hiển thị danh sách--%>
+                <c:forEach var="item" items="${items}">
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div class="product-name">${item.productName}</div>
+<%--                            <img src="${item.image}" width="60">--%>
+                            <div class="product-details">
+                                Màu: ${item.color} | Số lượng: ${item.quantity}
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <fmt:formatNumber value="${item.price * item.quantity}" type="number" groupingUsed="true"/>đ
+                        </div>
                     </div>
-                    <div class="product-price">5.879.000đ</div>
-                </div>
+                </c:forEach>
 
-                <div class="product-item">
-                    <div class="product-info">
-                        <div class="product-name">Sony Alpha A7 IV</div>
-                        <div class="product-details">Màu: Đen | Số lượng: 1</div>
-                    </div>
-                    <div class="product-price">5.299.000đ</div>
-                </div>
-
+<%--                tổng tiền--%>
                 <div class="total">
                     <div class="total-label">Tổng Thanh Toán:</div>
-                    <div class="total-amount">16.997.000₫</div>
+                    <div class="total-amount">
+                        <fmt:formatNumber value="${total}" type="number" groupingUsed="true"/>₫
+                    </div>
                 </div>
+
             </div>
         </div>
+
+<%--        Timeline trạng thái--%>
+
         <div class="status-timeline">
             <h2 class="timeline-title">Tiến Trình Đơn Hàng</h2>
+
             <div class="timeline">
-                <div class="timeline-item completed">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-status">✓ Đơn Hàng Đã Đặt</div>
-                        <div class="timeline-date">10/11/2025 - 09:30</div>
-                        <div class="timeline-description">
-                            Đơn hàng của bạn đã được đặt thành công và đang chờ xác nhận từ người bán.
-                        </div>
-                    </div>
-                </div>
+                <c:forEach var="st" items="${statuses}" varStatus="loop">
 
-                <div class="timeline-item completed">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-status">✓ Đã Xác Nhận</div>
-                        <div class="timeline-date">10/11/2025 - 14:15</div>
-                        <div class="timeline-description">
-                            Người bán đã xác nhận đơn hàng và bắt đầu chuẩn bị sản phẩm.
-                        </div>
-                    </div>
-                </div>
+                    <!-- Mặc định: completed -->
+                    <c:set var="itemClass" value="timeline-item completed"/>
 
-                <div class="timeline-item completed">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-status">✓ Đã Đóng Gói</div>
-                        <div class="timeline-date">11/11/2025 - 10:00</div>
-                        <div class="timeline-description">
-                            Sản phẩm đã được đóng gói cẩn thận và sẵn sàng để vận chuyển.
-                        </div>
-                    </div>
-                </div>
+                    <!-- Nếu là trạng thái cuối cùng -->
+                    <c:if test="${loop.last}">
+                        <c:set var="itemClass" value="timeline-item active"/>
+                    </c:if>
 
-                <div class="timeline-item active">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-status">🚚 Đang Giao Hàng</div>
-                        <div class="timeline-date">11/11/2025 - 16:45</div>
-                        <div class="timeline-description">
-                            Đơn hàng đang trên đường giao đến địa chỉ của bạn. Shipper sẽ liên hệ trước khi giao.
-                        </div>
-                    </div>
-                </div>
+                    <div class="${itemClass}">
+                        <div class="timeline-dot"></div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-status">Giao Hàng Thành Công</div>
-                        <div class="timeline-date">Dự kiến: 13/11/2025</div>
-                        <div class="timeline-description">
-                            Đơn hàng sẽ được giao đến tay bạn trong thời gian sớm nhất.
+                        <div class="timeline-content">
+
+                            <!-- ICON + TRẠNG THÁI -->
+                            <div class="timeline-status">
+                                <c:choose>
+                                    <c:when test="${st.status == 'Đang Giao Hàng'}">🚚</c:when>
+                                    <c:when test="${st.status == 'Giao Hàng Thành Công'}">✅</c:when>
+                                    <c:otherwise>✓</c:otherwise>
+                                </c:choose>
+                                    ${st.status}
+                            </div>
+
+                            <!-- THỜI GIAN -->
+                            <div class="timeline-date">
+                                <fmt:formatDate value="${st.statusTime}" pattern="dd/MM/yyyy - HH:mm"/>
+                            </div>
+
+                            <!-- MÔ TẢ -->
+                            <div class="timeline-description">
+                                    ${st.description}
+                            </div>
+
                         </div>
                     </div>
-                </div>
+
+                </c:forEach>
             </div>
         </div>
+
     </div>
+</div>
     <!--footer-->
     <footer class="footer">
         <div class="footer-content">
