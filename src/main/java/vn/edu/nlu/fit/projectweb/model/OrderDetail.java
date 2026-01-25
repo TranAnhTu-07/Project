@@ -5,6 +5,7 @@ public class OrderDetail {
     private String productName;
     private double price;
     private int quantity;
+    private String color;
 
     // getter & setter
     public int getId() { return id; }
@@ -22,4 +23,7 @@ public class OrderDetail {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public String getColor() {return color; }
+    public void setColor(String color) {this.color = color; }
 }

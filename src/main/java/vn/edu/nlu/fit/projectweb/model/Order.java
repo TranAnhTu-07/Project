@@ -9,6 +9,7 @@ public class Order {
     private Date orderDate;
     private String status;
     private double totalAmount;
+    private Date expectedDelivery;
 
     private List<OrderDetail> orderDetails;
 
@@ -24,6 +25,9 @@ public class Order {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public Date getExpectedDelivery(){return expectedDelivery; }
+    public void setExpectedDelivery(Date expectedDelivery) {this.expectedDelivery = expectedDelivery; }
 
     public double getTotalAmount() { return totalAmount; }
     public void setTotalAmount(double totalAmount) { this.totalAmount = totalAmount; }
