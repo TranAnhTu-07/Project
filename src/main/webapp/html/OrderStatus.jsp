@@ -200,30 +200,30 @@
 
 <%--    Thông tin đơn hàng--%>
 
-    <div class="order">
+    <div class="orders">
         <div class="content">
-            <div class="order-info">
-                <div class="order-info-grid">
+            <div class="orders-info">
+                <div class="orders-info-grid">
                     <div class="info-item">
                         <div class="info-label">Mã Đơn Hàng</div>
-                        <div class="info-value">#${order.orderCode}</div>
+                        <div class="info-value">#${orders.orderCode}</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Ngày Đặt Hàng</div>
-                        <div class="info-value">${order.orderDate}</div>
+                        <div class="info-value">${orders.orderDate}</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Trạng Thái</div>
                         <div class="info-value">
-                            <span class="badge badge-info">${order.status}</span>
-<%--                            <span class="badge ${order.status == 'Đang Giao Hàng' ? 'badge-warning' : 'badge-success'}">--%>
-<%--                                ${order.status}--%>
+                            <span class="badge badge-info">${orders.status}</span>
+<%--                            <span class="badge ${orders.status == 'Đang Giao Hàng' ? 'badge-warning' : 'badge-success'}">--%>
+<%--                                ${orders.status}--%>
 <%--                            </span>--%>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Dự Kiến Giao</div>
-                        <div class="info-value">${order.expectedDelivery}</div>
+                        <div class="info-value">${orders.expectedDelivery}</div>
                     </div>
                 </div>
             </div>

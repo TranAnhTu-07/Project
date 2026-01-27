@@ -233,17 +233,17 @@
             <h2><i class="fas fa-history"></i> Lịch Sử Đặt Hàng</h2>
 
             <c:forEach var="o" items="${orders}">
-                <div class="order-item">
+                <div class="orders-item">
 
-                    <div class="order-header">
-                        <div class="order-id">Đơn hàng #${o.orderCode}</div>
-                        <div class="order-date">${o.orderDate}</div>
-                        <div class="order-status ${o.status == 'Delivered' ? 'status-delivered' : 'status-cancelled'}">
+                    <div class="orders-header">
+                        <div class="orders-id">Đơn hàng #${o.orderCode}</div>
+                        <div class="orders-date">${o.orderDate}</div>
+                        <div class="orders-status ${o.status == 'Delivered' ? 'status-delivered' : 'status-cancelled'}">
                                 ${o.status}
                         </div>
                     </div>
 
-                    <div class="order-details">
+                    <div class="orders-details">
                         <c:forEach var="d" items="${o.orderDetails}">
                             <div class="product-item">
                                 <div class="product-name">${d.productName}</div>
@@ -252,7 +252,7 @@
                             </div>
                         </c:forEach>
 
-                        <div class="order-total">
+                        <div class="orders-total">
                             Tổng cộng: ${o.totalAmount} ₫
                         </div>
                     </div>

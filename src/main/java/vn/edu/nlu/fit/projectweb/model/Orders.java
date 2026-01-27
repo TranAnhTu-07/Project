@@ -3,9 +3,8 @@ package vn.edu.nlu.fit.projectweb.model;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+public class Orders {
     private int orderId;
-    private String orderCode;
     private Date orderDate;
     private String status;
     private double totalAmount;
@@ -13,12 +12,11 @@ public class Order {
 
     private List<OrderDetail> orderDetails;
 
+    public Orders() {}
+
     // getter & setter
     public int getOrderId() { return orderId; }
     public void setOrderId(int orderId) { this.orderId = orderId; }
-
-    public String getOrderCode() { return orderCode; }
-    public void setOrderCode(String orderCode) { this.orderCode = orderCode; }
 
     public Date getOrderDate() { return orderDate; }
     public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }

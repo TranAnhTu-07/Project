@@ -225,7 +225,7 @@
                         phân giải cao 4K 30p và Full HD 120p, đáp ứng mọi nhu cầu sáng tạo của bạn. Cùng với đó là
                         khả năng chụp hình liên tục lên đến 15 khung hình mỗi giây trên máy ảnh Canon này.</p>
                 </div>
-                <button class="order-btn">Đặt hàng ngay</button>
+                <button class="orders-btn">Đặt hàng ngay</button>
             </div>
             <div class="slide-image">
                 <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/m/a/may-anh-canon-eos-r50_4_.png"
@@ -244,7 +244,7 @@
                         nét tự động thông minh với AI, và thời lượng pin vượt trội. Thiết bị hoàn hảo cho cả nhiếp
                         ảnh và quay phim chuyên nghiệp.</p>
                 </div>
-                <button class="order-btn">Đặt hàng ngay</button>
+                <button class="orders-btn">Đặt hàng ngay</button>
             </div>
             <div class="slide-image">
                 <img src="https://d1ncau8tqf99kp.cloudfront.net/converted/92650_original_local_1200x1050_v3_converted.webp"
@@ -263,7 +263,7 @@
                         video 6K oversampled 4K. Thiết kế chắc chắn, thời lượng pin tuyệt vời, hoàn hảo cho nhiếp
                         ảnh thể thao và động vật hoang dã.</p>
                 </div>
-                <button class="order-btn">Đặt hàng ngay</button>
+                <button class="orders-btn">Đặt hàng ngay</button>
             </div>
             <div class="slide-image">
                 <img src="https://giangduydat.vn/product/nikon-zr-6k-cinema-camera.jpg" alt="Canon Camera">
@@ -282,7 +282,7 @@
                         rangefinder thanh lịch, X-E5 mang đến trải nghiệm nhiếp ảnh chất lượng cao trong một thân
                         máy nhỏ gọn, tinh tế</p>
                 </div>
-                <button class="order-btn">Đặt hàng ngay</button>
+                <button class="orders-btn">Đặt hàng ngay</button>
             </div>
             <div class="slide-image">
                 <img src="https://giangduydat.vn/product/fujifilm-x-e5.jpg" alt="Canon Camera">

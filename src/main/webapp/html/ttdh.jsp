@@ -218,19 +218,19 @@
         </section>
 
         <aside class="checkout-right">
-            <div class="order-summary">
+            <div class="orders-summary">
                 <h2><i class="fa-solid fa-box"></i> Đơn hàng của bạn</h2>
-                <div class="order-item">
+                <div class="orders-item">
                     <img src="https://mayanhvietnam.com/image-data/san-pham/24-08/24-08-01/240801170455500/avatar/638692503741569353_may-anh-canon-eos-r100-hang.jpg" alt="">
-                    <div class="order-info">
+                    <div class="orders-info">
                         <h4>Máy ảnh Canon EOS R100</h4>
                         <p>Số lượng: <span>1</span></p>
                         <p class="price">11.500.000đ</p>
                     </div>
                 </div>
-                <div class="order-item">
+                <div class="orders-item">
                     <img src="https://mayanhvietnam.com/image-data/san-pham/23-02/23-02-11/230211000615918/avatar/01_ong-kinh-canon-ef-50mm-f-1-8-ii.jpg" alt="">
-                    <div class="order-info">
+                    <div class="orders-info">
                         <h4>Ống kính Canon 50mm f/1.8</h4>
                         <p>Số lượng: <span>1</span></p>
                         <p class="price">2.500.000đ</p>

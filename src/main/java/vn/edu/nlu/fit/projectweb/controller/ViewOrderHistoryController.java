@@ -3,10 +3,8 @@ package vn.edu.nlu.fit.projectweb.controller;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-//import vn.edu.nlu.fit.projectweb.dao.AccountDao;
 import vn.edu.nlu.fit.projectweb.dao.AccountDao;
 import vn.edu.nlu.fit.projectweb.dao.CategoryDao;
-import vn.edu.nlu.fit.projectweb.model.Account;
 import vn.edu.nlu.fit.projectweb.model.Category;
 import vn.edu.nlu.fit.projectweb.model.User;
 
@@ -14,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@WebServlet(name = "ViewOrderHistoryController", value = "/ViewOrderHistoryController")
+@WebServlet(name = "ViewOrderHistoryController", value = "/ViewOrderHistory")
 public class ViewOrderHistoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +26,7 @@ public class ViewOrderHistoryController extends HttpServlet {
         }
         request.setAttribute("parents", parents);
         request.setAttribute("children", childrenMap);
-        request.getRequestDispatcher("/html/myinfo.jsp").forward(request, response);
+        request.getRequestDispatcher("/ViewOrderHistory.jsp").forward(request, response);
     }
 
     @Override
