@@ -1,6 +1,7 @@
 package vn.edu.nlu.fit.projectweb.dao;
 
-import vn.edu.nlu.fit.projectweb.model.Order;
+import vn.edu.nlu.fit.projectweb.model.OrderView;
+import vn.edu.nlu.fit.projectweb.model.Orders;
 import vn.edu.nlu.fit.projectweb.model.OrderDetail;
 import vn.edu.nlu.fit.projectweb.utils.DBConnection;
 
@@ -10,8 +11,8 @@ import java.util.List;
 
 public class OrderDao {
 
-    public List<Order> getOrderHistory() {
-        List<Order> list = new ArrayList<>();
+    public List<Orders> getOrderHistory() {
+        List<Orders> list = new ArrayList<>();
 
         String sql = "SELECT * FROM orders ORDER BY order_date DESC";
 
@@ -20,9 +21,8 @@ public class OrderDao {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                Order o = new Order();
+                Orders o = new Orders();
                 o.setOrderId(rs.getInt("order_id"));
-                o.setOrderCode(rs.getString("order_code"));
                 o.setOrderDate(rs.getDate("order_date"));
                 o.setStatus(rs.getString("status"));
                 o.setTotalAmount(rs.getDouble("total_amount"));
@@ -64,7 +64,7 @@ public class OrderDao {
         return details;
     }
 
-    public Order getOrderById(int orderId) throws Exception {
+    public Orders getOrderById(int orderId) throws Exception {
         String sql = "SELECT * FROM orders WHERE id = ?";
         Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -72,15 +72,48 @@ public class OrderDao {
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
-            Order o = new Order();
+            Orders o = new Orders();
             o.setOrderId(rs.getInt("id"));
-            o.setOrderCode(rs.getString("order_code"));
             o.setOrderDate(rs.getDate("order_date"));
             o.setStatus(rs.getString("status"));
             o.setExpectedDelivery(rs.getDate("expected_delivery"));
             return o;
         }
         return null;
+    }
+    public List<OrderView> getAllOrders() {
+        List<OrderView> list = new ArrayList<>();
+
+        String sql = """
+            SELECT o.order_id, o.order_date, o.total_amount,
+                   u.full_name, u.email,
+                   os.status_name
+            FROM Orders o
+            JOIN Users u ON o.user_id = u.user_id
+            JOIN OrderStatus os ON o.status_id = os.order_status_id
+            ORDER BY o.order_date DESC
+        """;
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                OrderView o = new OrderView();
+                o.setOrderId(rs.getInt("order_id"));
+                o.setFullName(rs.getString("full_name"));
+                o.setEmail(rs.getString("email"));
+                o.setOrderDate(rs.getDate("order_date").toString());
+                o.setTotalAmount(rs.getDouble("total_amount"));
+                o.setStatusName(rs.getString("status_name"));
+
+                list.add(o);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }

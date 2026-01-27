@@ -71,7 +71,15 @@ public class ProductService {
 
     // Hàm gọi DAO để lấy danh sách theo hãng
     public List<Product> getProductsByBrand(String brandName) {
-        // Nhớ là bên ProductDao m phải có hàm này rồi nha
         return pdao.getProductsByBrand(brandName);
+    }
+    public void publish(int id) {
+        pdao.publish(id);
+    }
+    public void unpublish(int id) {
+        pdao.unpublish(id);
+    }
+    public void update(int id, String name, double price_sale) {
+        pdao.update(id, name, price_sale);
     }
 }
