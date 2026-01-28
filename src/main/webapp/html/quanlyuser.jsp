@@ -24,7 +24,7 @@
         <a href="/Project/ThongKeDoanhThu/doanhthu.html" class="menu-item">
                 <span>Thống kê</span>
         </a>
-        <a href="/Project/Warehouse/Warehouse.html" class="menu-item">
+        <a href="${pageContext.request.contextPath}/kho" class="menu-item">
                 <span>Quản Lý Kho</span>
         </a>
         <a href="/Project/productmanagement/productManagement.html" class="menu-item">
