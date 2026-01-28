@@ -30,12 +30,7 @@
             <!-- Hiển thị ảnh chính của sản phẩm -->
             <img id="mainImage" src="${product.img}" alt="${product.productName}">
         </div>
-        <div class="small-boxes">
-            <!-- Có thể thêm các ảnh phụ -->
-            <div class="small-box">
-                <img src="${product.img}" alt="Ảnh 1" onclick="changeImage(this)">
-            </div>
-        </div>
+
     </div>
 
     <div class="product-right">
@@ -60,7 +55,6 @@
             </c:choose>
         </p>
 
-        <!-- Hiển thị thông tin sản phẩm -->
         <div class="info-row">
             <p>Thương hiệu: <span class="brand">${product.brand}</span></p>
             <p>Mã sản phẩm: <span class="code">${product.productID}</span></p>

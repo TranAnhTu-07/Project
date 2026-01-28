@@ -4,6 +4,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -364,12 +365,16 @@
                             <div class="item-name"><%= product.getProductName() %></div>
                             <div class="item-price"><%= itemPrice %></div>
                             <div class="quantity-controls">
-                                <button class="quantity-btn" onclick="updateCartQuantity(<%= product.getProductID() %>, -1)">-</button>
-                                <input type="number" class="quantity-input"
+                                <a href="<%= request.getContextPath() %>/cart?action=decrease&productId=<%= product.getProductID() %>"
+                                   class="quantity-btn">-</a>
+                                <input type="text"
+                                       class="quantity-input"
                                        value="<%= item.getQuantity() %>"
-                                       min="1"
-                                       onchange="updateCartQuantity(<%= product.getProductID() %>, 0, this.value)">
-                                <button class="quantity-btn" onclick="updateCartQuantity(<%= product.getProductID() %>, 1)">+</button>
+                                       readonly
+                                       style="text-align: center; width: 40px;">
+
+                                <a href="<%= request.getContextPath() %>/cart?action=increase&productId=<%= product.getProductID() %>"
+                                   class="quantity-btn">+</a>
                             </div>
                             <button class="remove-btn" onclick="removeFromCart(<%= product.getProductID() %>)">Xóa</button>
                         </div>
@@ -417,7 +422,7 @@
                 <button class="apply-promo" onclick="applyPromo()">Áp dụng</button>
             </div>
 
-            <button class="checkout-btn" onclick="checkout()">Tiến hành thanh toán</button>
+            <button class="checkout-btn" onclick="window.location.href='checkout.jsp'">Tiến hành thanh toán</button>
             <a href="<%= request.getContextPath() %>/list-products" class="continue-shopping">Tiếp tục mua sắm</a>
         </div>
     </div>
