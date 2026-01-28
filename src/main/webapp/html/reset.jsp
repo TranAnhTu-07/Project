@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin!
@@ -18,7 +19,7 @@
 <header class="header">
   <div class="header-top">
     <div class="logo-search">
-      <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
+      <a href="${pageContext.request.contextPath}/ListProduct" class="logo">
         <div class="logo-icon">📷</div>
         <div class="logo-text">
           <div class="logo-main">GROUP11</div>
@@ -27,8 +28,14 @@
       </a>
 
       <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm sản phẩm...">
-        <button><i class="fas fa-search"></i></button>
+        <form action="search" method="get" id="searchForm">
+          <input type="text" name="keyword" id="searchInput"
+                 placeholder="Tìm kiếm sản phẩm..."
+                 value="${param.keyword}"
+                 autocomplete="off">
+          <button type="submit"><i class="fas fa-search"></i></button>
+          <div id="searchSuggestions" class="search-suggestions"></div>
+        </form>
       </div>
     </div>
 
@@ -41,23 +48,123 @@
           <a href="#">BẢO HÀNH</a>
         </div>
       </div>
-      <a href="/Project/Login/login.html">
-        <div class="user-icon">
-          <i class="fas fa-key"></i>
-        </div>
-      </a>
-      <a href="/Project/View%20order%20history/ViewOrderHistory.html">
-        <div class="user-icon">
-          <i class="fas fa-user"></i>
-        </div>
-      </a>
-      <a href="/Project/GioHang/ShoppingCart.html">
-        <div class="logo-icon">🛒</div>
+
+      <div id="custom-user-account" style="position: relative; display: flex; align-items: center; margin-left: 15px; height: 100%; cursor: pointer; z-index: 9999;">
+
+        <c:choose>
+          <c:when test="${sessionScope.account == null}">
+            <a href="${pageContext.request.contextPath}/html/login.jsp"
+               style="color: white; text-decoration: none; display: flex; align-items: center; gap: 5px; font-weight: bold;">
+              <i class="fas fa-user"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </c:when>
+
+          <c:otherwise>
+            <div class="user-trigger" style="display: flex; align-items: center; gap: 8px; color: white; font-weight: bold; padding: 10px 0;">
+              <i class="fas fa-user-circle" style="font-size: 22px; color: #28a745;"></i>
+              <span>${sessionScope.account.fullName}</span>
+              <i class="fas fa-caret-down" style="font-size: 14px; opacity: 0.8;"></i>
+            </div>
+
+            <div class="custom-dropdown-box">
+              <div style="padding: 12px 15px; background: #f8f9fa; border-bottom: 1px solid #eee; font-size: 11px; color: #888; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+                Tài khoản của tôi
+              </div>
+
+              <a href="profile" class="dropdown-item">
+                <i class="fas fa-id-card"></i> Hồ sơ cá nhân
+              </a>
+              <a href="profile" class="dropdown-item">
+                <i class="fas fa-history"></i> Lịch sử đơn hàng
+              </a>
+              <a href="logout" class="dropdown-item" style="color: #dc3545 !important; border-top: 1px solid #eee;">
+                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+              </a>
+            </div>
+          </c:otherwise>
+        </c:choose>
+
+        <style>
+          /* Class cho hộp menu */
+          .custom-dropdown-box {
+            display: none; /* Mặc định ẩn */
+            position: absolute; /* Tuyệt đối so với cha */
+            top: 100%; /* Nằm ngay dưới đáy */
+            right: 0; /* Căn phải */
+            width: 230px; /* Chiều rộng cố định để không bị bể */
+            background-color: #ffffff !important; /* Nền trắng tuyệt đối */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Đổ bóng */
+            border-radius: 6px;
+            border: 1px solid #e1e1e1;
+            z-index: 99999; /* Luôn nổi lên trên cùng */
+            overflow: hidden; /* Cắt góc bo tròn */
+            margin-top: 5px; /* Cách header 1 xíu cho đẹp */
+          }
+
+          /* Mũi tên nhọn trang trí */
+          .custom-dropdown-box::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            transform: rotate(45deg);
+            border-top: 1px solid #e1e1e1;
+            border-left: 1px solid #e1e1e1;
+          }
+
+          /* Hover vào cha thì hiện con */
+          #custom-user-account:hover .custom-dropdown-box {
+            display: block !important;
+            animation: fadeInDrop 0.2s ease-out;
+          }
+
+          /* Style cho từng dòng link */
+          .dropdown-item {
+            display: block !important; /* Bắt buộc xuống dòng */
+            padding: 12px 15px !important;
+            color: #333333 !important; /* Màu chữ đen xám */
+            text-decoration: none !important;
+            font-size: 14px;
+            font-weight: 500;
+            background: white;
+            transition: all 0.2s;
+            text-align: left;
+            line-height: 1.5;
+          }
+
+          .dropdown-item i {
+            width: 25px;
+            text-align: center;
+            color: #666;
+            margin-right: 5px;
+          }
+
+          .dropdown-item:hover {
+            background-color: #f0f7ff !important;
+            color: #007bff !important;
+            padding-left: 20px !important; /* Hiệu ứng đẩy chữ */
+          }
+
+          .dropdown-item:hover i {
+            color: #007bff !important;
+          }
+
+          @keyframes fadeInDrop {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        </style>
+      </div>
+
+      <a href="cart.jsp" style="margin-left: 15px; text-decoration: none;">
+        <div class="logo-icon" style="font-size: 24px;">🛒</div>
       </a>
     </div>
   </div>
-
-
 </header>
 <nav class="nav-menu">
   <ul>

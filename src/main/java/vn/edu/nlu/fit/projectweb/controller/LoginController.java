@@ -14,8 +14,8 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("auth") != null) {
-            response.sendRedirect("ListProduct");
+        if (request.getSession().getAttribute("account") != null) {
+            response.sendRedirect(request.getContextPath() + "/ListProduct");
         } else {
             request.getRequestDispatcher("html/login.jsp").forward(request, response);
         }
@@ -44,11 +44,11 @@ public class LoginController extends HttpServlet {
             } else {
                 // THÀNH CÔNG
                 HttpSession session = request.getSession();
-                session.setAttribute("auth", user);
+                session.setAttribute("account", user);
                 if (user.getRoleId() == 1) {
                     response.sendRedirect("admin/users");
                 } else {
-                    response.sendRedirect("ListProduct");
+                    response.sendRedirect(request.getContextPath() + "/ListProduct");
                 }
             }
         }

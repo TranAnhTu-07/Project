@@ -363,3 +363,87 @@
     display: flex;
     flex-direction: column;
 }
+/* ================================================= */
+/* === BẮT ĐẦU ĐOẠN CSS FIX MENU USER (Copy vào) === */
+/* ================================================= */
+
+/* 1. Định vị khung chứa User */
+#custom-user-account {
+    position: relative; /* Để làm mốc cho menu con */
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+    height: 100%; /* Chiếm hết chiều cao header */
+    z-index: 9999;
+}
+
+/* 2. Cái hộp menu xổ xuống */
+#custom-user-dropdown {
+    display: none; /* QUAN TRỌNG: Mặc định phải ẩn */
+    position: absolute; /* Để nó nằm đè lên trên các phần tử khác */
+    top: 100%; /* Nằm ngay dưới đáy header */
+    right: 0; /* Căn thẳng lề phải */
+    background-color: white;
+    min-width: 220px; /* Độ rộng tối thiểu */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Đổ bóng cho đẹp */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    z-index: 10000; /* Nổi lên trên cùng */
+    padding: 5px 0;
+}
+
+/* Tạo mũi tên nhọn chỉ lên (Trang trí) */
+#custom-user-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+/* 3. Hiệu ứng: Rê chuột vào thì hiện menu */
+#custom-user-account:hover #custom-user-dropdown {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* 4. Style cho từng dòng link bên trong */
+.custom-menu-item {
+    display: block;
+    padding: 10px 15px;
+    color: #333 !important; /* Màu chữ đen, dùng important để đè màu trắng của header */
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.2s;
+    background: white;
+    text-align: left;
+}
+
+/* Hiệu ứng khi rê chuột vào từng mục */
+.custom-menu-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff !important; /* Đổi màu xanh */
+    padding-left: 20px; /* Hiệu ứng đẩy chữ sang phải */
+}
+
+/* Icon bên trong menu */
+.custom-menu-item i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+    color: #666;
+}
+
+/* Hiệu ứng hiện ra nhẹ nhàng */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================================= */
+/* === KẾT THÚC ĐOẠN CSS FIX MENU USER ============ */
+/* ================================================= */

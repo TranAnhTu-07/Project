@@ -1,6 +1,7 @@
 package vn.edu.nlu.fit.projectweb.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class User implements Serializable {
     private int userId;
@@ -12,6 +13,7 @@ public class User implements Serializable {
     private int roleId;
     private int status; // 0: Chưa active, 1: Active
     private String token;
+    private LocalDate date_of_birth;
 
     public User() {}
 
@@ -77,5 +79,13 @@ public class User implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
+    }
+
+    public void setDate_of_birth(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
     }
 }

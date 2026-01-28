@@ -33,7 +33,7 @@
         <a href="/Project/Order%20management/OrderManagement.html" class="menu-item">
             <span>Quản Lý Đơn Hàng</span>
         </a>
-        <a href="${pageContext.request.contextPath}/ListProduct" class="menu-item">
+        <a href="${pageContext.request.contextPath}/Logout" class="menu-item">
             <span>Đăng Xuất</span>
         </a>
     </div>
