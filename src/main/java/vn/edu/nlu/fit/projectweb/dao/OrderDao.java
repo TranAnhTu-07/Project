@@ -10,42 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDao extends BaseDao{
-
-    public List<Orders> getOrdersByUserId(int userId) {
-        List<Orders> list = new ArrayList<>();
-        String sql = """
-            SELECT o.id, o.order_code, o.order_date, o.status, o.total_amount
-            FROM Orders o
-            WHERE o.user_id = ?
-        """;
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, userId);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Orders o = new Orders();
-                o.setOrderId(rs.getInt("id"));
-                o.setOrderId(rs.getInt("order_code"));
-                o.setOrderDate(rs.getDate("order_date"));
-                o.setStatus(rs.getString("status"));
-                o.setTotalAmount(rs.getDouble("total_amount"));
-
-                // lấy chi tiết đơn hàng
-                o.setOrderDetails(getOrderDetails(o.getOrderId()));
-                list.add(o);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
+    // --- HÀM LẤY CHI TIẾT ĐƠN HÀNG (GIỮ LẠI ĐỂ DÙNG CHO TRANG DETAIL) ---
     private List<OrderDetail> getOrderDetails(int orderId) {
         List<OrderDetail> details = new ArrayList<>();
-
         String sql = "SELECT * FROM order_details WHERE order_id=?";
 
         try (Connection con = DBConnection.getConnection();
@@ -69,6 +36,7 @@ public class OrderDao extends BaseDao{
         return details;
     }
 
+    // --- LẤY 1 ĐƠN HÀNG THEO ID ---
     public Orders getOrderById(int orderId) throws Exception {
         String sql = "SELECT * FROM orders WHERE id = ?";
         Connection conn = DBConnection.getConnection();
@@ -86,6 +54,8 @@ public class OrderDao extends BaseDao{
         }
         return null;
     }
+
+    // --- LẤY TẤT CẢ ĐƠN HÀNG (CHO ADMIN) ---
     public List<OrderView> getAllOrders() {
         List<OrderView> list = new ArrayList<>();
 
@@ -121,23 +91,23 @@ public class OrderDao extends BaseDao{
         return list;
     }
 
+    // --- LẤY DANH SÁCH ĐƠN HÀNG THEO USER ID (ĐÃ FIX TRÙNG LẶP) ---
     public List<Orders> getOrdersByUserId(int userId) {
         List<Orders> list = new ArrayList<>();
 
         // Câu lệnh này JOIN bảng orders với orderstatus để lấy tên trạng thái
-        // Và dùng đúng tên cột trong DB của m: order_id, order_date, total_amount
         String sql = """
-        SELECT 
-            o.order_id, 
-            o.order_date, 
-            os.status_name,  -- Lấy cột tên trạng thái (check lại trong DB xem tên cột này là status_name hay name nhé)
-            o.total_amount, 
-            o.expected_delivery
-        FROM orders o
-        JOIN orderstatus os ON o.status_id = os.order_status_id
-        WHERE o.user_id = ?
-        ORDER BY o.order_date DESC
-    """;
+            SELECT 
+                o.order_id, 
+                o.order_date, 
+                os.status_name,  
+                o.total_amount, 
+                o.expected_delivery
+            FROM orders o
+            JOIN orderstatus os ON o.status_id = os.order_status_id
+            WHERE o.user_id = ?
+            ORDER BY o.order_date DESC
+        """;
 
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -147,10 +117,10 @@ public class OrderDao extends BaseDao{
 
             while (rs.next()) {
                 Orders o = new Orders();
-                o.setOrderId(rs.getInt("order_id"));           // Khớp với DB
-                o.setOrderDate(rs.getDate("order_date"));      // Khớp với DB
-                o.setStatus(rs.getString("status_name"));      // Lấy tên trạng thái từ bảng status
-                o.setTotalAmount(rs.getDouble("total_amount"));// Khớp với DB
+                o.setOrderId(rs.getInt("order_id"));
+                o.setOrderDate(rs.getDate("order_date"));
+                o.setStatus(rs.getString("status_name"));
+                o.setTotalAmount(rs.getDouble("total_amount"));
                 o.setExpectedDelivery(rs.getDate("expected_delivery"));
 
                 list.add(o);
