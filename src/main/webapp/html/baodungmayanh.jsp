@@ -44,17 +44,27 @@
             ${catName}
         </div>
         <div class="cover-product-item">
-            <c:forEach items="${listBao}" var="p">
+            <c:forEach items="${listbaodungmayanh}" var="p">
                 <div class="product-card-item">
                     <img src="${p.img}" class="product-img" alt="${p.productName}">
-
                     <h3 class="product-name">${p.productName}</h3>
-
                     <p class="product-price">
                         <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/>₫
                     </p>
+
+                    <div class="cart-mini-wrapper">
+                        <a
+                                href="${pageContext.request.contextPath}/add-to-cart?productId=${p.productID}&quantity=1"
+                                class="btn-cart-mini"
+                                title="Thêm vào giỏ"
+                        >
+                            <i class="fas fa-cart-plus"></i>
+                        </a>
+                    </div>
+
                 </div>
             </c:forEach>
+
         </div>
     </div>
 </main>

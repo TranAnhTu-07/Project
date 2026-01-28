@@ -1,14 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>CANON-COMPACT</title>
-    <link rel="stylesheet" href="css/Product.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/Product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/spnoibat.css">
+    <link rel="stylesheet" href="css/ShoppingCart.css">
+    <script src="js/search.js"></script>
 </head>
+<jsp:include page="/common/header.jsp"/>
 <body>
 <header class="header">
     <div class="header-top">
@@ -202,15 +208,29 @@
                 <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
             </div>
         </div>
-        <div class="product-title">MÁY ẢNH CANON COMPACT</div>
+        <div class="product-title" style="text-transform: uppercase;">
+            ${catName}
+        </div>
         <div class="cover-product-item">
-            <c:forEach var="p" items="${list}">
-                <%--                load toi ctsp : nam trong href--%>
-            <a href="">
-                <img src="${p.img}" class="product-img">
-                <h3 class="product-name">${p.name}</h3>
-                <p class="product-price">${p.price}₫</p>
-            </a>
+            <c:forEach items="${listCanon}" var="p">
+                <div class="product-card-item">
+                    <img src="${p.img}" class="product-img" alt="${p.productName}">
+                    <h3 class="product-name">${p.productName}</h3>
+                    <p class="product-price">
+                        <fmt:formatNumber value="${p.price}" type="number" groupingUsed="true"/>₫
+                    </p>
+
+                    <div class="cart-mini-wrapper">
+                        <a
+                                href="${pageContext.request.contextPath}/add-to-cart?productId=${p.productID}&quantity=1"
+                                class="btn-cart-mini"
+                                title="Thêm vào giỏ"
+                        >
+                            <i class="fas fa-cart-plus"></i>
+                        </a>
+                    </div>
+
+                </div>
             </c:forEach>
 
         </div>

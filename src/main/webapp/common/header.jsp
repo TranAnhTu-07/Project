@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/spnoibat.css">
+    <link rel="stylesheet" href="css/ShoppingCart.css">
     <script src="js/search.js"></script>
 
 
@@ -78,18 +79,14 @@
                             <a href="profile" class="dropdown-item">
                                 <i class="fas fa-id-card"></i> Hồ sơ cá nhân
                             </a>
-                            <a href="profile" class="dropdown-item">
-                                <i class="fas fa-history"></i> Lịch sử đơn hàng
-                            </a>
                             <a href="Logout" class="dropdown-item" style="color: #dc3545 !important; border-top: 1px solid #eee;">
                                 <i class="fas fa-sign-out-alt"></i> Đăng xuất
                             </a>
                         </div>
                     </c:otherwise>
                 </c:choose>
-
                 <style>
-                    /* Class cho hộp menu */
+
                     .custom-dropdown-box {
                         display: none; /* Mặc định ẩn */
                         position: absolute; /* Tuyệt đối so với cha */
@@ -163,8 +160,13 @@
                 </style>
             </div>
 
-            <a href="cart.jsp" style="margin-left: 15px; text-decoration: none;">
-                <div class="logo-icon" style="font-size: 24px;">🛒</div>
+            <a href="${pageContext.request.contextPath}/cart">
+                <div class="logo-icon" style="position: relative;">
+                    🛒
+                    <span class="cart-count">
+                        ${sessionScope.cart.getTotalQuantity()}
+                    </span>
+                </div>
             </a>
         </div>
     </div>
