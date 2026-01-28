@@ -30,7 +30,7 @@ public class AddProductController extends HttpServlet {
         }
         request.setAttribute("parents", parents);
         request.setAttribute("children", childrenMap);
-        request.setAttribute("categoryImages", cd.getCategoryImages());
+//        request.setAttribute("categoryImages", cd.getCategoryImages());
         request.setAttribute("categories", cd.getAllCategoryChild());
         request.getRequestDispatcher("/html/addProduct.jsp").forward(request, response);
     }
@@ -67,7 +67,7 @@ public class AddProductController extends HttpServlet {
         request.setAttribute("children", childrenMap);
         request.setAttribute("products", ps.getByCategory(categoryId));
         request.setAttribute("category_id", categoryId);
-        request.setAttribute("categoryImages", cd.getCategoryImages());
+//        request.setAttribute("categoryImages", cd.getCategoryImages());
         request.setAttribute("success", "Đã thêm sản phẩm thành công!");
         request.getRequestDispatcher("/html/addProduct.jsp").forward(request, response);
     }

@@ -10,10 +10,11 @@ public class Product implements Serializable {
     private String brand;
     private int newPrice;
     private int categoryID;
-    private int status;
+    private String status;
     private int stock;
+    private int quantity;
 
-    public Product(int productID, String productName, String img, int price, String brand, int newPrice, int categoryID, int status) {
+    public Product(int productID, String productName, String img, int price, String brand, int newPrice, int categoryID, String status, int quantity) {
         this.productID = productID;
         this.productName = productName;
         this.img = img;
@@ -22,6 +23,7 @@ public class Product implements Serializable {
         this.newPrice = newPrice;
         this.categoryID = categoryID;
         this.status = status;
+        this.quantity = quantity;
     }
 
     public Product() {
@@ -48,14 +50,15 @@ public class Product implements Serializable {
     public int getCategoryID() { return categoryID; }
     public void setCategoryID(int categoryID) { this.categoryID = categoryID; }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
-
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 }

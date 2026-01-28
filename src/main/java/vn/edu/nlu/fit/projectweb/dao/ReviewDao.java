@@ -7,13 +7,7 @@ public class ReviewDao extends BaseDao {
 
     public List<Reviews> getRecentReviews() {
         String sql = """
-            SELECT id,
-                   product_id AS productId,
-                   name,
-                   email,
-                   rating,
-                   content,
-                   created_at AS createdAt
+            SELECT id,product_id AS productId, name,email, rating,content, created_at AS createdAt
             FROM review
             ORDER BY created_at DESC
         """;
@@ -27,7 +21,7 @@ public class ReviewDao extends BaseDao {
 
     public void insert(Reviews r) {
         String sql = """
-            INSERT INTO review(product_id, name, email, rating, content)
+            INSERT INTO review(ProductID, name, email, rating, content)
             VALUES (:productId, :name, :email, :rating, :content)
         """;
 

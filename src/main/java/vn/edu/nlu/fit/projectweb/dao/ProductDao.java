@@ -4,6 +4,7 @@ import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.statement.Batch;
 import org.jdbi.v3.core.statement.PreparedBatch;
+import vn.edu.nlu.fit.projectweb.model.InventoryStats;
 import vn.edu.nlu.fit.projectweb.model.Product;
 import vn.edu.nlu.fit.projectweb.model.Reviews;
 
@@ -30,7 +31,7 @@ public class ProductDao extends BaseDao {
 //
 //    }
     public List<Product> getAll() {
-        String sql = "SELECT id, name FROM product";
+        String sql = "SELECT ProductID, ProductName FROM products";
 
         return get().withHandle(handle ->
                 handle.createQuery(sql)
@@ -222,5 +223,36 @@ public class ProductDao extends BaseDao {
                 .mapTo(Integer.class)
                 .findOne()
                 .orElse(0));
+    }
+    public static InventoryStats getInventoryStats() {
+        String sql = """
+        SELECT
+            COUNT(*) AS totalProducts,
+            SUM(NewPrice * quantity) AS totalValue,
+            SUM(CASE WHEN quantity < 10 AND quantity > 0 THEN 1 ELSE 0 END) AS lowStock,
+            SUM(CASE WHEN quantity = 0 THEN 1 ELSE 0 END) AS outOfStock
+        FROM products
+        WHERE status = 'selling'
+    """;
+
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .mapToBean(InventoryStats.class)
+                        .one()
+        );
+    }
+
+//
+    public static List<Product> getProductsOnKho() {
+        String sql = """
+        SELECT *
+        FROM products
+        WHERE status = 'selling'
+    """;
+        return get().withHandle(h ->
+                h.createQuery(sql)
+                        .mapToBean(Product.class)
+                        .list()
+        );
     }
 }
