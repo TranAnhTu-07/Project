@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Tồn Kho - Admin</title>
-    <link rel="stylesheet" href="../css/Warehouse.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Warehouse.css">
 </head>
 <body>
 <!-- Sidebar -->
@@ -41,25 +42,28 @@
     <div class="stats-container">
         <div class="stat-card success">
             <h3>Tổng Sản Phẩm</h3>
-            <div class="number">156</div>
+            <div class="number">${stats.totalProducts}</div>
         </div>
         <div class="stat-card">
             <h3>Tổng Giá Trị Kho</h3>
-            <div class="number">1.2 tỷ</div>
+            <div class="number">
+                <fmt:formatNumber value="${stats.totalValue}" groupingUsed="true"/> đ
+            </div>
+
         </div>
         <div class="stat-card warning">
             <h3>Sắp Hết Hàng</h3>
-            <div class="number">23</div>
+            <div class="number">${stats.lowStock}</div>
         </div>
         <div class="stat-card danger">
             <h3>Hết Hàng</h3>
-            <div class="number">8</div>
+            <div class="number">${stats.outOfStock}</div>
         </div>
     </div>
 
     <div class="filters">
         <h2>🔍 Bộ Lọc</h2>
-        <form class="filter-group" method="GET" action="">
+        <form class="filter-group" method="GET" action="${pageContext.request.contextPath}/kho">
             <div class="filter-item">
                 <label for="category">Danh Mục</label>
                 <select id="category" name="category">
@@ -102,70 +106,52 @@
         <table>
             <thead>
             <tr>
-                <th>Hình Ảnh</th>
                 <th>Mã SP</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Danh Mục</th>
+                <th>Sản Phẩm</th>
+                <th>Mã Danh Mục</th>
                 <th>Số Lượng</th>
                 <th>Trạng Thái</th>
                 <th>Giá Bán</th>
-                <th>Giá Trị Tồn</th>
                 <th>Thao Tác</th>
             </tr>
             </thead>
 
             <tbody>
             <c:forEach var="p" items="${onSale}">
-                <tr data-id="${p.id}">
-                    <form action="${pageContext.request.contextPath}/kho" method="post">
-                        <input type="hidden" name="action" value="update">
-                        <input type="hidden" name="id" value="${p.id}">
-                        <td class="product">
-                            <img src="${p.img}">
-                            <span class="view">${p.name}</span>
-                            <input class="edit" type="text" name="name" value="${p.name}" style="display:none; width:160px;">
-                        </td>
-                        <td>
-                            <span class="view"><fmt:formatNumber value="${p.price_sale}" groupingUsed="true"/> đ</span>
-                            <input class="edit" type="number" name="price" value="${p.price_sale}" style="display:none; width:100px;">
-                        </td>
-                        <td>100</td>
-                        <td>0</td>
-                        <td class="status selling">Đang bán</td>
-                        <td class="profit">
-                            <fmt:formatNumber value="${p.price_sale * 0.05}" groupingUsed="true"/> đ
-                        </td>
-                        <td>
-                            <div class="action-btn">
-                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
-                                    <input type="hidden" name="action" value="update">
-                                    <input type="hidden" name="id" value="${p.id}">
-                                    <button type="button" class="btn edit-btn" onclick="edit(this)">
-                                        <i class="fas fa-pen"></i>
-                                    </button>
-                                    <button type="submit" class="btn save" style="display:none;">
-                                        <i class="fas fa-save"></i>
-                                    </button>
-                                </form>
-                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
-                                    <input type="hidden" name="action" value="unpublish">
-                                    <input type="hidden" name="id" value="${p.id}">
-                                    <button type="submit" class="btn remove" onclick="return confirm('Xác nhận đưa sản phẩm xuống kệ?')">
-                                        <i class="fas fa-arrow-down"></i>
-                                    </button>
-                                </form>
-                                <form action="${pageContext.request.contextPath}/kho" method="post" style="display:inline-flex; margin:0;">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="${p.id}">
-                                    <button type="submit" class="btn delete" onclick="return confirm('Xóa sản phẩm này?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </form>
+                <tr data-id="${p.productID}">
+
+                    <td>${p.productID}</td>
+
+                    <td class="product">
+                        <img src="${p.img}">
+<%--                        <span class="view">${p.productName}</span>--%>
+                        <input class="edit" type="text" name="name" value="${p.productName}">
+                    </td>
+
+                    <td>${p.categoryID}</td>
+
+                    <td>${p.quantity}</td>
+
+                    <td class="status ${p.quantity == 0 ? 'out' : p.quantity < 10 ? 'low' : 'selling'}">
+                        <c:choose>
+                            <c:when test="${p.quantity == 0}">Hết hàng</c:when>
+                            <c:when test="${p.quantity < 10}">Sắp hết</c:when>
+                            <c:otherwise>Đang bán</c:otherwise>
+                        </c:choose>
+                    </td>
+
+                    <td>
+                        <fmt:formatNumber value="${p.newPrice}" groupingUsed="true"/> đ
+                    </td>
+
+                    <td>
+                        <button>xóa</button>
+                        <button>sửa</button>
+
+                    </td>
                 </tr>
             </c:forEach>
+
             </tbody>
         </table>
     </div>

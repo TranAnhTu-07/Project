@@ -21,7 +21,7 @@ public class ReviewController extends HttpServlet {
         req.setAttribute("products", productDao.getAll());
         req.setAttribute("reviews", reviewDao.getRecentReviews());
 
-        req.getRequestDispatcher("/review.jsp").forward(req, resp);
+        req.getRequestDispatcher("/html/ProductReview.jsp").forward(req, resp);
     }
 
     @Override

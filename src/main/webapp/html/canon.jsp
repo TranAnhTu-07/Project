@@ -202,9 +202,9 @@
         <img src="https://mayanhvietnam.com/asset/imgs/icon/hang-san-xuat/sigma.svg" alt="Sigma">
       </div>
     </div>
-    <div class="product-title" style="text-transform: uppercase;">
-      ${catName}
-    </div>
+<div class="product-title" style="text-transform: uppercase;">
+    ${catName}
+  </div>
     <div class="cover-product-item">
       <c:forEach items="${listCanon}" var="p">
         <div class="product-card-item">

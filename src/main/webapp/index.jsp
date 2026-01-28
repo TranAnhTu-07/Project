@@ -57,7 +57,6 @@
                     <a href="#">BẢO HÀNH</a>
                 </div>
             </div>
-
             <div id="custom-user-account" style="position: relative; display: flex; align-items: center; margin-left: 15px; height: 100%; cursor: pointer; z-index: 9999;">
 
                 <c:choose>

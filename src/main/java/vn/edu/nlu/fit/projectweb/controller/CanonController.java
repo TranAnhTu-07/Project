@@ -17,7 +17,7 @@ public class CanonController extends HttpServlet {
         ProductService ps = new ProductService();
         List<Product> listProduct = new ArrayList<>();
 
-        String categoryName = "PHỤ KIỆN MÁY ẢNH";
+        String categoryName = "MÁY ẢNH CANON";
 
         if (cid != null) {
             try {

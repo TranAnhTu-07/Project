@@ -11,25 +11,30 @@ import java.util.List;
 
 public class OrderDao extends BaseDao{
 
-    public List<Orders> getOrderHistory() {
+    public List<Orders> getOrdersByUserId(int userId) {
         List<Orders> list = new ArrayList<>();
-
-        String sql = "SELECT * FROM orders ORDER BY order_date DESC";
+        String sql = """
+            SELECT o.id, o.order_code, o.order_date, o.status, o.total_amount
+            FROM Orders o
+            WHERE o.user_id = ?
+        """;
 
         try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Orders o = new Orders();
-                o.setOrderId(rs.getInt("order_id"));
+                o.setOrderId(rs.getInt("id"));
+                o.setOrderId(rs.getInt("order_code"));
                 o.setOrderDate(rs.getDate("order_date"));
                 o.setStatus(rs.getString("status"));
                 o.setTotalAmount(rs.getDouble("total_amount"));
 
-                // load chi tiết đơn hàng
+                // lấy chi tiết đơn hàng
                 o.setOrderDetails(getOrderDetails(o.getOrderId()));
-
                 list.add(o);
             }
         } catch (Exception e) {
