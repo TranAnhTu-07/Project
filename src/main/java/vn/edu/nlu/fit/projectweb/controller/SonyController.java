@@ -17,7 +17,7 @@ public class SonyController extends HttpServlet {
         ProductService ps = new ProductService();
         List<Product> listProduct = new ArrayList<>();
 
-        String categoryName = "PHỤ KIỆN MÁY ẢNH";
+        String categoryName = "MÁY ẢNH SONY";
 
         if (cid != null) {
             try {

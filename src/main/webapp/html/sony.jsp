@@ -206,7 +206,7 @@
             ${catName}
         </div>
         <div class="cover-product-item">
-            <c:forEach items="${listFujifilm}" var="p">
+            <c:forEach items="${listSony}" var="p">
                 <div class="product-card-item">
                     <img src="${p.img}" class="product-img" alt="${p.productName}">
 

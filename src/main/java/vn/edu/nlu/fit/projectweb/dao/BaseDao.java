@@ -7,14 +7,15 @@ import vn.edu.nlu.fit.projectweb.model.Product;
 import java.sql.SQLException;
 
 public abstract class BaseDao {
-    private Jdbi jdbi;
-    protected Jdbi get() {
+    protected static Jdbi jdbi;
+
+    protected static Jdbi get() {
         if(jdbi == null) {
             makeConnect();
         }
         return jdbi;
     }
-    private void makeConnect() {
+    private static void makeConnect() {
         MysqlDataSource src = new MysqlDataSource();
         String url = "jdbc:mysql://" + DBPProperties.host() + ":" + DBPProperties.port() +"/" + DBPProperties.name()+"?"+DBPProperties.option();
         src.setURL(url);

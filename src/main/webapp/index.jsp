@@ -62,12 +62,7 @@
                     <i class="fas fa-key"></i>
                 </div>
             </a>
-            <a href="/Project/View%20order%20history/ViewOrderHistory.html">
-                <div class="user-icon">
-                    <i class="fas fa-key"></i>
-                </div>
-            </a>
-            <a href="/Project/View%20order%20history/ViewOrderHistory.html">
+            <a href="ViewOrderHistory">
                 <div class="user-icon">
                     <i class="fas fa-user"></i>
                 </div>

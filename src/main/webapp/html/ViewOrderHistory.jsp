@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="info-value">${sessionScope.auth.name}</div>
+<div class="info-value">${sessionScope.auth.mail}</div>
+<div class="info-value">${sessionScope.auth.phone}</div>
+<div class="info-value">${sessionScope.auth.address}</div>
+<div class="info-value">${sessionScope.auth.registrationDate}</div>
+<div class="info-value">${sessionScope.auth.sex}</div>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -190,79 +197,35 @@
     </ul>
 </nav>
 <!--body-->
-<div class="main-content">
-    <div class="sidebar">
-        <div class="card">
-            <h2 class="card-title"><i class="fas fa-user-circle"></i> Thông Tin Tài Khoản</h2>
-            <div class="info-item">
-                <div class="info-label">Họ và tên:</div>
-                <div class="info-value">${sessionScope.auth.name}</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Email:</div>
-                <div class="info-value">${sessionScope.auth.mail}</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Số điện thoại:</div>
-                <div class="info-value">${sessionScope.auth.phone}</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Địa chỉ:</div>
-                <div class="info-value">${sessionScope.auth.address}</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Ngày tham gia:</div>
-                <div class="info-value">${sessionScope.auth.registrationDate}</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Giới tính:</div>
-                <div class="info-value">${sessionScope.auth.sex}</div>
-            </div>
-            <div class="btn-save">
-                <button>Lưu</button>
-            </div>
-            <div class="actions">
-                <a href="#" class="btn"><i class="fas fa-edit"></i> Chỉnh Sửa</a>
+<c:forEach var="o" items="${orders}">
+    <div class="orders-item">
+
+        <div class="orders-header">
+            <div class="orders-id">Đơn hàng #${o.orderCode}</div>
+            <div class="orders-date">${o.orderDate}</div>
+            <div class="orders-status
+                ${o.status eq 'Delivered' ? 'status-delivered' : 'status-cancelled'}">
+                    ${o.status}
             </div>
         </div>
 
-    </div>
-
-    <div class="content">
-        <div class="card">
-            <h2><i class="fas fa-history"></i> Lịch Sử Đặt Hàng</h2>
-
-            <c:forEach var="o" items="${orders}">
-                <div class="orders-item">
-
-                    <div class="orders-header">
-                        <div class="orders-id">Đơn hàng #${o.orderCode}</div>
-                        <div class="orders-date">${o.orderDate}</div>
-                        <div class="orders-status ${o.status == 'Delivered' ? 'status-delivered' : 'status-cancelled'}">
-                                ${o.status}
-                        </div>
-                    </div>
-
-                    <div class="orders-details">
-                        <c:forEach var="d" items="${o.orderDetails}">
-                            <div class="product-item">
-                                <div class="product-name">${d.productName}</div>
-                                <div class="product-price">${d.price} ₫</div>
-                                <div class="product-quantity">x${d.quantity}</div>
-                            </div>
-                        </c:forEach>
-
-                        <div class="orders-total">
-                            Tổng cộng: ${o.totalAmount} ₫
-                        </div>
-                    </div>
-
+        <div class="orders-details">
+            <c:forEach var="d" items="${o.orderDetails}">
+                <div class="product-item">
+                    <div class="product-name">${d.productName}</div>
+                    <div class="product-price">${d.price} ₫</div>
+                    <div class="product-quantity">x${d.quantity}</div>
                 </div>
             </c:forEach>
 
+            <div class="orders-total">
+                Tổng cộng: ${o.totalAmount} ₫
+            </div>
         </div>
+
     </div>
-</div>
+</c:forEach>
+
 
 <!--footer-->
 <footer class="footer">
