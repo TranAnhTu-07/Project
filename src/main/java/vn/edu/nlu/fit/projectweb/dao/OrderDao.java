@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDao {
+public class OrderDao extends BaseDao{
 
     public List<Orders> getOrderHistory() {
         List<Orders> list = new ArrayList<>();
@@ -116,4 +116,43 @@ public class OrderDao {
         return list;
     }
 
+    public List<Orders> getOrdersByUserId(int userId) {
+        List<Orders> list = new ArrayList<>();
+
+        // Câu lệnh này JOIN bảng orders với orderstatus để lấy tên trạng thái
+        // Và dùng đúng tên cột trong DB của m: order_id, order_date, total_amount
+        String sql = """
+        SELECT 
+            o.order_id, 
+            o.order_date, 
+            os.status_name,  -- Lấy cột tên trạng thái (check lại trong DB xem tên cột này là status_name hay name nhé)
+            o.total_amount, 
+            o.expected_delivery
+        FROM orders o
+        JOIN orderstatus os ON o.status_id = os.order_status_id
+        WHERE o.user_id = ?
+        ORDER BY o.order_date DESC
+    """;
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Orders o = new Orders();
+                o.setOrderId(rs.getInt("order_id"));           // Khớp với DB
+                o.setOrderDate(rs.getDate("order_date"));      // Khớp với DB
+                o.setStatus(rs.getString("status_name"));      // Lấy tên trạng thái từ bảng status
+                o.setTotalAmount(rs.getDouble("total_amount"));// Khớp với DB
+                o.setExpectedDelivery(rs.getDate("expected_delivery"));
+
+                list.add(o);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

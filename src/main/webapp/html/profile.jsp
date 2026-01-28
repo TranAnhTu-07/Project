@@ -1,21 +1,17 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin!
-  Date: 12/14/2025
-  Time: 14:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <title>Hồ sơ của tôi</title>
     <title>Login</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
 </head>
 <body>
 
@@ -81,7 +77,7 @@
                             <a href="profile" class="dropdown-item">
                                 <i class="fas fa-history"></i> Lịch sử đơn hàng
                             </a>
-                            <a href="logout" class="dropdown-item" style="color: #dc3545 !important; border-top: 1px solid #eee;">
+                            <a href="Logout" class="dropdown-item" style="color: #dc3545 !important; border-top: 1px solid #eee;">
                                 <i class="fas fa-sign-out-alt"></i> Đăng xuất
                             </a>
                         </div>
@@ -129,7 +125,7 @@
                     .dropdown-item {
                         display: block !important; /* Bắt buộc xuống dòng */
                         padding: 12px 15px !important;
-                        color: #333333 !important; /* Màu chữ đen xám */
+                        color: #333333 !important;
                         text-decoration: none !important;
                         font-size: 14px;
                         font-weight: 500;
@@ -169,198 +165,55 @@
         </div>
     </div>
 </header>
-<nav class="nav-menu">
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>MÁY ẢNH CANON</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="/Project/Product/canon-dslr.html" class="nav-item" >MÁY ẢNH CANON DSLR</a></li>
-                    <li><a href="/Project/Product/canon-compact.html" class="nav-item" >MÁY ẢNH CANON COMPACT</a></li>
-                    <li><a href="/Project/Product/canon-mirrorless.html" class="nav-item" >MÁY ẢNH CANON MIRRORLESS</a></li>
-                    <li><a href="/Project/Product/canon-ongkinh.html" class="nav-item" >ỐNG KÍNH CANON</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
 
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>MÁY ẢNH SONY</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="/Project/Product/sony-compact.html" class="nav-item" >MÁY ẢNH SONY COMPACT</a></li>
-                    <li><a href="/Project/Product/sony-mirrorless.html" class="nav-item" >MÁY ẢNH SONY MIRRORLESS</a></li>
-                    <li><a href="/Project/Product/sony-ongkinh.html" class="nav-item" >ỐNG KÍNH SONY</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+<div class="container">
 
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>MÁY ẢNH NIKON</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="/Project/Product/nikon-compact.html" class="nav-item">MÁY ẢNH NIKON COMPACT</a></li>
-                    <li><a href="/Project/Product/nikon-mirrorless.html" class="nav-item">MÁY ẢNH NIKON MIRRORLESS</a></li>
-                    <li><a href="/Project/Product/nikon-ongkinh.html" class="nav-item">ỐNG KÍNH NIKON</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>MÁY ẢNH FUJIFILM</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM COMPACT</a></li>
-                    <li><a href="#" class="nav-item">MÁY ẢNH FUJIFILM MIRRORLESS</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>MÁY ẢNH HÃNG KHÁC</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">MÁY ẢNH LUMIX</a></li>
-                    <li><a href="#" class="nav-item">MÁY ẢNH LEICA</a></li>
-                    <li><a href="#" class="nav-item">MÁY ẢNH SIGMA</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-glasses"></i>
-                <span>ỐNG KÍNH</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="#" class="nav-item">ỐNG KÍNH CANON</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH SONY</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH NIKON</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH FUJIFILM</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH LUMIX</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH LEICA</a></li>
-                    <li><a href="#" class="nav-item">ỐNG KÍNH DIGMA</a></li>
-
-                </ul>
-            </div>
-        </li>
-    </ul>
-
-    <ul>
-        <li class="sub">
-            <a href="#" class="sub-item">
-                <i class="fas fa-headphones"></i>
-                <span>PHỤ KIỆN MÁY ẢNH</span>
-            </a>
-            <div class="null">
-                <ul class="sub-menu">
-                    <li><a href="PhuKien?cid=28" class="nav-item">BAO ĐỰNG MÁY ẢNH</a></li>
-                    <li><a href="PhuKien?cid=29" class="nav-item">CHÂN MÁY ẢNH</a></li>
-                    <li><a href="PhuKien?cid=30" class="nav-item">THẺ NHỚ MÁY ẢNH</a></li>
-                    <li><a href="PhuKien?cid=31" class="nav-item">SẠC MÁY ẢNH</a></li>
-                    <li><a href="PhuKien?cid=32" class="nav-item">TỦ CHỐNG ẨM</a></li>
-                    <li><a href="PhuKien?cid=33" class="nav-item">ĐÈN CHỤP FLASH</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-    <ul>
-        <li class="sub">
-            <a href="/Project/Quan%20Ly%20User/quanlyuser.html" class="sub-item">
-                <i class="fas fa-camera"></i>
-                <span>QUẢN LÝ USER</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
-<main class="login-page">
-    <nav class="breadcrumb-nav">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/ListProduct">Trang chủ</a></li>
-            <li class="breadcrumb-item active"><a href="#">Đăng Nhập</a></li>
-        </ul>
-    </nav>
-
-    <div class="login-box">
-        <div class="form-login">
-            <h2>Đăng nhập</h2>
-
-            <c:if test="${not empty param.msg}">
-                <p style="color: ${param.msg == 'success' || param.msg == 'activated' ? 'green' : 'red'}; text-align: center; font-weight: bold;">
-                    <c:if test="${param.msg == 'success'}">Đăng ký thành công! (check mail or vào db sửa status=1)</c:if>
-                    <c:if test="${param.msg == 'activated'}">Kích hoạt thành công! Đăng nhập ngay.</c:if>
-                    <c:if test="${param.msg == 'error'}">Link kích hoạt bị lỗi hoặc hết hạn!</c:if>
-                    </p>
-            </c:if>
-
-            <c:if test="${not empty error}">
-                <p style="color: red; text-align: center; font-weight: bold;">${error}</p>
-            </c:if>
-
-            <c:if test="not empty message">
-                <p style="color: green; text-align: center; font-weight: bold;">${message}</p>
-            </c:if>
-
-            <form action="${pageContext.request.contextPath}/Login" method="POST">
-                <div class="input-group">
-                    <input type="text" name="email" placeholder="Email hoặc Số điện thoại" required value="${email}">
-                </div>
-
-                <div class="input-group password-wrapper" style="position: relative;">
-                    <input type="password" name="password" id="login-pass" placeholder="Nhập mật khẩu" required>
-                    <span class="toggle-btn" onclick="togglePassword('login-pass', this)" style="position: absolute; right: 15px; top: 15px; cursor: pointer; color: #666;">
-                        <i class="fa-solid fa-eye-slash"></i>
-                    </span>
-                </div>
-
-                <div class="form-options">
-                    <a href="${pageContext.request.contextPath}/html/forgot.jsp" class="forgot-password">Quên mật khẩu?</a>
-                </div>
-
-                <button type="submit" class="btn-login">Đăng Nhập</button>
-            </form>
-
-            <div class="divider"><span>Hoặc</span></div>
-
-            <div class="social-icons">
-                <a href="#" class="icons"><i class="fa-brands fa-google"></i>Google</a>
-                <a href="#" class="icons"><i class="fa-brands fa-facebook"></i>Facebook</a>
-            </div>
-
-            <div class="register-link">
-                <p>Chưa có tài khoản? <a href="${pageContext.request.contextPath}/html/register.jsp">Đăng ký ngay</a></p>
-            </div>
-        </div>
+    <div class="box info-col">
+        <h3 style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">Hồ sơ cá nhân</h3>
+        <p><strong>Họ tên:</strong> ${user.fullName != null ? user.fullName : 'Chưa cập nhật'}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>SĐT:</strong> ${user.phone != null ? user.phone : 'Chưa thêm SĐT'}</p>
+        <p><strong>Ngày sinh:</strong> ${user.date_of_birth}</p>
+        <button>Cập nhật thông tin</button>
     </div>
-</main>
 
+    <div class="box order-col">
+        <h3 style="border-bottom: 2px solid #28a745; padding-bottom: 10px;">Đơn hàng của tôi</h3>
+
+        <c:if test="${empty orders}">
+            <p>Bạn chưa mua gì cả. <a href="${pageContext.request.contextPath}/ListProduct">Đi mua sắm ngay!</a></p>
+        </c:if>
+
+        <c:if test="${not empty orders}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${orders}" var="o">
+                    <tr>
+                        <td>#${o.orderId}</td>
+                        <td>${o.orderDate}</td>
+                        <td style="color: red; font-weight: bold;">
+                            <fmt:formatNumber value="${o.totalAmount}" type="currency" currencySymbol="₫"/>
+                        </td>
+                        <td>
+                                    <span style="color: ${o.status == 'Đã giao' ? 'green' : 'orange'}">
+                                            ${o.status}
+                                    </span>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="footer-content">
@@ -420,6 +273,7 @@
                 </li>
             </ul>
         </div>
+
         <!-- Store Locations Section -->
         <div class="footer-section">
             <h3>Thành viên Group 11</h3>
@@ -435,21 +289,6 @@
         </div>
     </div>
 </footer>
-<script>
-    function togglePassword(fieldId, iconSpan) {
-        var passInput = document.getElementById(fieldId);
-        var eyeIcon = iconSpan.querySelector("i");
 
-        if (passInput.type === "password") {
-            passInput.type = "text";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
-        } else {
-            passInput.type = "password";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
-        }
-    }
-</script>
 </body>
 </html>
