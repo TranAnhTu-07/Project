@@ -19,30 +19,28 @@ public class Cart implements Serializable {
 
     public void updateItem(Product product, int quantity) {
         if (product == null) return;
+
         int productId = product.getProductID();
+
         if (quantity <= 0) {
-            // số lượng <= 0 thì xóa khỏi giỏ
             data.remove(productId);
             return;
         }
 
-        if (data.containsKey(productId)) {
-            // đã có → cập nhật lại số lượng
-            CartItem item = data.get(productId);
-            item.setQuantity(quantity);
-        } else {
-            // chưa có → thêm mới
-            data.put(productId, new CartItem(product, quantity, product.getPrice()));
-        }
+        // LUÔN tạo mới CartItem
+        data.put(productId, new CartItem(product, quantity, product.getPrice()));
     }
 
 
     public void addItem(Product product, int quantity) {
-        if (quantity <= 0) {quantity = 1;}
-        if (data.containsKey(product.getProductID())) {
-            data.get(product.getProductID()).upQuantity(quantity);
+        if (quantity <= 0) quantity = 1;
+        int productId = product.getProductID();
+        if (data.containsKey(productId)) {
+            CartItem oldItem = data.get(productId);
+            int totalQty = oldItem.getQuantity() + quantity;
+            data.put(productId, new CartItem(product, totalQty, product.getPrice()));
         } else {
-            data.put(product.getProductID(), new CartItem(product, quantity, product.getPrice()));
+            data.put(productId, new CartItem(product, quantity, product.getPrice()));
         }
     }
 
@@ -67,7 +65,6 @@ public class Cart implements Serializable {
         data.values().forEach(c -> sum.updateAndGet(v -> v + c.getPrice() * c.getQuantity()));
         return sum.get();
     }
-    //kiem tra sl ton kho
     public boolean isValidQuantity(Product product, int quantity) {
         return quantity <= product.getStock(); // ví dụ
     }

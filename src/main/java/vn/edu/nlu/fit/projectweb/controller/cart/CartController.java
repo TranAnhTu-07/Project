@@ -42,9 +42,37 @@ public class CartController extends HttpServlet {
                 case "clear":
                     clearCart(request, response);
                     break;
+                case "increase":
+                    handleIncrease(request, response);
+                    break;
+                case "decrease":
+                    handleDecrease(request, response);
+                    break;
+                case "remove":
+                    handleRemoveFromUrl(request, response);
+                    break;
                 default:
                     showCartPage(request, response);
             }
+        }
+    }
+
+    private void handleRemoveFromUrl(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        HttpSession session = request.getSession();
+        try {
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if (cart != null) {
+                cart.delItem(productId);
+                session.setAttribute("message", "Đã xóa sản phẩm khỏi giỏ hàng!");
+            }
+
+            response.sendRedirect(request.getContextPath() + "/cart");
+        } catch (Exception e) {
+            session.setAttribute("message", "Có lỗi xảy ra khi xóa sản phẩm!");
+            response.sendRedirect(request.getContextPath() + "/cart");
         }
     }
 
@@ -63,6 +91,8 @@ public class CartController extends HttpServlet {
                 case "remove":
                     removeFromCart(request, response);
                     break;
+                case "increase":
+                    break;
                 default:
                     response.sendRedirect(request.getContextPath() + "/cart");
             }
@@ -80,24 +110,19 @@ public class CartController extends HttpServlet {
             session.setAttribute("cart", cart);
         }
 
-        // Lấy danh sách sản phẩm trong giỏ hàng
         List<CartItem> items = cart.getItems();
 
-        // Tính tổng tiền
         double total = cart.getTotal();
         int totalQuantity = cart.getTotalQuantity();
 
-        // Format tiền tệ
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
-        // Đặt thuộc tính vào request
         request.setAttribute("cartItems", items);
         request.setAttribute("cartTotal", total);
         request.setAttribute("cartTotalFormatted", currencyFormat.format(total));
         request.setAttribute("totalQuantity", totalQuantity);
         request.setAttribute("shippingFee", 30000); // Phí vận chuyển
 
-        // Chuyển đến trang giỏ hàng
         RequestDispatcher dispatcher = request.getRequestDispatcher("/html/ShoppingCart.jsp");
         dispatcher.forward(request, response);
     }
@@ -122,11 +147,9 @@ public class CartController extends HttpServlet {
                     session.setAttribute("cart", cart);
                 }
 
-                // Kiểm tra số lượng tồn kho
                 if (cart.isValidQuantity(product, cart.getTotalQuantity() + quantity)) {
                     cart.addItem(product, quantity);
 
-                    // Trả về JSON response cho AJAX
                     response.setContentType("application/json");
                     PrintWriter out = response.getWriter();
                     out.print("{\"success\": true, \"message\": \"Đã thêm vào giỏ hàng\", \"totalQuantity\": " + cart.getTotalQuantity() + "}");
@@ -163,26 +186,21 @@ public class CartController extends HttpServlet {
                     session.setAttribute("cart", cart);
                 }
 
-                // Kiểm tra số lượng hợp lệ
                 if (quantity > 0) {
                     if (cart.isValidQuantity(product, quantity)) {
                         cart.updateItem(product, quantity);
                     } else {
-                        // Nếu vượt quá tồn kho, đặt về số lượng tối đa
                         int maxQuantity = product.getStock();
                         cart.updateItem(product, maxQuantity);
                         quantity = maxQuantity;
                     }
                 } else {
-                    // Nếu số lượng <= 0 thì xóa
                     cart.delItem(productId);
                 }
 
-                // Tính lại tổng
                 double newTotal = cart.getTotal();
                 int newTotalQuantity = cart.getTotalQuantity();
 
-                // Trả về JSON response
                 response.setContentType("application/json");
                 PrintWriter out = response.getWriter();
                 out.print("{\"success\": true, \"newQuantity\": " + quantity +
@@ -226,6 +244,80 @@ public class CartController extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print("{\"success\": false, \"message\": \"Dữ liệu không hợp lệ\"}");
         }
+    }
+
+    private void handleIncrease(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if (cart == null) {
+                cart = new Cart();
+                session.setAttribute("cart", cart);
+            }
+
+            // Tìm sản phẩm
+            boolean found = false;
+            for (CartItem item : cart.getItems()) {
+                if (item.getProduct().getProductID() == productId) {
+                    found = true;
+                    int oldQty = item.getQuantity();
+                    int newQty = oldQty + 1; // TĂNG
+
+                    // Xóa cũ, thêm mới với số lượng mới
+                    cart.delItem(productId);
+                    cart.addItem(item.getProduct(), newQty);
+                    break;
+                }
+            }
+
+            if (!found) {
+                Product product = productService.getProduct(productId);
+                if (product != null) {
+                    cart.addItem(product, 1);
+                }
+            }
+
+        } catch (Exception e) {
+            // Không làm gì
+        }
+
+        response.sendRedirect("cart");
+    }
+
+    private void handleDecrease(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if (cart == null) {
+                response.sendRedirect("cart");
+                return;
+            }
+
+            // Tìm sản phẩm
+            for (CartItem item : cart.getItems()) {
+                if (item.getProduct().getProductID() == productId) {
+                    int oldQty = item.getQuantity();
+
+                    if (oldQty > 1) {
+                        int newQty = oldQty - 1; // GIẢM
+                        cart.delItem(productId);
+                        cart.addItem(item.getProduct(), newQty);
+                    } else {
+                        cart.delItem(productId);
+                    }
+                    break;
+                }
+            }
+
+        } catch (Exception e) {
+            // Không làm gì
+        }
+
+        response.sendRedirect("cart");
     }
 
     private void getCartCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
